@@ -19,4 +19,6 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('new_cargo/', views.new_cargo, name='new_cargo'),
+    path('preview_cargos/', views.preview_cargos, name='preview_cargos'),
+    path('ret_cargo/', views.ret_cargo, name='ret_cargo'),
 ]

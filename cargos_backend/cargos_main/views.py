@@ -12,4 +12,18 @@ def new_cargo(request):
         pass
     else:
         form = NewCargoForm()
-        return render(request, 'new_cargo/new_cargo.html', {'form': form})
+        return render(request, 'new_cargo/new_cargo.html', {'form': form.as_table()})
+
+
+def ret_cargo(request):
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, 'ret_cargo/ret_cargo.html')
+
+
+def preview_cargos(request):
+    if request.method == "POST":
+        pass
+    else:
+        return render(request, 'preview_cargos/preview_cargos.html')
