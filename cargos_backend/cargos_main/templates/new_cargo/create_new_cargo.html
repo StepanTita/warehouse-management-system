@@ -2,12 +2,12 @@
     {% csrf_token %}
     <div class="container-fluid">
         <div class="row">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
                 {{ form }}
             </table>
         </div>
 
     </div>
 
-    <input type="submit" value="Submit">
+    <input type="submit" class="btn btn-primary" value="Submit">
 </form>
