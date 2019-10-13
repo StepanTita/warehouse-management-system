@@ -22,7 +22,11 @@ from .util_vars import last_cargos
 urlpatterns = [
     path('', views.index, name='index'),
     path('new_cargo/', views.new_cargo, name='new_cargo'),
-    path('preview_cargos/', ListView.as_view(queryset=Cargo.objects.all().order_by("-date_added")[:last_cargos]),
+    path('preview_cargos/', ListView.as_view(queryset=Cargo.objects.all().order_by("-date_added")[:last_cargos],
+                                             template_name='preview_cargos/preview_cargos.html'),
          name='preview_cargos'),
+    path('preview_cargos/<pk>/', DetailView.as_view(model=Cargo,
+                                                           template_name='preview_cargos/preview_cargo.html'),
+         name='preview_cargo'),
     path('ret_cargo/', views.ret_cargo, name='ret_cargo'),
 ]

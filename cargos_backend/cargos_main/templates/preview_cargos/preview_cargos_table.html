@@ -1,5 +1,5 @@
-<table class="table">
-    <thead class="thead-dark">
+<table class="table table-striped table-hover">
+    <thead class="thead">
     <tr>
         <th scope="col">#</th>
         <th scope="col">Cell</th>
@@ -13,12 +13,13 @@
     </tr>
     </thead>
     <tbody>
-    {% for cargo in objects_list %}
+    {% for cargo in cargo_list %}
         <tr>
+
             <th scope="row">{{ cargo.id }}</th>
             <td>{{ cargo.cell }}</td>
             <td>{{ cargo.date_added|date:"d-m-Y" }}</td>
-            <td>{{ cargo.title }}</td>
+            <td><a href="/preview_cargos/{{ cargo.id }}">{{ cargo.title }}</a></td>
             <td>{{ cargo.height }}</td>
             <td>{{ cargo.length }}</td>
             <td>{{ cargo.width }}</td>
