@@ -1,0 +1,30 @@
+<table class="table">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Cell</th>
+        <th scope="col">Date added</th>
+        <th scope="col">Title</th>
+        <th scope="col">Height</th>
+        <th scope="col">Length</th>
+        <th scope="col">Width</th>
+        <th scope="col">Date dated</th>
+        <th scope="col">Description</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for cargo in objects_list %}
+        <tr>
+            <th scope="row">{{ cargo.id }}</th>
+            <td>{{ cargo.cell }}</td>
+            <td>{{ cargo.date_added|date:"d-m-Y" }}</td>
+            <td>{{ cargo.title }}</td>
+            <td>{{ cargo.height }}</td>
+            <td>{{ cargo.length }}</td>
+            <td>{{ cargo.width }}</td>
+            <td>{{ cargo.date_dated|date:"d-m-Y" }}</td>
+            <td>{{ cargo.description }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

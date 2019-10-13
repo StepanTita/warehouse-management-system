@@ -15,10 +15,14 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
+from django.views.generic import ListView, DetailView, DeleteView
+from .models import Cargo
+from .util_vars import last_cargos
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('new_cargo/', views.new_cargo, name='new_cargo'),
-    path('preview_cargos/', views.preview_cargos, name='preview_cargos'),
+    path('preview_cargos/', ListView.as_view(queryset=Cargo.objects.all().order_by("-date_added")[:last_cargos]),
+         name='preview_cargos'),
     path('ret_cargo/', views.ret_cargo, name='ret_cargo'),
 ]
