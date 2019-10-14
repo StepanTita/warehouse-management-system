@@ -7,10 +7,6 @@ from .util_vars import cargos_per_page
 
 
 # Create your views here.
-def index(request):
-    return render(request, 'controller/index.html')
-
-
 def new_cargo(request):
     if request.method == "POST":
         success = True
@@ -33,27 +29,27 @@ def new_cargo(request):
 
         if success:
             form = NewCargoForm()
-            return render(request, 'new_cargo/new_cargo.html', {'form': form.as_table()})
+            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
         else:
             form = NewCargoForm()
             # Create error message !!!!!
-            return render(request, 'new_cargo/new_cargo.html', {'form': form.as_table()})
+            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
     else:
         form = NewCargoForm()
-        return render(request, 'new_cargo/new_cargo.html', {'form': form.as_table()})
+        return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
 
 
 def ret_cargo(request):
     if request.method == "POST":
         pass
     else:
-        return render(request, 'ret_cargo/ret_cargo.html')
+        return render(request, 'main_control/ret_cargo/ret_cargo.html')
 
 
 class CargoListView(ListView):
     model = Cargo
     paginate_by = cargos_per_page
-    template_name = 'preview_cargos/preview_cargos.html'
+    template_name = 'managing_cargos/preview_cargos/preview_cargos.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -64,7 +60,7 @@ class CargoUpdate(UpdateView):
     model = Cargo
     # form_class = ...
     fields = ['title', 'date_dated', 'description']
-    template_name = 'update_cargo/update_cargo.html'
+    template_name = 'managing_cargos/update_cargo/update_cargo.html'
 
     def get_success_url(self):
         return reverse('preview_cargos')
@@ -72,10 +68,12 @@ class CargoUpdate(UpdateView):
 
 class CargoDelete(DeleteView):
     model = Cargo
-    template_name = 'delete_cargo/delete_cargo.html'
+    template_name = 'managing_cargos/delete_cargo/delete_cargo.html'
 
     def get_success_url(self):
         return reverse('preview_cargos')
+
+
 
 
 # def preview_cargos(request):

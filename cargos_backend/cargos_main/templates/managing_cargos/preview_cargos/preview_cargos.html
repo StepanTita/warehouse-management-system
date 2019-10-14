@@ -1,12 +1,12 @@
-{% extends "../wrappers/wrapper.html" %}
+{% extends "utils/wrappers/wrapper.html" %}
 
 {% block title %}Preview Cargos{% endblock %}
 
 {% block menu %}
-    {% include 'includes/menu.html' %}
+    {% include 'utils/includes/menu.html' %}
 {% endblock %}
 
 {% block content %}
     <h1 class="text-center text-secondary"> Cargos table </h1>
-    {% include 'preview_cargos/preview_cargos_table.html' %}
+    {% include 'managing_cargos/preview_cargos/preview_cargos_table.html' %}
 {% endblock %}

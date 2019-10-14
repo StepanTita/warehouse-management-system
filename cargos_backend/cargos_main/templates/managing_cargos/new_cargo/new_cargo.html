@@ -1,15 +1,15 @@
-{% extends "../wrappers/wrapper.html" %}
+{% extends "utils/wrappers/wrapper.html" %}
 
 {% block title %}New Cargo{% endblock %}
 
 {% block menu %}
-    {% include 'includes/menu.html' %}
+    {% include 'utils/includes/menu.html' %}
 {% endblock %}
 
 {% block content %}
     <div class="container">
         <h1 class="text-secondary text-center">Add cargo</h1>
-        {% include "new_cargo/create_new_cargo.html" %}
+        {% include 'managing_cargos/new_cargo/create_new_cargo.html' %}
     </div>
 
 {% endblock %}

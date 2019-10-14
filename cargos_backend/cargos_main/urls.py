@@ -19,7 +19,6 @@ from django.views.generic import DetailView
 from .models import Cargo
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('new_cargo/', views.new_cargo, name='new_cargo'),
     path('ret_cargo/', views.ret_cargo, name='ret_cargo'),
     path('update_cargo/<int:pk>/', views.CargoUpdate.as_view(), name='update_cargo'),
@@ -27,6 +26,6 @@ urlpatterns = [
     path('preview_cargos/', views.CargoListView.as_view(queryset=Cargo.objects.all().order_by("-date_added")),
          name='preview_cargos'),
     path('preview_cargos/<int:pk>/', DetailView.as_view(model=Cargo,
-                                                        template_name='preview_cargos/preview_cargo.html'),
+                                                        template_name='managing_cargos/preview_cargos/preview_cargo.html'),
          name='preview_cargo'),
 ]
