@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.views.generic import ListView, UpdateView, DeleteView
 from .forms import NewCargoForm
 from .models import Cargo, Cell
-from .util_vars import cargos_per_page
+from .custom_logic.util_vars import cargos_per_page
 
 
 # Create your views here.
