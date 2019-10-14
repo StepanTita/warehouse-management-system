@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, UpdateView, DeleteView
+
+from .custom_logic.new_cargo_logic import add_new_cargo_unformated
 from .forms import NewCargoForm
-from .models import Cargo, Cell
-from .custom_logic.util_vars import cargos_per_page
+from .models import Cargo, Cell, Storage
+from .custom_logic.util_vars import cargos_per_page, UNSPECIFIED
 
 
 # Create your views here.
@@ -12,10 +14,33 @@ def new_cargo(request):
         success = True
         data = request.POST
 
-        # Create Algo to add new Cargo
-        print(data)
         new_cargo_obj = Cargo()
-        new_cargo_obj.cell = Cell.objects.get(pk=data['cell'])
+        # new_cargo_obj.cell = Cell.objects.get(pk=data['cell'])
+        storage = Storage.objects.get(pk=data['storage'])
+
+        # TODO CLEARER
+        cell_vals = Cargo.objects.values_list('cell').distinct()
+        new_cell_vals = Cell.objects.all()
+        for val in cell_vals:
+            for cell_id in val:
+                new_cell_vals = new_cell_vals.exclude(pk__exact=cell_id)
+
+        new_row, new_el, new_pos = add_new_cargo_unformated(
+            {'height': data['height'], 'length': data['length'], 'width': data['width'], 'rotatable': data['rotatable']},
+            new_cell_vals,
+            storage.rows, storage.elevations, storage.positions
+        )
+
+        if new_row == UNSPECIFIED:  # No suitable cell in this storage!
+            form = NewCargoForm(data or None)
+            form.add_error('storage', 'No available space in this storage!')
+            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
+
+        new_cargo_obj.cell = Cell.objects.get_or_create(row=new_row,
+                                                        elevation=new_el,
+                                                        position=new_pos,
+                                                        storage_id=int(data['storage']))[0]
+
         new_cargo_obj.date_added = data['date_added']
         new_cargo_obj.date_dated = data['date_dated']
         new_cargo_obj.title = data['title']
@@ -23,16 +48,15 @@ def new_cargo(request):
         new_cargo_obj.height = data['height']
         new_cargo_obj.width = data['width']
         new_cargo_obj.length = data['length']
+        new_cargo_obj.rotatable = True if data['rotatable'] == 'on' else False
+
         new_cargo_obj.save()
 
-        # Create Algo to add new Cargo
-
+        form = NewCargoForm()
         if success:
-            form = NewCargoForm()
             return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
         else:
-            form = NewCargoForm()
-            # Create error message !!!!!
+            # TODO Create error message !!!!!
             return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
     else:
         form = NewCargoForm()
