@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.urls import reverse
+from django.views.generic import ListView, UpdateView, DeleteView
 from .forms import NewCargoForm
 from .models import Cargo, Cell
+from .util_vars import cargos_per_page
 
 
 # Create your views here.
@@ -45,6 +48,34 @@ def ret_cargo(request):
         pass
     else:
         return render(request, 'ret_cargo/ret_cargo.html')
+
+
+class CargoListView(ListView):
+    model = Cargo
+    paginate_by = cargos_per_page
+    template_name = 'preview_cargos/preview_cargos.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
+
+
+class CargoUpdate(UpdateView):
+    model = Cargo
+    # form_class = ...
+    fields = ['title', 'date_dated', 'description']
+    template_name = 'update_cargo/update_cargo.html'
+
+    def get_success_url(self):
+        return reverse('preview_cargos')
+
+
+class CargoDelete(DeleteView):
+    model = Cargo
+    template_name = 'delete_cargo/delete_cargo.html'
+
+    def get_success_url(self):
+        return reverse('preview_cargos')
 
 
 # def preview_cargos(request):

@@ -1,0 +1,19 @@
+{% extends "../wrappers/wrapper.html" %}
+
+{% block title %}Update Cargo{% endblock %}
+
+{% block menu %}
+    {% include 'includes/menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center text-secondary"> Update Cargo </h1>
+    <div class="container-fluid">
+        <form method="post" action="#">{% csrf_token %}
+            <table class="table table-hover table-bordered table-striped">
+                {{ form.as_table }}
+            </table>
+            <input type="submit" value="Update" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
