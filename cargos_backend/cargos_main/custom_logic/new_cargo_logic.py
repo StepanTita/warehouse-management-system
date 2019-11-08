@@ -1,7 +1,7 @@
 """
 Package responsible for smart and optimal storage fulfillment.
 """
-from .util_vars import UNSPECIFIED
+from shared_logic.util_vars import UNSPECIFIED
 from .util_classes import Cargo, Cell
 
 
