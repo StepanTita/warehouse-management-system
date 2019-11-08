@@ -1,15 +1,23 @@
-from django.db import models
 import datetime as dt
 
+from django.core.exceptions import ValidationError
+from django.db import models
 
-# Create your models here.
+
 class Storage(models.Model):
+    name = models.CharField(max_length=200, null=True)
+
     rows = models.IntegerField()
     elevations = models.IntegerField()  # y
     positions = models.IntegerField()  # x
 
+    default_height = models.DecimalField(decimal_places=2, max_digits=9, default=1)
+    default_length = models.DecimalField(decimal_places=2, max_digits=9, default=1)
+    default_width = models.DecimalField(decimal_places=2, max_digits=9, default=1)
+
     def __str__(self):
-        return 'rs: ' + str(self.rows) + ' es: ' + str(self.elevations) + ' ps: ' + str(self.positions)
+        return str(self.name) + ', rs: ' + str(self.rows) + ' es: ' + str(self.elevations) + ' ps: ' + str(
+            self.positions)
 
 
 class Cell(models.Model):
@@ -24,10 +32,15 @@ class Cell(models.Model):
     storage = models.ForeignKey(Storage, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = (('row', 'elevation', 'position'),)
+        unique_together = (('row', 'elevation', 'position', 'storage'),)
 
     def __str__(self):
         return 'r: ' + str(self.row) + ' e: ' + str(self.elevation) + ' p: ' + str(self.position)
+
+    def clean(self):
+        if self.storage.rows * self.storage.elevations * self.storage.positions >= len(
+                Cell.objects.filter(storage=self.storage)):
+            raise ValidationError('You cannot create more cells for this storage')
 
 
 class Cargo(models.Model):

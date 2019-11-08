@@ -1,104 +1,137 @@
-from django.shortcuts import render
+from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import ListView, UpdateView, DeleteView
+from django.views.generic import FormView
+from django.views.generic import ListView, UpdateView, DeleteView, DetailView
 
-from .custom_logic.new_cargo_logic import add_new_cargo_unformated
-from .forms import NewCargoForm
-from .models import Cargo, Cell, Storage
-from .custom_logic.util_vars import cargos_per_page, UNSPECIFIED
+from .cargos_saving import save_cargo
+from .custom_logic.util_vars import cargos_per_page
+from .forms import NewCargoForm, SearchForm
+from .models import Cargo
+from .status_logger.status_logger import view_status_logger, class_status_logger
 
 
-# Create your views here.
+@view_status_logger
+@login_required(login_url="sign_in")
+def index(request):
+    form = SearchForm(request.POST or None)
+    return render(request, 'main_control/controller/control.html', {'form': form})
+
+
+@view_status_logger
+@login_required(login_url='sign_in')
 def new_cargo(request):
     if request.method == "POST":
-        success = True
         data = request.POST
 
-        new_cargo_obj = Cargo()
-        # new_cargo_obj.cell = Cell.objects.get(pk=data['cell'])
-        storage = Storage.objects.get(pk=data['storage'])
-
-        # TODO CLEARER
-        cell_vals = Cargo.objects.values_list('cell').distinct()
-        new_cell_vals = Cell.objects.all()
-        for val in cell_vals:
-            for cell_id in val:
-                new_cell_vals = new_cell_vals.exclude(pk__exact=cell_id)
-
-        new_row, new_el, new_pos = add_new_cargo_unformated(
-            {'height': data['height'], 'length': data['length'], 'width': data['width'], 'rotatable': data['rotatable']},
-            new_cell_vals,
-            storage.rows, storage.elevations, storage.positions
-        )
-
-        if new_row == UNSPECIFIED:  # No suitable cell in this storage!
+        success = save_cargo(data)
+        if not success:
             form = NewCargoForm(data or None)
             form.add_error('storage', 'No available space in this storage!')
             return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
 
-        new_cargo_obj.cell = Cell.objects.get_or_create(row=new_row,
-                                                        elevation=new_el,
-                                                        position=new_pos,
-                                                        storage_id=int(data['storage']))[0]
-
-        new_cargo_obj.date_added = data['date_added']
-        new_cargo_obj.date_dated = data['date_dated']
-        new_cargo_obj.title = data['title']
-        new_cargo_obj.description = data['description']
-        new_cargo_obj.height = data['height']
-        new_cargo_obj.width = data['width']
-        new_cargo_obj.length = data['length']
-        new_cargo_obj.rotatable = True if data['rotatable'] == 'on' else False
-
-        new_cargo_obj.save()
-
         form = NewCargoForm()
-        if success:
-            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
-        else:
-            # TODO Create error message !!!!!
-            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
+
+        return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
     else:
         form = NewCargoForm()
         return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
 
 
+@view_status_logger
+@login_required(login_url='sign_in')
 def ret_cargo(request):
     if request.method == "POST":
-        pass
+        pass  # TODO
     else:
         return render(request, 'main_control/ret_cargo/ret_cargo.html')
 
 
-class CargoListView(ListView):
+@view_status_logger
+def access_denied(request):
+    return render(request, 'access_restrictions/access_denied.html')
+
+
+@view_status_logger
+def sign_out(request):
+    logout(request)
+    return render(request, 'main_auth/index.html')
+
+
+class CargoListView(LoginRequiredMixin, ListView):
+    login_url = 'sign_in'
     model = Cargo
     paginate_by = cargos_per_page
     template_name = 'managing_cargos/preview_cargos/preview_cargos.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    @class_status_logger
+    def get_queryset(self):
+        return Cargo.objects.all().order_by("-date_added")
 
 
-class CargoUpdate(UpdateView):
+class CargoUpdate(LoginRequiredMixin, UpdateView):
+    login_url = 'sign_in'
     model = Cargo
     # form_class = ...
     fields = ['title', 'date_dated', 'description']
     template_name = 'managing_cargos/update_cargo/update_cargo.html'
 
+    @class_status_logger
     def get_success_url(self):
         return reverse('preview_cargos')
 
+    @class_status_logger
+    def get_queryset(self):
+        return Cargo.objects.all()
 
-class CargoDelete(DeleteView):
+
+class CargoDelete(LoginRequiredMixin, DeleteView):
+    login_url = 'sign_in'
     model = Cargo
     template_name = 'managing_cargos/delete_cargo/delete_cargo.html'
 
+    @class_status_logger
     def get_success_url(self):
         return reverse('preview_cargos')
 
+    @class_status_logger
+    def get_queryset(self):
+        return Cargo.objects.all()
 
 
+class CargoDetailView(LoginRequiredMixin, DetailView):
+    login_url = 'sign_in'
+    model = Cargo
+    template_name = 'managing_cargos/preview_cargos/preview_cargo.html'
+
+    @class_status_logger
+    def get_queryset(self):
+        return Cargo.objects.all()
+
+    # def get_context_data(self, **kwargs):
+    #     # Call the base implementation first to get a context
+    #     context = super().get_context_data(**kwargs)
+    #     # Add in a QuerySet of all the books
+    #     context['cells_list'] = Cell.objects.all()
+    #     return context
+
+
+class SignInFormView(FormView):
+    form_class = AuthenticationForm
+    # form_class = CustomAuthenticationForm
+    template_name = "user_actions/signIn.html"
+
+    @class_status_logger
+    def form_valid(self, form):
+        login(self.request, form.get_user())
+        return redirect(self.get_success_url())
+
+    @class_status_logger
+    def get_success_url(self):
+        return reverse('index')
 
 # def preview_cargos(request):
 #     print('Hi')
@@ -114,3 +147,12 @@ class CargoDelete(DeleteView):
 #             return render(request, 'preview_cargos/preview_cargos.html')
 #     else:
 #         return render(request, 'preview_cargos/preview_cargos.html')
+
+
+# class SignUpFormView(FormView):
+#     form_class = UserCreationForm
+#     # form_class = CustomUserCreationForm
+#     template_name = "user_actions/signUp.html"
+#
+#     def get_success_url(self):
+#         return reverse('sign_in')

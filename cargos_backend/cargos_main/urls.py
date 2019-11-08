@@ -14,18 +14,21 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+
 from . import views
-from django.views.generic import DetailView
-from .models import Cargo
 
 urlpatterns = [
+    path('', views.index, name='index'),
     path('new_cargo/', views.new_cargo, name='new_cargo'),
     path('ret_cargo/', views.ret_cargo, name='ret_cargo'),
     path('update_cargo/<int:pk>/', views.CargoUpdate.as_view(), name='update_cargo'),
     path('delete_cargo/<int:pk>/', views.CargoDelete.as_view(), name='delete_cargo'),
-    path('preview_cargos/', views.CargoListView.as_view(queryset=Cargo.objects.all().order_by("-date_added")),
+    path('preview_cargos/<int:pk>/', views.CargoDetailView.as_view(), name='preview_cargo'),
+    path('preview_cargos/', views.CargoListView.as_view(),  # queryset=Cargo.objects.all().order_by("-date_added")
          name='preview_cargos'),
-    path('preview_cargos/<int:pk>/', DetailView.as_view(model=Cargo,
-                                                        template_name='managing_cargos/preview_cargos/preview_cargo.html'),
-         name='preview_cargo'),
+
+    path('signOut/', views.sign_out, name='sign_out'),
+    path('signIn/', views.SignInFormView.as_view(), name='sign_in'),
+    path('accessDenied/', views.access_denied, name='access_denied'),
+    # path('signUp', views.SignUpFormView.as_view(), name='sign_up'),
 ]

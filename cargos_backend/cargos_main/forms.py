@@ -1,6 +1,14 @@
-from django import forms
 import datetime as dt
+
+from django import forms
+
 from .models import Storage
+
+RELEVANCE_CHOICES = (
+    (1, "Cells"),
+    (2, "Cargos"),
+    (3, "Storages")
+)
 
 
 class NewCargoForm(forms.Form):
@@ -41,3 +49,12 @@ class NewCargoForm(forms.Form):
     storage.widget.attrs.update({'class': 'col-md-7'})
     # date_added.widget.attrs.update({'class': 'col-md-7'})
     # date_dated.widget.attrs.update({'class': 'col-md-7'})
+
+
+class SearchForm(forms.Form):
+    search = forms.CharField(max_length=150, label='Search')
+
+    storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages')
+    category = forms.ChoiceField(label='Category', choices=RELEVANCE_CHOICES)
+    fields_names = tuple([(i + 1, val) for i, val in enumerate(Storage._meta.get_fields())])
+    fields = forms.ChoiceField(choices=fields_names, label='Fields')
