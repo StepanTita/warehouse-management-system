@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-09 00:51+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != "
+"11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
+"100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
+"(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#: shared_logic/templates/utils/includes/menu.html:16
+msgid "Manage Storage"
+msgstr "Управління сховищем"
+
+#: shared_logic/templates/utils/includes/menu.html:19
+msgid "View Storage"
+msgstr "Переглянути сховище"
+
+#: shared_logic/templates/utils/includes/menu.html:22
+msgid "Add new cargo"
+msgstr "Додати новий вантаж"
+
+#: shared_logic/templates/utils/includes/menu.html:25
+msgid "Retrieve cargo"
+msgstr "Дістати вантаж"
+
+#: shared_logic/templates/utils/includes/menu.html:41
+msgid "Admin panel"
+msgstr "Панель адміна"
+
+#: shared_logic/templates/utils/includes/menu.html:43
+msgid "Log out"
+msgstr "Вийти"
+
+#: shared_logic/templates/utils/includes/menu.html:50
+msgid "Sign In"
+msgstr "Увійти"
