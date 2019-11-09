@@ -1,3 +1,6 @@
+{% load static i18n %}
+{% load notifications_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,8 +18,12 @@
 {% block content %}
 {% endblock %}
 
-<div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com </a>
+<div class="footer-copyright text-center py-3 bg-light mt-3">
+    <div class="container">
+        © 2019 Copyright:
+        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com </a>
+        {% include '../includes/language_picker.html' %}
+    </div>
 </div>
 
 </body>
@@ -29,4 +36,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
+{% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}
 </html>

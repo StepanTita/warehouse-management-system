@@ -44,11 +44,7 @@ class Cell(models.Model):
 
 
 class Cargo(models.Model):
-    # cargo_ID = models.IntegerField(unique=True, primary_key=True)
 
-    # row = models.IntegerField()
-    # elevation = models.IntegerField()
-    # position = models.IntegerField()
     cell = models.ForeignKey(Cell, on_delete=models.CASCADE)
 
     height = models.DecimalField(decimal_places=2, max_digits=9, default=1)

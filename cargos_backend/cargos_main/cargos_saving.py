@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
@@ -33,6 +35,28 @@ def save_cargo(data):
     return success
 
 
+def parse_date(date):
+    dtd = date
+    try:
+        dtd = datetime.strptime(dtd, '%d.%m.%Y')
+    except ValueError:
+        pass
+    else:
+        return dtd.strftime('%Y-%m-%d')
+    return dtd
+
+
+def parse_date_time(date):
+    dta = date
+    try:
+        dta = datetime.strptime(dta, '%d.%m.%y %H:%M:%S')
+    except ValueError:
+        pass
+    else:
+        return dta.strftime("%Y-%m-%d %H:%M:%S %Z")
+    return dta
+
+
 def add_cargo_fields(new_row, new_el, new_pos, data):
     new_cargo_obj = Cargo()
 
@@ -41,8 +65,8 @@ def add_cargo_fields(new_row, new_el, new_pos, data):
                                                     position=new_pos,
                                                     storage_id=int(data['storage']))[0]
 
-    new_cargo_obj.date_added = data['date_added']
-    new_cargo_obj.date_dated = data['date_dated']
+    new_cargo_obj.date_added = parse_date_time(data['date_added'])
+    new_cargo_obj.date_dated = parse_date(data['date_dated'])
     new_cargo_obj.title = data['title']
     new_cargo_obj.description = data['description']
     new_cargo_obj.height = data['height']

@@ -14,14 +14,15 @@ def view_status_logger(func):
         ex_args = ""
         try:
             res = func(*args, **kwargs)
+        # except forms.ValidationError as ve:
+        #     raise forms.ValidationError(ve)
         except Exception as e:
-            logging.exception('Errors happened')
+            logging.exception('~' * 30 + 'Errors happened' + 30 * '~')
             ex_args = e.args
         else:
             return res
         kwargs['context'] = {'msg': ex_args}
         kwargs['template_name'] = 'access_restrictions/internal_server_error.html'
-        print(args, kwargs)
         return render(*args, **kwargs)
 
     return wrapper
@@ -32,6 +33,8 @@ def class_status_logger(func):
     def wrapper(*args, **kwargs):
         try:
             res = func(*args, **kwargs)
+        # except ValidationError as ve:
+        #     raise ValidationError(ve)
         except Exception as e:
             logging.error(e.args)
             ex_args = e.args

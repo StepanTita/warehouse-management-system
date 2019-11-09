@@ -1000,3 +1000,1051 @@ INFO "GET / HTTP/1.1" 200 5628
 INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
 INFO Watching for file changes with StatReloader
 INFO "GET / HTTP/1.1" 200 5628
+INFO Watching for file changes with StatReloader
+INFO "GET / HTTP/1.1" 200 5637
+INFO "GET / HTTP/1.1" 200 5637
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET / HTTP/1.1" 302 0
+INFO "GET /en/ HTTP/1.1" 200 5655
+INFO "GET /ua/ HTTP/1.1" 200 5753
+INFO Watching for file changes with StatReloader
+INFO "GET /ua/ HTTP/1.1" 200 5756
+INFO "GET /en/ HTTP/1.1" 200 5655
+INFO "GET /en/preview_cargos/ HTTP/1.1" 200 4879
+INFO "GET /en/new_cargo/ HTTP/1.1" 200 5682
+INFO "GET /ua/new_cargo/ HTTP/1.1" 200 5783
+INFO "GET /ua/new_cargo/ HTTP/1.1" 200 5783
+INFO "GET /ua/ret_cargo/ HTTP/1.1" 200 3393
+INFO "GET /ua/ HTTP/1.1" 200 5756
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+ERROR Errors happened
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/utils/translation/__init__.py", line 259, in get_language_info
+    lang_info = LANG_INFO[lang_code]
+KeyError: 'ua'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 16, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 18, in index
+    return render(request, 'main_control/controller/control.html', {'form': form})
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/shortcuts.py", line 36, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/templatetags/i18n.py", line 46, in render
+    context[self.variable] = [self.get_language_info(lang) for lang in langs]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/templatetags/i18n.py", line 46, in <listcomp>
+    context[self.variable] = [self.get_language_info(lang) for lang in langs]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/templatetags/i18n.py", line 40, in get_language_info
+    return translation.get_language_info(language[0])
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/utils/translation/__init__.py", line 266, in get_language_info
+    raise KeyError("Unknown language code %s." % lang_code)
+KeyError: 'Unknown language code ua.'
+INFO "GET /ua/ HTTP/1.1" 200 1786
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+WARNING "GET /ua/ HTTP/1.1" 404 2164
+INFO "GET / HTTP/1.1" 302 0
+INFO "GET /en/ HTTP/1.1" 200 17772
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /en/ HTTP/1.1" 200 6366
+INFO "GET /en/ HTTP/1.1" 200 6337
+INFO "GET /en/ HTTP/1.1" 200 6333
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /en/ HTTP/1.1" 200 6333
+INFO "GET / HTTP/1.1" 200 6306
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /uk/ HTTP/1.1" 200 6336
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /uk/ HTTP/1.1" 200 6336
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /uk/ HTTP/1.1" 200 6336
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
+WARNING "GET /uk/ HTTP/1.1" 404 3454
+INFO "GET / HTTP/1.1" 200 6315
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET / HTTP/1.1" 200 6315
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET / HTTP/1.1" 200 6318
+INFO Watching for file changes with StatReloader
+INFO "GET / HTTP/1.1" 200 6416
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET / HTTP/1.1" 200 6315
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET / HTTP/1.1" 200 6416
+INFO Watching for file changes with StatReloader
+INFO "GET / HTTP/1.1" 200 6416
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5634
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5533
+INFO "GET /preview_cargos/3/ HTTP/1.1" 200 4897
+INFO "GET /new_cargo/ HTTP/1.1" 200 6276
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /new_cargo/ HTTP/1.1" 200 6377
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6270
+WARNING "GET /favicon.ico HTTP/1.1" 404 3478
+INFO "GET / HTTP/1.1" 200 6309
+INFO "GET / HTTP/1.1" 200 6326
+INFO "GET / HTTP/1.1" 200 6355
+INFO "GET / HTTP/1.1" 200 6373
+INFO "GET / HTTP/1.1" 200 6373
+WARNING "GET /favicon.ico HTTP/1.1" 404 3478
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET / HTTP/1.1" 200 6272
+INFO "GET /admin/ HTTP/1.1" 200 7651
+INFO "GET / HTTP/1.1" 200 6272
+INFO "GET /new_cargo/ HTTP/1.1" 200 6233
+INFO "GET /new_cargo/ HTTP/1.1" 200 6246
+INFO "GET /new_cargo/ HTTP/1.1" 200 6246
+WARNING "GET /favicon.ico HTTP/1.1" 404 3478
+INFO "GET /new_cargo/ HTTP/1.1" 200 6246
+INFO "GET /new_cargo/ HTTP/1.1" 200 6354
+INFO "GET /new_cargo/ HTTP/1.1" 200 6375
+INFO "GET /new_cargo/ HTTP/1.1" 200 6393
+INFO "GET /new_cargo/ HTTP/1.1" 200 6385
+INFO "GET /new_cargo/ HTTP/1.1" 200 6385
+INFO "GET /new_cargo/ HTTP/1.1" 200 6385
+INFO "GET /new_cargo/ HTTP/1.1" 200 6390
+INFO "GET /new_cargo/ HTTP/1.1" 200 6390
+INFO "GET /new_cargo/ HTTP/1.1" 200 6486
+INFO "GET /new_cargo/ HTTP/1.1" 200 6437
+INFO "GET /new_cargo/ HTTP/1.1" 200 6437
+INFO "GET /new_cargo/ HTTP/1.1" 200 6446
+INFO "GET /new_cargo/ HTTP/1.1" 200 6410
+INFO "GET /new_cargo/ HTTP/1.1" 200 6445
+INFO "GET /new_cargo/ HTTP/1.1" 200 6454
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+INFO "GET /new_cargo/ HTTP/1.1" 200 6454
+INFO "GET /new_cargo/ HTTP/1.1" 200 6459
+INFO "GET /new_cargo/ HTTP/1.1" 200 6464
+INFO "GET /new_cargo/ HTTP/1.1" 200 6459
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR Errors happened
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 16, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/util_vars.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/util_vars.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/util_vars.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/util_vars.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR "POST /new_cargo/ HTTP/1.1" 500 174797
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py changed, reloading.
+INFO Watching for file changes with StatReloader
+ERROR "POST /new_cargo/ HTTP/1.1" 500 174827
+ERROR "POST /new_cargo/ HTTP/1.1" 500 174827
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR "POST /new_cargo/ HTTP/1.1" 500 174992
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py changed, reloading.
+INFO Watching for file changes with StatReloader
+ERROR "POST /new_cargo/ HTTP/1.1" 500 174833
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py changed, reloading.
+INFO Watching for file changes with StatReloader
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR "POST /new_cargo/ HTTP/1.1" 500 166107
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 30, in new_cargo
+    form.add_error('storage', 'No available space in this storage!')
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 350, in add_error
+    if field not in self.errors:
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 180, in errors
+    self.full_clean()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 381, in full_clean
+    self._clean_fields()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 402, in _clean_fields
+    value = getattr(self, 'clean_%s' % name)()
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py", line 46, in clean_date_added
+    dt = datetime.strptime(self.date_added, '%Y-%m-%d')
+AttributeError: 'NewCargoForm' object has no attribute 'date_added'
+INFO "POST /new_cargo/ HTTP/1.1" 200 2668
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 30, in new_cargo
+    form.add_error('storage', 'No available space in this storage!')
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 350, in add_error
+    if field not in self.errors:
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 180, in errors
+    self.full_clean()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 382, in full_clean
+    self._clean_form()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 409, in _clean_form
+    cleaned_data = self.clean()
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py", line 46, in clean
+    dt = datetime.strptime(self.date_added, '%Y-%m-%d')
+AttributeError: 'NewCargoForm' object has no attribute 'date_added'
+INFO "POST /new_cargo/ HTTP/1.1" 200 2668
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 30, in new_cargo
+    form.add_error('storage', 'No available space in this storage!')
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 350, in add_error
+    if field not in self.errors:
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 180, in errors
+    self.full_clean()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 382, in full_clean
+    self._clean_form()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/forms/forms.py", line 409, in _clean_form
+    cleaned_data = self.clean()
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py", line 47, in clean
+    dt = datetime.strptime(self.date_added, '%Y-%m-%d')
+AttributeError: 'NewCargoForm' object has no attribute 'date_added'
+INFO "POST /new_cargo/ HTTP/1.1" 200 2668
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 53, in add_cargo_fields
+    new_cargo_obj.save()
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 779, in save_base
+    force_update, using, update_fields,
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/base.py", line 908, in _do_insert
+    using=using, raw=raw)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1334, in execute_sql
+    for sql, params in self.as_sql():
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in as_sql
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1278, in <listcomp>
+    for obj in self.query.objs
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1277, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1218, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 789, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1275, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1270, in get_prep_value
+    return self.to_python(value)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/db/models/fields/__init__.py", line 1245, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["Значення '09.11.2019' має невірний формат дати. Вона повинна бути у форматі YYYY-MM-DD."]
+INFO "POST /new_cargo/ HTTP/1.1" 200 2806
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/forms.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 44, in add_cargo_fields
+    dt = datetime.strptime(data['date_dated'], '%Y-%m-%d')
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/_strptime.py", line 565, in _strptime_datetime
+    tt, fraction = _strptime(data_string, format)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '09.11.2019' does not match format '%Y-%m-%d'
+INFO "POST /new_cargo/ HTTP/1.1" 200 2672
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/status_logger/status_logger.py", line 17, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/views.py", line 27, in new_cargo
+    success = save_cargo(data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 31, in save_cargo
+    add_cargo_fields(new_row, new_el, new_pos, data)
+  File "/home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py", line 44, in add_cargo_fields
+    dt = datetime.strptime(data['date_dated'], '%Y-%m-%d')
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/_strptime.py", line 565, in _strptime_datetime
+    tt, fraction = _strptime(data_string, format)
+  File "/home/stepan/anaconda3/envs/cargos_backend/lib/python3.6/_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data '09.11.2019' does not match format '%Y-%m-%d'
+INFO "POST /new_cargo/ HTTP/1.1" 200 2672
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_main/cargos_saving.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/util_vars.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /new_cargo/ HTTP/1.1" 200 6559
+INFO "POST /new_cargo/ HTTP/1.1" 200 6559
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5818
+INFO "POST /i18n/setlang/ HTTP/1.1" 302 0
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5717
+INFO "GET /preview_cargos/3/ HTTP/1.1" 200 5080
+INFO "GET /preview_cargos/3/ HTTP/1.1" 200 5080
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5717
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+INFO "POST /new_cargo/ HTTP/1.1" 200 6600
+INFO "POST /new_cargo/ HTTP/1.1" 200 6458
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5688
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5688
+INFO "GET /new_cargo/ HTTP/1.1" 200 6458
+INFO "GET /preview_cargos/ HTTP/1.1" 200 5688
+INFO "GET / HTTP/1.1" 200 6498
+INFO Watching for file changes with StatReloader
+INFO "GET / HTTP/1.1" 200 7077
+INFO "GET /static/notifications/notify.js HTTP/1.1" 200 2548
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET / HTTP/1.1" 200 7084
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET / HTTP/1.1" 200 7077
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /preview_cargos/ HTTP/1.1" 200 6267
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /new_cargo/ HTTP/1.1" 200 7037
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET / HTTP/1.1" 200 7077
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET / HTTP/1.1" 200 7155
+INFO "GET /static/notifications/notify.js HTTP/1.1" 304 0
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET / HTTP/1.1" 200 7135
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET / HTTP/1.1" 200 7077
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/shared_logic/admin.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/models.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/users/views.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET / HTTP/1.1" 200 7077
+INFO "GET /static/notifications/notify.js HTTP/1.1" 304 0
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /new_cargo/ HTTP/1.1" 200 7037
+INFO "GET /preview_cargos/ HTTP/1.1" 200 6267
+INFO "GET / HTTP/1.1" 200 7077
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 38
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/urls.py changed, reloading.
+INFO Watching for file changes with StatReloader
