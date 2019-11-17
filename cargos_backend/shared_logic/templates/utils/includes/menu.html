@@ -37,7 +37,7 @@
                 <li class="list-inline-item">
                     <a class="btn btn-primary" href=""
                        role="button">{{ user.username }} {% live_notify_badge badge_class="badge badge-light" %}</a>
-                    {% live_notify_list %}
+                    {#  live_notify_list  #}
                 </li>
                 <li class="list-inline-item">
                     <a class="btn btn-secondary" href="{% url 'admin:index' %}"
@@ -46,7 +46,6 @@
                 <li class="list-inline-item"><a href="{% url 'users:sign_out' %}">{% trans "Log out" %}</a></li>
 
             </ul>
-
         {% else %}
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link text-success"

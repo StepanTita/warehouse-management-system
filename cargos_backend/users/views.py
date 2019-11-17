@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import FormView
+from notifications.signals import notify
 
 from cargos_main.models import Cargo
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
@@ -24,27 +25,30 @@ def access_denied(request):
     return render(request, 'access_restrictions/access_denied.html')
 
 
-@view_status_logger
+# @view_status_logger
 @login_required(login_url='sign_in')
-def norify_create(request):
-    pk = request.GET.get('pk')
-    new_notification = DateNotifications.objects.create(
-        user=request.user,
-        cargo=Cargo.objects.get(pk=pk)
-    )
-    return JsonResponse({'created': 'New product has spoil warning!'})
-
-
-@view_status_logger
-@login_required(login_url='sign_in')
-def nortify_need(request):
+def nortify_create(request):
     today = datetime.now().date()
-    cargos_dated = Cargo.objects.filter(data_dated__exact=today, viewed__exact=False)
+    cargos_dated = Cargo.objects.filter(date_dated__lte=today)
 
-    if len(cargos_dated) > 0:
-        return redirect('notify_create')
+    for cargo in cargos_dated:
+        DateNotifications.objects.get_or_create(
+            user=request.user,
+            cargo=cargo
+        )
+    unviewed = DateNotifications.objects.filter(viewed=False, user=request.user)
 
-    return JsonResponse({''})
+    for notification in unviewed:
+        notify.send(
+            notification.cargo,
+            recipient=[notification.user],
+            verb=f'Cargo: {notification.cargo.title}, has spoilt'
+        )
+        # notification.delete()
+        notification.viewed = True
+        notification.save()
+
+    return JsonResponse({'unviewed': f'{len(unviewed)}'})
 
 
 class SignInFormView(FormView):

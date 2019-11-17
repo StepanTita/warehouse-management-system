@@ -18,7 +18,7 @@ def view_status_logger(func):
         #     raise forms.ValidationError(ve)
         except Exception as e:
             logging.exception('~' * 30 + 'Errors happened' + 30 * '~')
-            ex_args = e.args
+            ex_args = e
         else:
             return res
         kwargs['context'] = {'msg': ex_args}

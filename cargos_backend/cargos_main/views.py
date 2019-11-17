@@ -48,6 +48,25 @@ def ret_cargo(request):
         return render(request, 'main_control/ret_cargo/ret_cargo.html')
 
 
+class CargoSearchListView(LoginRequiredMixin, ListView):
+    login_url = 'users:sign_in'
+    model = Cargo
+    paginate_by = cargos_per_page
+    template_name = 'managing_cargos/preview_cargos/preview_cargos.html'
+
+    @class_status_logger
+    def get_queryset(self):
+        category = self.request.GET.get('category')
+        if category == '1':
+            print('OK')
+            search = self.request.GET.get('search')
+            storage = self.request.GET.get('storages')
+            fields = self.request.GET.get_list('fields')
+            return Cargo.objects.all().filter()
+        else:
+            raise NotImplementedError
+
+
 class CargoListView(LoginRequiredMixin, ListView):
     login_url = 'users:sign_in'
     model = Cargo

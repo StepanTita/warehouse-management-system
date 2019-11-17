@@ -23,5 +23,5 @@ urlpatterns = [
     path('signOut/', views.sign_out, name='sign_out'),
     path('signIn/', views.SignInFormView.as_view(), name='sign_in'),
     path('accessDenied/', views.access_denied, name='access_denied'),
-    # path('signUp', views.SignUpFormView.as_view(), name='sign_up'),
+    path('notifyCreate/', views.nortify_create, name='notify_create'),
 ]

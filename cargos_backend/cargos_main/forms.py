@@ -5,10 +5,13 @@ from django import forms
 from .models import Storage
 
 RELEVANCE_CHOICES = (
-    (1, "Cells"),
-    (2, "Cargos"),
+    (1, "Cargos"),
+    (2, "Cells"),
     (3, "Storages")
 )
+
+FIELDS_NAMES = tuple([(i + 1, val) for i, val in enumerate(Storage._meta.get_fields())])[1:]
+FIELDS_NAMES = tuple(map(lambda x: (x[0], str(x[1]).rpartition('.')[2]), FIELDS_NAMES))
 
 
 class NewCargoForm(forms.Form):
@@ -46,5 +49,4 @@ class SearchForm(forms.Form):
 
     storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages')
     category = forms.ChoiceField(label='Category', choices=RELEVANCE_CHOICES)
-    fields_names = tuple([(i + 1, val) for i, val in enumerate(Storage._meta.get_fields())])
-    fields = forms.ChoiceField(choices=fields_names, label='Fields')
+    fields = forms.MultipleChoiceField(choices=FIELDS_NAMES, label='Fields')
