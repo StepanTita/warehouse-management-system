@@ -1,5 +1,5 @@
 last_cargos = 20
-cargos_per_page = 2
+CARGOS_PER_PAGE = 5
 UNSPECIFIED = -1
 DATETIME_INPUT_FORMATS = [
     '%Y-%m-%d %H:%M:%S',  # '2006-10-25 14:30:59'

@@ -35,7 +35,7 @@ class Cell(models.Model):
         unique_together = (('row', 'elevation', 'position', 'storage'),)
 
     def __str__(self):
-        return 'r: ' + str(self.row) + ' e: ' + str(self.elevation) + ' p: ' + str(self.position)
+        return f"{Storage.objects.get(pk=self.storage.pk).name} r: {self.row} e: {self.elevation} p: {self.position}"
 
     def clean(self):
         if self.storage.rows * self.storage.elevations * self.storage.positions >= len(

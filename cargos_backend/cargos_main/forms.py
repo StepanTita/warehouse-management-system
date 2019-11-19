@@ -2,22 +2,15 @@ import datetime as dt
 
 from django import forms
 
+from shared_logic.choices import CATEGORY_CHOICES, FIELDS_CHOICES
 from .models import Storage
-
-RELEVANCE_CHOICES = (
-    (1, "Cargos"),
-    (2, "Cells"),
-    (3, "Storages")
-)
-
-FIELDS_NAMES = tuple([(i + 1, val) for i, val in enumerate(Storage._meta.get_fields())])[1:]
-FIELDS_NAMES = tuple(map(lambda x: (x[0], str(x[1]).rpartition('.')[2]), FIELDS_NAMES))
 
 
 class NewCargoForm(forms.Form):
+    error_css_class = 'error'
     title = forms.CharField(label="Title", max_length=200)
 
-    storage = forms.ModelChoiceField(queryset=Storage.objects.all(), label="Storage")
+    storage = forms.ModelChoiceField(queryset=Storage.objects.all(), label="Storage", empty_label="(Nothing)")
 
     height = forms.DecimalField(decimal_places=2, max_digits=9, min_value=0, localize=True)
     length = forms.DecimalField(decimal_places=2, max_digits=9, min_value=0, localize=True)
@@ -28,7 +21,7 @@ class NewCargoForm(forms.Form):
     date_added = forms.DateTimeField(initial=dt.datetime.now,
                                      widget=forms.DateTimeInput(  # format=("%Y-%m-%d %H:%M:%S %Z"),
                                    attrs={'class': 'form-control',
-                                          'placeholder': 'Select a date'}), localize=True)
+                                          'placeholder': 'Select a date'}), localize=True, disabled=True)
     date_dated = forms.DateField(initial=dt.date.today,
                                  widget=forms.DateInput(  #format=('%Y-%m-%d'),
                                attrs={'class': 'form-control',
@@ -45,8 +38,9 @@ class NewCargoForm(forms.Form):
 
 
 class SearchForm(forms.Form):
+    error_css_class = 'error'
     search = forms.CharField(max_length=150, label='Search')
 
-    storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages')
-    category = forms.ChoiceField(label='Category', choices=RELEVANCE_CHOICES)
-    fields = forms.MultipleChoiceField(choices=FIELDS_NAMES, label='Fields')
+    storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages', empty_label="(Nothing)")
+    category = forms.ChoiceField(label='Category', choices=CATEGORY_CHOICES)
+    fields = forms.MultipleChoiceField(choices=FIELDS_CHOICES, label='Fields')

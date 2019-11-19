@@ -4,8 +4,9 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, DetailView
 
+from shared_logic.database_queries import create_search_queryset, get_all_cargos
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
-from shared_logic.util_vars import cargos_per_page
+from shared_logic.util_vars import CARGOS_PER_PAGE
 from .cargos_saving import save_cargo
 from .forms import NewCargoForm, SearchForm
 from .models import Cargo
@@ -31,11 +32,10 @@ def new_cargo(request):
             return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
 
         form = NewCargoForm()
-
-        return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
     else:
         form = NewCargoForm()
-        return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
+
+    return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
 
 
 @view_status_logger
@@ -51,31 +51,32 @@ def ret_cargo(request):
 class CargoSearchListView(LoginRequiredMixin, ListView):
     login_url = 'users:sign_in'
     model = Cargo
-    paginate_by = cargos_per_page
+    paginate_by = CARGOS_PER_PAGE
     template_name = 'managing_cargos/preview_cargos/preview_cargos.html'
 
-    @class_status_logger
+    def to_get_request(self, ):
+        request = [f"{k}={v}" for k, v in self.request.GET.items()]
+        return '&'.join(request)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['search_params'] = self.to_get_request()
+        return context
+
+    # @class_status_logger
     def get_queryset(self):
-        category = self.request.GET.get('category')
-        if category == '1':
-            print('OK')
-            search = self.request.GET.get('search')
-            storage = self.request.GET.get('storages')
-            fields = self.request.GET.get_list('fields')
-            return Cargo.objects.all().filter()
-        else:
-            raise NotImplementedError
+        return create_search_queryset(self.request.GET)
 
 
 class CargoListView(LoginRequiredMixin, ListView):
     login_url = 'users:sign_in'
     model = Cargo
-    paginate_by = cargos_per_page
+    paginate_by = CARGOS_PER_PAGE
     template_name = 'managing_cargos/preview_cargos/preview_cargos.html'
 
     @class_status_logger
     def get_queryset(self):
-        return Cargo.objects.all().order_by("-date_added")
+        return get_all_cargos(date_sort_reversed=True)
 
 
 class CargoUpdate(LoginRequiredMixin, UpdateView):
@@ -91,7 +92,7 @@ class CargoUpdate(LoginRequiredMixin, UpdateView):
 
     @class_status_logger
     def get_queryset(self):
-        return Cargo.objects.all()
+        return get_all_cargos()
 
 
 class CargoDelete(LoginRequiredMixin, DeleteView):
@@ -105,7 +106,7 @@ class CargoDelete(LoginRequiredMixin, DeleteView):
 
     @class_status_logger
     def get_queryset(self):
-        return Cargo.objects.all()
+        return get_all_cargos()
 
 
 class CargoDetailView(LoginRequiredMixin, DetailView):
@@ -115,5 +116,4 @@ class CargoDetailView(LoginRequiredMixin, DetailView):
 
     @class_status_logger
     def get_queryset(self):
-        return Cargo.objects.all()
-
+        return get_all_cargos()

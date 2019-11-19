@@ -11,8 +11,8 @@
                 Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
             </span>
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            <a href="?page={{ page_obj.next_page_number }}&{{ search_params }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}&{{ search_params }}">last &raquo;</a>
         {% endif %}
     </span>
 </h5>

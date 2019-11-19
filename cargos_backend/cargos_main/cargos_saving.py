@@ -4,6 +4,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 
+from shared_logic.database_queries import get_storage_by_pk, get_cargos_value_list, get_cell_of_storage, get_all_cells, \
+    get_cell_of_cargo
 from shared_logic.util_vars import UNSPECIFIED
 from .custom_logic.new_cargo_logic import add_new_cargo_unformated
 from .models import Storage, Cargo, Cell
@@ -11,11 +13,12 @@ from .models import Storage, Cargo, Cell
 
 def save_cargo(data):
     success = True
-    storage = Storage.objects.get(pk=data.get('storage', -1))
+    storage = get_storage_by_pk(pk=data.get('storage', -1))
 
-    cell_vals = Cargo.objects.values_list('cell').distinct()
+    cell_vals = get_cell_of_cargo(get_cargos_value_list('cell', distinct=True), storage)
 
-    new_cell_vals = exclude_occupied_cells(cell_vals)
+    new_cell_vals = get_all_cells().difference(cell_vals)
+    print(f"{new_cell_vals}")
 
     new_row, new_el, new_pos = add_new_cargo_unformated(
         {
@@ -37,7 +40,7 @@ def save_cargo(data):
 
 
 def parse_date(date):
-    dtd = date
+    dtd = str(date)
     try:
         dtd = datetime.strptime(dtd, '%d.%m.%Y')
     except ValueError:
@@ -48,7 +51,7 @@ def parse_date(date):
 
 
 def parse_date_time(date):
-    dta = date
+    dta = str(date)
     try:
         dta = datetime.strptime(dta, '%d.%m.%y %H:%M:%S')
     except ValueError:
@@ -61,10 +64,8 @@ def parse_date_time(date):
 def add_cargo_fields(new_row, new_el, new_pos, data):
     new_cargo_obj = Cargo()
 
-    new_cargo_obj.cell = Cell.objects.get_or_create(row=new_row,
-                                                    elevation=new_el,
-                                                    position=new_pos,
-                                                    storage_id=int(data['storage']))[0]
+    new_cargo_obj.cell = get_cell_of_storage(row=new_row, elevation=new_el, pos=new_pos,
+                                             storage_id=int(data['storage']))
 
     new_cargo_obj.date_added = parse_date_time(data.get('date_added', timezone.now()))
     new_cargo_obj.date_dated = parse_date(data.get('date_dated', timezone.now()))
@@ -94,12 +95,12 @@ def add_cell_fields(row, el, pos, storage):
     new_cell.save()
 
 
-def exclude_occupied_cells(cell_vals):
-    new_cell_vals = Cell.objects.all()
-    for val in cell_vals:
-        for cell_id in val:
-            new_cell_vals = new_cell_vals.exclude(pk__exact=cell_id)
-    return new_cell_vals
+# def exclude_occupied_cells(cell_vals):
+#     new_cell_vals = get_all_cells()
+#     for val in cell_vals:
+#         for cell_id in val:
+#             new_cell_vals = new_cell_vals.exclude(pk__exact=cell_id)
+#     return new_cell_vals
 
 
 @receiver(post_save, sender=Storage)
