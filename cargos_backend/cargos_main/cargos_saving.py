@@ -18,7 +18,6 @@ def save_cargo(data):
     cell_vals = get_cell_of_cargo(get_cargos_value_list('cell', distinct=True), storage)
 
     new_cell_vals = get_all_cells().difference(cell_vals)
-    print(f"{new_cell_vals}")
 
     new_row, new_el, new_pos = add_new_cargo_unformated(
         {

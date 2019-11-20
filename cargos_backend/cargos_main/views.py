@@ -61,6 +61,7 @@ class CargoSearchListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['search_params'] = self.to_get_request()
+        context['table_name'] = 'Search result'
         return context
 
     # @class_status_logger
@@ -73,6 +74,11 @@ class CargoListView(LoginRequiredMixin, ListView):
     model = Cargo
     paginate_by = CARGOS_PER_PAGE
     template_name = 'managing_cargos/preview_cargos/preview_cargos.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['table_name'] = 'View cargos'
+        return context
 
     @class_status_logger
     def get_queryset(self):
