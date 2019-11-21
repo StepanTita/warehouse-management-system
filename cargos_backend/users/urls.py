@@ -26,5 +26,6 @@ urlpatterns = [
     path('notifyCreate/', views.nortify_create, name='notify_create'),
     path('notificationsView/', views.notifications_view, name='notifications_view'),
     path('notificationSingle/<int:pk>/', views.NotificationDetailView.as_view(), name='notification_single'),
-    path('notifyIgnore/', views.notify_ignore, name='notify_ignore')
+    path('notifyIgnore/', views.notify_ignore, name='notify_ignore'),
+    path('notifyRemove/', views.notify_remove, name='notify_remove'),
 ]

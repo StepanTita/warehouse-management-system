@@ -14,9 +14,9 @@
 {% endif %}
 
 {% if notify.actor %}
-    <td>{{ notify.actor }}</td>
+    <td><a href="{% url 'preview_cargo' pk=notify.actor.id %}">{{ notify.actor }}</a></td>
 {% else %}
-    <td class="text-secondary">Nothing...</td>
+    <td class="text-secondary"><a href="">Nothing...</a></td>
 {% endif %}
 
 
@@ -32,8 +32,8 @@
     <td class="text-secondary">Nothing...</td>
 {% endif %}
 
-<td>{{ notify.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notify.timestamp|time:"h:i a" }}</td>
-<!--TODO-->
+<td>{{ notify.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notify.timestamp|time:"H:i" }}</td>
+
 {% if notify.actor.id %}
     <td><a href="{% url 'users:notification_single' pk=notify.id %}"
            class="btn btn-info col-md-12">Info</a></td>
@@ -43,15 +43,18 @@
     </td>
 {% endif %}
 
-<!--TODO-->
 <td>
-    <button type="button" class="btn btn-danger col-md-12" id="remove">Remove</button>
+    <button type="button" class="btn btn-danger col-md-12 remove">Remove</button>
 </td>
 <td>
-    <button type="button" class="btn btn-warning col-md-12" id="ignore" {% if not notify.unread %} disabled {% endif %}>
+    <button type="button" class="btn btn-warning col-md-12 ignore" {% if not notify.unread %} disabled {% endif %}>
         Ignore
     </button>
 </td>
-<td>{{ notify.unread }}</td>
+<td>
+    <button type="button" class="btn btn-primary col-md-12 unignore" {% if notify.unread %} disabled {% endif %}>
+        Unignore
+    </button>
+</td>
 </tr>
 {% endfor %}

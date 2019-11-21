@@ -16,6 +16,7 @@ from shared_logic.database_queries import get_notifications_unread_first, get_ca
     get_all_notifications
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
 from shared_logic.util_vars import NOTIFICATIONS_PER_PAGE
+from users.notifies_response import notifies_response
 
 
 @view_status_logger
@@ -50,29 +51,32 @@ def nortify_create(request):
     return JsonResponse({'unviewed': f'{len(unviewed)}'})
 
 
+@login_required(login_url='sign_in')
 def notify_ignore(request):
-    notifies = get_notifications_unread_first(request.user)
-    notifies_as_table_unread = []
-    notifies_as_table_read = []
+    notifies_as_table_unread, notifies_as_table_read = notifies_response(request.user,
+                                                                         request.GET.get('pk'),
+                                                                         request.GET.get('ignore'))
 
-    for notif in notifies:
-        if notif.pk == int(request.GET.get('pk')):
-            notif.unread = False
-            notif.save()
-        dct = notif.__dict__
-        dct['actor'] = str(notif.actor) if notif.actor else None
-        dct['recipient'] = str(notif.recipient) if notif.recipient else None
-        del dct['_state']
-        if notif.unread:
-            notifies_as_table_unread.append(dct)
-        else:
-            notifies_as_table_read.append(dct)
     return JsonResponse({
         'notifies_unread': notifies_as_table_unread,
         'notifies_read': notifies_as_table_read,
+        'locale': request.LANGUAGE_CODE,
     })
 
 
+@login_required(login_url='sign_in')
+def notify_remove(request):
+    notifies_as_table_unread, notifies_as_table_read = notifies_response(request.user,
+                                                                         request.GET.get('pk'))
+
+    return JsonResponse({
+        'notifies_unread': notifies_as_table_unread,
+        'notifies_read': notifies_as_table_read,
+        'locale': request.LANGUAGE_CODE,
+    })
+
+
+@login_required(login_url='sign_in')
 def notifications_view(request):
     notifs_total = get_notifications_unread_first(request.user)
     paginator = Paginator(notifs_total, NOTIFICATIONS_PER_PAGE)

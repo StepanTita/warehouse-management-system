@@ -6,49 +6,104 @@
         return [val, false];
     }
 
-    function new_table(response) {
+    function new_table(response, locale) {
         //$('#notifies_table tbody').empty();
 
         $.each(response, function (i, item) {
             let tr = $('<tr>').append(
-                $('<th>').text(item.id).addClass('pk'),
-                $('<td>').text(is_empty(item.recipient)[0]).addClass(is_empty(item.recipient)[1] ? 'text-secondary' : ''),
-                $('<td>').text(is_empty(item.actor)[0]).addClass(is_empty(item.actor)[1] ? 'text-secondary' : ''),
-                $('<td>').text(is_empty(item.verb)[0]).addClass(is_empty(item.verb)[1] ? 'text-secondary' : ''),
-                $('<td>').text(is_empty(item.description)[0]).addClass(is_empty(item.description)[1] ? 'text-secondary' : ''),
-                $('<td>').text(item.timestamp),
-                $('<td>').append($('<button>').text('Info').addClass('btn btn-info col-md-12')).attr({'disabled': is_empty(item.actor)[1]}),
-                $('<td>').append($('<button>').text('Remove').addClass('btn btn-danger col-md-12')).attr({'id': 'remove'}),
-                $('<td>').append($('<button>').text('Ignore').addClass('btn btn-warning col-md-12')).attr(
-                    {
-                        'disabled': is_empty(item.unread)[1],
-                        'id': 'ignore'
-                    }),
+                $('<th>').text(item.id)
+                    .addClass('pk'),
+                $('<td>')
+                    .text(is_empty(item.recipient)[0])
+                    .addClass(is_empty(item.recipient)[1] ? 'text-secondary' : ''),
+                $('<td>')
+                    .append($('<a>')
+                        .text(is_empty(item.actor)[0])
+                        .attr({'href': is_empty(item.actor)[1] ? "" : item.link_cargo}))
+                    .addClass(is_empty(item.actor)[1] ? 'text-secondary' : ''),
+                $('<td>')
+                    .text(is_empty(item.verb)[0])
+                    .addClass(is_empty(item.verb)[1] ? 'text-secondary' : ''),
+                $('<td>')
+                    .text(is_empty(item.description)[0])
+                    .addClass(is_empty(item.description)[1] ? 'text-secondary' : ''),
+                $('<td>')
+                    .text(new Date(item.timestamp)
+                        .toLocaleString(locale)),
+                $('<td>')
+                    .append($('<a>')
+                        .text('Info')
+                        .addClass('btn btn-info col-md-12')
+                        .attr({'href': item.link_notify, 'disabled': is_empty(item.actor)[1]})),
+                $('<td>')
+                    .append($('<button>')
+                        .text('Remove')
+                        .addClass('btn btn-danger col-md-12 remove')),
+                $('<td>')
+                    .append($('<button>')
+                        .text('Ignore')
+                        .addClass('btn btn-warning col-md-12 ignore')
+                        .attr({'disabled': !item.unread})),
+                $('<td>')
+                    .append($('<button>')
+                        .text('Unignore')
+                        .addClass('btn btn-primary col-md-12 unignore')
+                        .attr({'disabled': item.unread})),
             ).addClass(item.unread ? 'table-warning' : 'table-secondary').appendTo('#notifies_table tbody');
             //console.log(tr.wrap('<p>').html());
         });
     }
 
-    function ignore(pk) {
+    function ignore(pk, mode) {
         $.ajax({
             type: "GET",
             url: "{% url 'users:notify_ignore' %}",
+            data: {'pk': pk, 'ignore': mode},
+            success: function (data) {
+                // generate new table
+                console.log(data);
+                $('#notifies_table tbody').empty();
+                new_table(data['notifies_unread'], data['locale']);
+                new_table(data['notifies_read'], data['locale']);
+
+            }
+        });
+    }
+
+    function remove(pk) {
+        $.ajax({
+            type: "GET",
+            url: "{% url 'users:notify_remove' %}",
             data: {'pk': pk},
             success: function (data) {
                 // generate new table
                 console.log(data);
                 $('#notifies_table tbody').empty();
-                new_table(data['notifies_unread']);
-                new_table(data['notifies_read']);
+                new_table(data['notifies_unread'], data['locale']);
+                new_table(data['notifies_read'], data['locale']);
 
             }
         });
     }
 
     $(document).ready(function () {
-        $("#ignore").click(function (e) {
-            let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
-            ignore(pk)
-        })
+    });
+
+    $(document).on('click', '.ignore', function (e) {
+        let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
+        console.log(pk);
+        ignore(pk, true)
+    });
+
+    $(document).on('click', '.unignore', function (e) {
+        let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
+        console.log(pk);
+        ignore(pk, false)
+    });
+
+    $(document).on('click', '.remove', function (e) {
+        let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
+        console.log(pk);
+        remove(pk)
     });
 </script>

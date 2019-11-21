@@ -92,7 +92,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cargos_backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
@@ -103,13 +102,12 @@ DATABASES = {
         'USER': 'cargos_admin',
         'PASSWORD': 'cargos_admin',
         'HOST': 'localhost',
-        #'PORT': '5432',
+        # 'PORT': '5432',
         'TEST': {
             'NAME': 'test_cargos_storage',
         },
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -189,7 +187,6 @@ LOGGING = {
     }
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -211,6 +208,8 @@ LANGUAGES = [
     ('en', 'English'),
     ('uk', 'Ukrainian'),
 ]
+
+DJANGO_NOTIFICATIONS_CONFIG = {'SOFT_DELETE': True}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
