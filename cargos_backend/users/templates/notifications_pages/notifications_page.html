@@ -1,0 +1,13 @@
+{% extends "../utils/wrappers/wrapper.html" %}
+
+{% block title %}Controller{% endblock %}
+
+{% block menu %}
+    {% include '../utils/includes/menu.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center text-secondary"> {{ table_name }} </h1>
+    {% include 'notifications_pages/notifications_table.html' %}
+    {% include 'notifications_pages/notifications_pagination.html' %}
+{% endblock %}

@@ -1,0 +1,19 @@
+<div class="pagination d-flex justify-content-center">
+    <h5>
+    <span class="step-links">
+        {% if notifications.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ notifications.previous_page_number }}">previous</a>
+        {% endif %}
+
+
+        <span class="current">
+                Page {{ notifications.number }} of {{ notifications.paginator.num_pages }}.
+            </span>
+        {% if notifications.has_next %}
+            <a href="?page={{ notifications.next_page_number }}">next</a>
+            <a href="?page={{ notifications.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+    </h5>
+</div>

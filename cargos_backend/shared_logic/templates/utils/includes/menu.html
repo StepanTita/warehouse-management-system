@@ -35,7 +35,7 @@
         {% if user.is_authenticated %}
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <a class="btn btn-primary" href=""
+                    <a class="btn btn-primary" href="{% url 'users:notifications_view' %}"
                        role="button">{{ user.username }} {% live_notify_badge badge_class="badge badge-light" %}</a>
                     {#  live_notify_list  #}
                 </li>

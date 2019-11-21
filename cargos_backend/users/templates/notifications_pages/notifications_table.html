@@ -1,0 +1,50 @@
+{% load notifications_tags %}
+<table class="table table-striped table-hover">
+    <thead class="thead">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">User</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">Message</th>
+        <th scope="col">Description</th>
+        <th scope="col">Timestamp</th>
+        <th scope="col">Info</th>
+        <th scope="col">Remove</th>
+        <th scope="col">Ignore</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% notifications_unread as unread_count %}
+    {% if unread_count %}
+        <h5 class="text-info text-center"> You have <strong style="border: solid">{{ unread_count }}</strong> unread
+            notifications. </h5>
+    {% endif %}
+
+    {% with count=unread_count|stringformat:"s" %}
+        {% with  notifySlice=":"|add:count %}
+            {% for notify in notifications|slice:notifySlice %}
+                <tr class="table-warning">
+
+                    <th scope="row">{{ notify.id }}</th>
+                    <td>{{ notify.recepient }}</td>
+                    <td>{{ notify.actor }}</td>
+                    <td>{{ notify.verb }}</td>
+                    <td>{{ notify.description }}</td>
+                    <td>{{ notify.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notify.timestamp|time:"h:i a" }}</td>
+                    <!--TODO-->
+                    <td><a href="{% url 'users:notification_single' %}" class="btn btn-info col-md-12">Info</a></td>
+                    <!--TODO-->
+                    <td>
+                        <button type="button" class="btn btn-danger col-md-12">Remove</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-warning col-md-12">Ignore</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        {% endwith %}
+    {% endwith %}
+
+    </tbody>
+</table>

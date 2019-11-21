@@ -24,4 +24,6 @@ urlpatterns = [
     path('signIn/', views.SignInFormView.as_view(), name='sign_in'),
     path('accessDenied/', views.access_denied, name='access_denied'),
     path('notifyCreate/', views.nortify_create, name='notify_create'),
+    path('notificationsView/', views.notifications_view, name='notifications_view'),
+    path('notificationSingle/', views.notification_single, name='notification_single'),
 ]

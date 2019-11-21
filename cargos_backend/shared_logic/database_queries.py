@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db.models import Q
 
 from cargos_main.models import Cargo, Cell, Storage
@@ -81,3 +82,12 @@ def get_cell_of_cargo(cell_pks, storage):
 
 def get_all_cells():
     return Cell.objects.all()
+
+
+# NOTIFICATION
+def get_notifications_unread_first(user_pk):
+    user = User.objects.get(pk=user_pk)
+    unread = user.notifications.unread()
+    read = user.notifications.read()
+    total = unread.union(read)
+    return total

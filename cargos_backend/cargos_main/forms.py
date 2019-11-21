@@ -24,7 +24,8 @@ class NewCargoForm(forms.Form):
     date_added = forms.DateTimeField(initial=dt.datetime.now, localize=True, disabled=True)
     date_dated = forms.DateField(initial=dt.date.today, localize=True)
 
-    rotatable = forms.BooleanField(label='Rotatable', required=False)
+    rotatable = forms.BooleanField(label='Rotatable', required=False,
+                                   widget=forms.CheckboxInput(attrs={'class': 'form-control'}))
 
     title.widget = forms.TextInput(attrs={'class': 'col-md-7 form-control form-control-sm'})
     description.widget = forms.Textarea(attrs={'class': 'col-md-7 form-control form-control-sm'})
