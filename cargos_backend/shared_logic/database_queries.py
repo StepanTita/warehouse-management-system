@@ -1,9 +1,11 @@
-from django.contrib.auth.models import User
+from itertools import chain
+
 from django.db.models import Q
 
 from cargos_main.models import Cargo, Cell, Storage
 from search import normalize_query
 from shared_logic.from_choice import to_format
+from users.models import DateNotifications
 
 
 def create_search_queryset(data):
@@ -63,6 +65,10 @@ def get_cargos_value_list(field, distinct=False):
     return query
 
 
+def get_cargos_todate(date):
+    return Cargo.objects.filter(date_dated__lte=date)
+
+
 # STORAGE
 def get_storage_by_pk(pk=-1):
     return Storage.objects.get(pk=pk)
@@ -85,9 +91,22 @@ def get_all_cells():
 
 
 # NOTIFICATION
-def get_notifications_unread_first(user_pk):
-    user = User.objects.get(pk=user_pk)
-    unread = user.notifications.unread()
-    read = user.notifications.read()
-    total = unread.union(read)
-    return total
+def get_notifications_unread_first(user):
+    unread = user.notifications.unread().order_by('-timestamp')
+    read = user.notifications.read().order_by('-timestamp')
+    total = (unread, read)
+    result = list(chain(*total))
+    return result
+
+
+def get_dated_for_user(cargos_dated, user):
+    for cargo in cargos_dated:
+        DateNotifications.objects.get_or_create(
+            user=user,
+            cargo=cargo
+        )
+    return DateNotifications.objects.filter(viewed=False, user=user)
+
+
+def get_all_notifications(user):
+    return user.notifications.all()

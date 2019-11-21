@@ -1,0 +1,54 @@
+<script>
+    function is_empty(val) {
+        if (val == null) {
+            return ["Nothing...", true]
+        }
+        return [val, false];
+    }
+
+    function new_table(response) {
+        //$('#notifies_table tbody').empty();
+
+        $.each(response, function (i, item) {
+            let tr = $('<tr>').append(
+                $('<th>').text(item.id).addClass('pk'),
+                $('<td>').text(is_empty(item.recipient)[0]).addClass(is_empty(item.recipient)[1] ? 'text-secondary' : ''),
+                $('<td>').text(is_empty(item.actor)[0]).addClass(is_empty(item.actor)[1] ? 'text-secondary' : ''),
+                $('<td>').text(is_empty(item.verb)[0]).addClass(is_empty(item.verb)[1] ? 'text-secondary' : ''),
+                $('<td>').text(is_empty(item.description)[0]).addClass(is_empty(item.description)[1] ? 'text-secondary' : ''),
+                $('<td>').text(item.timestamp),
+                $('<td>').append($('<button>').text('Info').addClass('btn btn-info col-md-12')).attr({'disabled': is_empty(item.actor)[1]}),
+                $('<td>').append($('<button>').text('Remove').addClass('btn btn-danger col-md-12')).attr({'id': 'remove'}),
+                $('<td>').append($('<button>').text('Ignore').addClass('btn btn-warning col-md-12')).attr(
+                    {
+                        'disabled': is_empty(item.unread)[1],
+                        'id': 'ignore'
+                    }),
+            ).addClass(item.unread ? 'table-warning' : 'table-secondary').appendTo('#notifies_table tbody');
+            //console.log(tr.wrap('<p>').html());
+        });
+    }
+
+    function ignore(pk) {
+        $.ajax({
+            type: "GET",
+            url: "{% url 'users:notify_ignore' %}",
+            data: {'pk': pk},
+            success: function (data) {
+                // generate new table
+                console.log(data);
+                $('#notifies_table tbody').empty();
+                new_table(data['notifies_unread']);
+                new_table(data['notifies_read']);
+
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $("#ignore").click(function (e) {
+            let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
+            ignore(pk)
+        })
+    });
+</script>

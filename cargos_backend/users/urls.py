@@ -25,5 +25,6 @@ urlpatterns = [
     path('accessDenied/', views.access_denied, name='access_denied'),
     path('notifyCreate/', views.nortify_create, name='notify_create'),
     path('notificationsView/', views.notifications_view, name='notifications_view'),
-    path('notificationSingle/', views.notification_single, name='notification_single'),
+    path('notificationSingle/<int:pk>/', views.NotificationDetailView.as_view(), name='notification_single'),
+    path('notifyIgnore/', views.notify_ignore, name='notify_ignore')
 ]

@@ -3,18 +3,19 @@ from datetime import datetime
 from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from notifications.signals import notify
 
 from cargos_main.models import Cargo
-from shared_logic.database_queries import get_notifications_unread_first
+from shared_logic.database_queries import get_notifications_unread_first, get_cargos_todate, get_dated_for_user, \
+    get_all_notifications
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
 from shared_logic.util_vars import NOTIFICATIONS_PER_PAGE
-from .models import DateNotifications
 
 
 @view_status_logger
@@ -32,14 +33,9 @@ def access_denied(request):
 @login_required(login_url='sign_in')
 def nortify_create(request):
     today = datetime.now().date()
-    cargos_dated = Cargo.objects.filter(date_dated__lte=today)
+    cargos_dated = get_cargos_todate(today)
 
-    for cargo in cargos_dated:
-        DateNotifications.objects.get_or_create(
-            user=request.user,
-            cargo=cargo
-        )
-    unviewed = DateNotifications.objects.filter(viewed=False, user=request.user)
+    unviewed = get_dated_for_user(cargos_dated, request.user)
 
     for notification in unviewed:
         notify.send(
@@ -54,8 +50,31 @@ def nortify_create(request):
     return JsonResponse({'unviewed': f'{len(unviewed)}'})
 
 
+def notify_ignore(request):
+    notifies = get_notifications_unread_first(request.user)
+    notifies_as_table_unread = []
+    notifies_as_table_read = []
+
+    for notif in notifies:
+        if notif.pk == int(request.GET.get('pk')):
+            notif.unread = False
+            notif.save()
+        dct = notif.__dict__
+        dct['actor'] = str(notif.actor) if notif.actor else None
+        dct['recipient'] = str(notif.recipient) if notif.recipient else None
+        del dct['_state']
+        if notif.unread:
+            notifies_as_table_unread.append(dct)
+        else:
+            notifies_as_table_read.append(dct)
+    return JsonResponse({
+        'notifies_unread': notifies_as_table_unread,
+        'notifies_read': notifies_as_table_read,
+    })
+
+
 def notifications_view(request):
-    notifs_total = get_notifications_unread_first(request.user.pk).order_by('-timestamp')
+    notifs_total = get_notifications_unread_first(request.user)
     paginator = Paginator(notifs_total, NOTIFICATIONS_PER_PAGE)
 
     page = request.GET.get('page', 0)
@@ -68,8 +87,14 @@ def notifications_view(request):
                   })
 
 
-def notification_single(request):
-    return render(request, 'notifications_pages/notification_single.html')
+class NotificationDetailView(LoginRequiredMixin, DetailView):
+    login_url = 'users:sign_in'
+    model = Cargo
+    template_name = 'notifications_pages/notification.html'
+
+    @class_status_logger
+    def get_queryset(self):
+        return get_all_notifications(self.request.user)
 
 
 class SignInFormView(FormView):

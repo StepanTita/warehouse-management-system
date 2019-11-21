@@ -2,44 +2,44 @@
     <tbody>
     <tr>
         <td>#</td>
-        <th scope="row">{{ cargo.id }}</th>
+        <th scope="row">{{ notification.id }}</th>
     </tr>
     <tr>
-        <td>Cell:</td>
-        <td>{{ cargo.cell }}</td>
+        <td>User:</td>
+        <td>{{ notification.recipient }}</td>
     </tr>
     <tr>
-        <td>Date added:</td>
-        <td>{{ cargo.date_added|date:"d-m-Y" }}</td>
+        <td>Cargo:</td>
+        {% if notification.actor %}
+            <td>{{ notification.actor }}</td>
+        {% else %}
+            <td class="text-secondary">Nothing...</td>
+        {% endif %}
     </tr>
     <tr>
-        <td>Title:</td>
-        <td><a href="/preview_cargos/{{ cargo.id }}">{{ cargo.title }}</a></td>
+        <td>Message:</td>
+        {% if notification.verb %}
+            <td>{{ notification.verb }}</td>
+        {% else %}
+            <td class="text-secondary">Nothing...</td>
+        {% endif %}
     </tr>
     <tr>
-        <td>Height:</td>
-        <td>{{ cargo.height }}</td>
+        <td>Description:</td>
+        {% if notification.description %}
+            <td>{{ notification.description }}</td>
+        {% else %}
+            <td class="text-secondary">Nothing...</td>
+        {% endif %}
     </tr>
     <tr>
-        <td>Length</td>
-        <td>{{ cargo.length }}</td>
-    </tr>
-    <tr>
-        <td>Width</td>
-        <td>{{ cargo.width }}</td>
-    </tr>
-    <tr>
-        <td>Date dated</td>
-        <td>{{ cargo.date_dated|date:"d-m-Y" }}</td>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>{{ cargo.description }}</td>
+        <td>Timestamp</td>
+        <td>{{ notification.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notification.timestamp|time:"h:i a" }}</td>
     </tr>
     </tbody>
 </table>
 <div class="container-fluid">
-    <button type="button" class="btn btn-danger col-md-12">Remove</button>
-    <button type="button" class="btn btn-warning col-md-12">Ignore</button>
+    <button type="button" class="btn btn-danger col-md-2">Remove</button>
+    <button type="button" class="btn btn-warning col-md-2">Ignore</button>
 </div>
 

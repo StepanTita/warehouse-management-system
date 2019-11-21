@@ -1,0 +1,57 @@
+{% for notify in notifications %}
+    {% if notify.unread %}
+        <tr class="table-warning">
+            {% else %}
+        <tr class="table-secondary">
+    {% endif %}
+
+<th scope="row" class="pk">{{ notify.id }}</th>
+
+{% if notify.recipient %}
+    <td>{{ notify.recipient }}</td>
+{% else %}
+    <td class="text-secondary">Nothing...</td>
+{% endif %}
+
+{% if notify.actor %}
+    <td>{{ notify.actor }}</td>
+{% else %}
+    <td class="text-secondary">Nothing...</td>
+{% endif %}
+
+
+{% if notify.verb %}
+    <td>{{ notify.verb }}</td>
+{% else %}
+    <td class="text-secondary">Nothing...</td>
+{% endif %}
+
+{% if notify.description %}
+    <td>{{ notify.description }}</td>
+{% else %}
+    <td class="text-secondary">Nothing...</td>
+{% endif %}
+
+<td>{{ notify.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notify.timestamp|time:"h:i a" }}</td>
+<!--TODO-->
+{% if notify.actor.id %}
+    <td><a href="{% url 'users:notification_single' pk=notify.id %}"
+           class="btn btn-info col-md-12">Info</a></td>
+{% else %}
+    <td>
+        <button class="btn btn-info col-md-12" disabled="disabled">Info</button>
+    </td>
+{% endif %}
+
+<!--TODO-->
+<td>
+    <button type="button" class="btn btn-danger col-md-12" id="remove">Remove</button>
+</td>
+<td>
+    <button type="button" class="btn btn-warning col-md-12" id="ignore" {% if not notify.unread %} disabled {% endif %}>
+        Ignore
+    </button>
+</td>
+<td>{{ notify.unread }}</td>
+</tr>
+{% endfor %}
