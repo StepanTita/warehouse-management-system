@@ -39,7 +39,14 @@
     </tbody>
 </table>
 <div class="container-fluid">
-    <button type="button" class="btn btn-danger col-md-2">Remove</button>
-    <button type="button" class="btn btn-warning col-md-2">Ignore</button>
+    <button type="button" class="btn btn-danger col-md-2 remove-single">Remove</button>
+
+    <button type="button" class="btn btn-warning col-md-2 ignore-single" {% if not notification.unread %}
+            disabled {% endif %}>Ignore
+    </button>
+
+    <button type="button" class="btn btn-primary col-md-2 unignore-single" {% if notification.unread %}
+            disabled {% endif %}>Unignore
+    </button>
 </div>
 

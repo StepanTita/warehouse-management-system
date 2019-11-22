@@ -39,7 +39,12 @@
         crossorigin="anonymous"></script>
 
 {% include 'utils/includes/js/notifications_ajax.html' %}
-{% include 'utils/includes/js/manage_notifications_ajax.html' %}
+{% if is_notifies %}
+    {% include 'utils/includes/js/manage_notifications_ajax.html' %}
+{% endif %}
+{% if is_notify_single %}
+    {% include 'utils/includes/js/notification_single_ajax.html' %}
+{% endif %}
 
 <script src="{% static 'notifications/notify.js' %}" type="text/javascript"></script>
 {% register_notify_callbacks callbacks='fill_notification_list,fill_notification_badge' %}

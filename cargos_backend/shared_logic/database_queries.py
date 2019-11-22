@@ -69,6 +69,10 @@ def get_cargos_todate(date):
     return Cargo.objects.filter(date_dated__lte=date)
 
 
+def get_cargo_by_pk(pk):
+    return Cargo.objects.get(pk=pk)
+
+
 # STORAGE
 def get_storage_by_pk(pk=-1):
     return Storage.objects.get(pk=pk)

@@ -30,7 +30,7 @@ def access_denied(request):
     return render(request, 'access_restrictions/access_denied.html')
 
 
-# @view_status_logger
+@view_status_logger
 @login_required(login_url='sign_in')
 def nortify_create(request):
     today = datetime.now().date()
@@ -88,6 +88,7 @@ def notifications_view(request):
                   {
                       'notifications': notifs_per_page,
                       'table_name': 'Notifications',
+                      'is_notifies': True,
                   })
 
 
@@ -95,6 +96,12 @@ class NotificationDetailView(LoginRequiredMixin, DetailView):
     login_url = 'users:sign_in'
     model = Cargo
     template_name = 'notifications_pages/notification.html'
+
+    @class_status_logger
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['is_notify_single'] = True
+        return context
 
     @class_status_logger
     def get_queryset(self):

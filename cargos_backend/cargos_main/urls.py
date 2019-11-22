@@ -20,7 +20,7 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('new_cargo/', views.new_cargo, name='new_cargo'),
-    path('ret_cargo/', views.ret_cargo, name='ret_cargo'),
+    path('ret_cargo/<int:pk>/', views.ret_cargo, name='ret_cargo'),
     path('update_cargo/<int:pk>/', views.CargoUpdate.as_view(), name='update_cargo'),
     path('delete_cargo/<int:pk>/', views.CargoDelete.as_view(), name='delete_cargo'),
     path('preview_cargos/<int:pk>/', views.CargoDetailView.as_view(), name='preview_cargo'),

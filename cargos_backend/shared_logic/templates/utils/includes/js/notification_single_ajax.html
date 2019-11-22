@@ -1,0 +1,44 @@
+<script>
+
+    function ignore_single(pk, mode) {
+        $.ajax({
+            type: "GET",
+            url: "{% url 'users:notify_ignore' %}",
+            data: {'pk': pk, 'ignore': mode},
+            success: function (data) {
+                // generate new table
+                console.log(data);
+            }
+        });
+    }
+
+    function remove_single(pk) {
+        $.ajax({
+            type: "GET",
+            url: "{% url 'users:notify_remove' %}",
+            data: {'pk': pk},
+            success: function (data) {
+                // generate new table
+                console.log(data);
+            }
+        });
+    }
+
+    $(document).on('click', '.ignore-single', function (e) {
+        let pk = {{ notification.pk }};
+        console.log(pk);
+        ignore_single(pk, true)
+    });
+
+    $(document).on('click', '.unignore-single', function (e) {
+        let pk = {{ notification.pk }};
+        console.log(pk);
+        ignore_single(pk, false)
+    });
+
+    $(document).on('click', '.remove-single', function (e) {
+        let pk = {{ notification.pk }};
+        console.log(pk);
+        remove_single(pk)
+    });
+</script>

@@ -10,6 +10,7 @@
         <th scope="col">Width</th>
         <th scope="col">Date dated</th>
         <th scope="col">Description</th>
+        <th scope="col">Retrieve</th>
     </tr>
     </thead>
     <tbody>
@@ -25,6 +26,7 @@
             <td>{{ cargo.width }}</td>
             <td>{{ cargo.date_dated|date:"d-m-Y" }}</td>
             <td>{{ cargo.description }}</td>
+            <td><a href="{% url 'ret_cargo' pk=cargo.id %}" class="btn btn-success">Retrieve</a></td>
         </tr>
     {% endfor %}
     </tbody>

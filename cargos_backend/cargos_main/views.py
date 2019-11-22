@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, DetailView
 
-from shared_logic.database_queries import create_search_queryset, get_all_cargos
+from shared_logic.database_queries import create_search_queryset, get_all_cargos, get_cargo_by_pk
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
 from shared_logic.util_vars import CARGOS_PER_PAGE
 from .cargos_saving import save_cargo
@@ -40,12 +40,10 @@ def new_cargo(request):
 
 @view_status_logger
 @login_required(login_url='users:sign_in')
-def ret_cargo(request):
+def ret_cargo(request, pk):
     # raise Exception
-    if request.method == "POST":
-        pass  # TODO
-    else:
-        return render(request, 'main_control/ret_cargo/ret_cargo.html')
+    context = {'cargo': get_cargo_by_pk(pk)}
+    return render(request, 'managing_cargos/ret_cargo/ret_cargo.html', context=context)
 
 
 class CargoSearchListView(LoginRequiredMixin, ListView):
