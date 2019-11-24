@@ -3,7 +3,7 @@
     <form action="{% url 'set_language' %}" method="post" class="d-flex justify-content-center">
         {% csrf_token %}
         <input name="next" type="hidden" value="{{ redirect_to }}">
-        <select name="language" class="form-control col-md-3 mr-1">
+        <select name="language" class="col-md-8 mr-1">
             {% get_current_language as LANGUAGE_CODE %}
             {% get_available_languages as LANGUAGES %}
             {% get_language_info_list for LANGUAGES as languages %}
@@ -13,6 +13,6 @@
                 </option>
             {% endfor %}
         </select>
-        <input type="submit" value="choose" class="form-control col-md-1">
+        <input type="submit" value="choose" class="form-control col-md-4 click-btn btn btn-warning">
     </form>
 </div>

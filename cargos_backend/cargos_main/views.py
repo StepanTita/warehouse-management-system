@@ -12,14 +12,14 @@ from .forms import NewCargoForm, SearchForm
 from .models import Cargo
 
 
-@view_status_logger
+# @view_status_logger
 @login_required(login_url="users:sign_in")
 def index(request):
     form = SearchForm(request.POST or None)
     return render(request, 'main_control/controller/control.html', {'form': form})
 
 
-@view_status_logger
+#@view_status_logger
 @login_required(login_url='users:sign_in')
 def new_cargo(request):
     if request.method == "POST":
@@ -29,13 +29,13 @@ def new_cargo(request):
         if not success:
             form = NewCargoForm(data or None)
             form.add_error('storage', 'No available space in this storage!')
-            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
+            return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form})
 
         form = NewCargoForm()
     else:
         form = NewCargoForm()
 
-    return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form.as_table()})
+    return render(request, 'managing_cargos/new_cargo/new_cargo.html', {'form': form})
 
 
 @view_status_logger

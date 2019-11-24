@@ -4,39 +4,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta charset="UTF-8">
+
+    <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="{% static "img/fav.png" %}">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <!--
+        CSS
+        ============================================= -->
+    {% include 'utils/includes/css/common_css_web.html' %}
+    {% include 'utils/includes/css/common_css_static.html' %}
+
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
 
-{% block menu %}
-{% endblock %}
+{% include '../../utils//includes/page_template/menu.html' %}
+
+{% include 'utils/includes/page_template/banner.html' %}
 
 {% block content %}
 {% endblock %}
 
-<div class="footer-copyright text-center py-3 bg-light mt-3">
-    <div class="container">
-        © 2019 Copyright:
-        <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com </a>
-        {% include '../includes/language_picker.html' %}
-    </div>
-</div>
+{% include 'utils/includes/page_template/footer.html' %}
 
 </body>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+
+{% include 'utils/includes/js/common_js_web.html' %}
+
+{% include 'utils/includes/js/common_js_static.html' %}
 
 {% include 'utils/includes/js/notifications_ajax.html' %}
 {% if is_notifies %}

@@ -19,12 +19,12 @@
 
             <th scope="row">{{ cargo.id }}</th>
             <td>{{ cargo.cell }}</td>
-            <td>{{ cargo.date_added|date:"d-m-Y" }}</td>
+            <td>{{ cargo.date_added }}</td>
             <td><a href="{% url 'preview_cargo' pk=cargo.id %}">{{ cargo.title }}</a></td>
             <td>{{ cargo.height }}</td>
             <td>{{ cargo.length }}</td>
             <td>{{ cargo.width }}</td>
-            <td>{{ cargo.date_dated|date:"d-m-Y" }}</td>
+            <td>{{ cargo.date_dated }}</td>
             <td>{{ cargo.description }}</td>
             <td><a href="{% url 'ret_cargo' pk=cargo.id %}" class="btn btn-success">Retrieve</a></td>
         </tr>

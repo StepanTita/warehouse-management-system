@@ -38,6 +38,7 @@ class Cell(models.Model):
         return f"{Storage.objects.get(pk=self.storage.pk).name} r: {self.row} e: {self.elevation} p: {self.position}"
 
     def clean(self):
+        super().clean()
         if self.storage.rows * self.storage.elevations * self.storage.positions >= len(
                 Cell.objects.filter(storage=self.storage)):
             raise ValidationError('You cannot create more cells for this storage')
@@ -61,3 +62,8 @@ class Cargo(models.Model):
 
     def __str__(self):
         return str(self.id) + ": " + str(self.title)
+
+    # def clean(self):
+    #     super().clean()
+    #     try:
+    #         parse(self.date_dated)
