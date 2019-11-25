@@ -1,33 +1,43 @@
-<table class="table table-striped table-hover">
-    <thead class="thead">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Cell</th>
-        <th scope="col">Date added</th>
-        <th scope="col">Title</th>
-        <th scope="col">Height</th>
-        <th scope="col">Length</th>
-        <th scope="col">Width</th>
-        <th scope="col">Date dated</th>
-        <th scope="col">Description</th>
-        <th scope="col">Retrieve</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for cargo in cargo_list %}
-        <tr>
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        <div class="cart_inner">
+            <div class="table-responsive table-striped table-hover">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Cell</th>
+                        <th scope="col">Date added</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Height</th>
+                        <th scope="col">Length</th>
+                        <th scope="col">Width</th>
+                        <th scope="col">Date dated</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Retrieve</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cargo in cargo_list %}
+                        <tr>
 
-            <th scope="row">{{ cargo.id }}</th>
-            <td>{{ cargo.cell }}</td>
-            <td>{{ cargo.date_added }}</td>
-            <td><a href="{% url 'preview_cargo' pk=cargo.id %}">{{ cargo.title }}</a></td>
-            <td>{{ cargo.height }}</td>
-            <td>{{ cargo.length }}</td>
-            <td>{{ cargo.width }}</td>
-            <td>{{ cargo.date_dated }}</td>
-            <td>{{ cargo.description }}</td>
-            <td><a href="{% url 'ret_cargo' pk=cargo.id %}" class="btn btn-success">Retrieve</a></td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+                            <th scope="row">{{ cargo.id }}</th>
+                            <td>{{ cargo.cell }}</td>
+                            <td>{{ cargo.date_added }}</td>
+                            <td><a href="{% url 'preview_cargo' pk=cargo.id %}">{{ cargo.title }}</a></td>
+                            <td>{{ cargo.height }}</td>
+                            <td>{{ cargo.length }}</td>
+                            <td>{{ cargo.width }}</td>
+                            <td>{{ cargo.date_dated }}</td>
+                            <td>{{ cargo.description }}</td>
+                            <td><a href="{% url 'ret_cargo' pk=cargo.id %}" class="btn btn-success">Retrieve</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

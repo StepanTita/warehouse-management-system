@@ -1,14 +1,28 @@
-<main class="m-5">
+<div class="search_input" id="search_input_box">
+    <div class="container-fluid">
+        <form class="d-flex justify-content-between" action="{% url 'search_result' %}" method="get">
+            {% csrf_token %}
+            {{ search_form.search }}
+            {{ search_form.storages }}
+            {{ search_form.fields }}
+            <!--<input type="text" class="form-control" id="search_input" placeholder="Search Here">-->
+            <button type="submit" class="btn"></button>
+            <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+        </form>
+    </div>
+</div>
+
+<!-- <main class="m-5">
     <div class="cotainer vertical-center">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Search</div>
                     <div class="card-body">
-                        <form action="{% url 'search_result' %}" method="get" class="input-group input-group-sm mb-2">
-                            {% csrf_token %}
+                        <form action="{ url 'search_result' %}" method="get" class="input-group input-group-sm mb-2">
+                            { csrf_token %}
                             <table class="table table-striped table-hover">
-                                {{ form.as_table }}
+                                { form.as_table }}
                             </table>
                             <button class="btn btn-success" type="submit">Search</button>
                         </form>
@@ -17,4 +31,4 @@
             </div>
         </div>
     </div>
-</main>
+</main> -->

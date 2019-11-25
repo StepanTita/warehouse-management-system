@@ -55,12 +55,13 @@ class NewCargoForm(forms.Form):
 class SearchForm(forms.Form):
     error_css_class = 'error'
     search = forms.CharField(max_length=150, label='Search', widget=forms.TextInput(attrs={
-        'class': 'form-control form-control-sm',
+        'class': 'form-control col-md-6 text text-secondary',
+        'placeholder': 'Search here...'
     }))
 
     storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages', empty_label="(Nothing)",
                                       widget=forms.Select(attrs={
-                                          'class': 'form-control form-control-sm',
+                                          'class': 'form-control text text-secondary col-md-4',
                                       }))
     # category = forms.ChoiceField(label='Category', choices=CATEGORY_CHOICES, widget=forms.Select(attrs={
     #                                       'class': 'form-control form-control-sm',
@@ -68,7 +69,5 @@ class SearchForm(forms.Form):
 
     fields = forms.MultipleChoiceField(choices=FIELDS_CHOICES, label='Fields',
                                        widget=forms.SelectMultiple(attrs={
-                                           'class': 'form-control form-control-sm',
-                                           'multiple': 'multiple',
-                                           'size': '3'
+                                           'class': 'form-control col-md-2 text text-secondary selectpicker',
                                        }))

@@ -5878,7 +5878,7 @@ label {
 ============================================================================================ */
 .cart_area {
     padding-top: 100px;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }
 
 .cart_inner .table thead tr th {

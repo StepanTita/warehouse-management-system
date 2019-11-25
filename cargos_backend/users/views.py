@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.views.generic import FormView, DetailView
 from notifications.signals import notify
 
+from cargos_main.forms import SearchForm
 from cargos_main.models import Cargo
 from shared_logic.database_queries import get_notifications_unread_first, get_cargos_todate, get_dated_for_user, \
     get_all_notifications
@@ -89,6 +90,7 @@ def notifications_view(request):
                       'notifications': notifs_per_page,
                       'table_name': 'Notifications',
                       'is_notifies': True,
+                      'search_form': SearchForm()
                   })
 
 
@@ -101,6 +103,7 @@ class NotificationDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_notify_single'] = True
+        context['search_form'] = SearchForm()
         return context
 
     @class_status_logger
