@@ -24,7 +24,7 @@ def save_cargo(data):
             'height': data.get('height', 1),
             'length': data.get('length', 1),
             'width': data.get('width', 1),
-            'rotatable': data.get('rotatable', 'off')
+            'rotatable': data.get('rotatable', 'No')
         },
         new_cell_vals,
         storage.rows, storage.elevations, storage.positions
@@ -73,7 +73,7 @@ def add_cargo_fields(new_row, new_el, new_pos, data):
     new_cargo_obj.height = data.get('height', 1)
     new_cargo_obj.width = data.get('width', 1)
     new_cargo_obj.length = data.get('length', 1)
-    new_cargo_obj.rotatable = True if data.get('rotatable', 'off') == 'on' else False
+    new_cargo_obj.rotatable = True if data.get('rotatable', 'No') == 'Yes' else False
 
     new_cargo_obj.save()
 

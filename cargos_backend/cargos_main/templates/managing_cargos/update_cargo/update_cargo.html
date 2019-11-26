@@ -7,13 +7,35 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="text-center text-secondary"> Update Cargo </h1>
-    <div class="container-fluid">
-        <form method="post" action="#">{% csrf_token %}
-            <table class="table table-hover table-bordered table-striped">
-                {{ form.as_table }}
-            </table>
-            <input type="submit" value="Update" class="btn btn-primary">
-        </form>
+    {% load static i18n %}
+    {% load crispy_forms_tags %}
+    <div class="container mt-5 mb-3">
+        <div class="returning_customer">
+
+            <div class="row d-flex justify-content-center">
+                <div class="check_title mb-3 col-md-9">
+                    <h2>{% trans 'Want to see the existing cargos?' %} <a
+                            href="{% url 'preview_cargos' %}">{% trans 'Click here to go' %}</a></h2>
+                </div>
+                <form class="contact_form col-md-10" action="#" method="post">
+                    {% csrf_token %}
+                    <div class="form-group col-md-8 mb-0">
+                            {{ form.title|as_crispy_field }}
+
+                        </div>
+                    <div class="form-group col-md-8">
+                                {{ form.description|as_crispy_field }}
+                            </div>
+
+                    <div class="form-group col-md-8">
+                                {{ form.date_dated|as_crispy_field }}
+                            </div>
+
+                    <div class="col-md-12 row d-flex justify-content-center">
+                        <input type="submit" value="Update" class="btn primary-btn"/>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}

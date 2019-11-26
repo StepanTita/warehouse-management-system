@@ -1,18 +1,111 @@
-<main class="m-5">
-    <div class="cotainer vertical-center">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Retrieve result</div>
-                    <div class="card-body">
-                        <h3 class="text-center text-primary">{{ cargo.title }}</h3>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-                        </div>
+<div class="section-top-border m-5">
+    <div class="progress-table-wrap">
+        <div class="progress-table">
+            <div class="table-head">
+                <div class="serial">#</div>
+                <div class="country">Droids</div>
+                <div class="visit">Targets</div>
+                <div class="percentage">Percentages</div>
+            </div>
+            <div class="table-row">
+                <div class="serial">01</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;R4-D5
+                </div>
+                <div class="visit">
+                    <a {% if cargo %} href="{% url 'preview_cargo' pk=cargo.id %}" {% endif %}>{{ cargo.title }}
+                    </a></div>
+
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">02</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;R2-D2
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-2 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">03</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;C-3PO
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-3 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" style="width: 55%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">04</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;B2
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-4 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">05</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;BB-8
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-5 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">06</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;SE-2
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-6 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">07</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;K-2SO
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-8 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="table-row">
+                <div class="serial">08</div>
+                <div class="country"><i class="fa fa-android text text-success" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;GNK
+                </div>
+                <div class="visit">645032</div>
+                <div class="percentage">
+                    <div class="progress">
+                        <div class="progress-bar color-9 progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>

@@ -3,17 +3,111 @@
 {% block title %}Delete Cargo{% endblock %}
 
 {% block content %}
-    <h1 class="text-center text-secondary"> Delete Cargo </h1>
-    <div class="container-fluid">
-        <form method="post" action="#">
-            {% csrf_token %}
-            <table class="table table-hover table-bordered table-striped">
-                <tr>
-                    <td>Cargo: </td>
-                    <td>{{ cargo }}</td>
-                </tr>
-            </table>
-            <input type="submit" value="Delete" class="btn btn-primary">
-        </form>
-    </div>
+    {% load static i18n %}
+    <!--================Order Details Area =================-->
+    <section class="order_details section_gap">
+        <div class="container">
+            <h3 class="title_confirmation">Are you sure, that you want to delete this cargo?.</h3>
+            <div class="row order_d_inner d-flex justify-content-center">
+                <div class="col-lg-6">
+                    <div class="details_item">
+                        <h4>{{ cargo.title }}</h4>
+                        <ul class="list">
+                            <li><a href="#"><span>Cargo id</span> : {{ cargo.id }}</a></li>
+                            <li><a href="#"><span>Date</span> : {{ cargo.date_dated }}</a></li>
+                            <li><a href="#"><span>Cell</span> : {{ cargo.cell }}</a></li>
+                            <li><a href="#"><span>Rotatable</span> : {{ cargo.rotatable }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="order_details_table">
+                <h2>Cargo Details</h2>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Parameter</th>
+                            <th scope="col">Numeric</th>
+                            <th scope="col">Description</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <p>{% trans 'Width' %}</p>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.width }}</h5>
+                            </td>
+                            <td>
+                                <p> - </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>{% trans 'Height' %}</p>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.height }}</h5>
+                            </td>
+                            <td>
+                                <p> - </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>{% trans 'Length' %}</p>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.length }}</h5>
+                            </td>
+                            <td>
+                                <p> - </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>{% trans 'CELL' %}</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>{{ cargo.cell }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>{% trans 'DATE ADDED' %}</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>{{ cargo.date_added }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>{% trans 'DATE DATED' %}</h4>
+                            </td>
+                            <td>
+                                <h5></h5>
+                            </td>
+                            <td>
+                                <p>{{ cargo.date_dated }}</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <form method="post" action="#" class="d-flex justify-content-center mt-3">
+                        {% csrf_token %}
+                        <input type="submit" value="Delete" class="btn primary-btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Order Details Area =================-->
 {% endblock %}

@@ -1,15 +1,19 @@
 import datetime as dt
 
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
 class Storage(models.Model):
     name = models.CharField(max_length=200, null=True)
 
-    rows = models.IntegerField()
-    elevations = models.IntegerField()  # y
-    positions = models.IntegerField()  # x
+    rows = models.IntegerField(validators=[MinValueValidator(1),
+                                           MaxValueValidator(100)])
+    elevations = models.IntegerField(validators=[MinValueValidator(1),
+                                                 MaxValueValidator(100)])  # y
+    positions = models.IntegerField(validators=[MinValueValidator(1),
+                                                MaxValueValidator(100)])  # x
 
     default_height = models.DecimalField(decimal_places=2, max_digits=9, default=1)
     default_length = models.DecimalField(decimal_places=2, max_digits=9, default=1)
@@ -45,7 +49,6 @@ class Cell(models.Model):
 
 
 class Cargo(models.Model):
-
     cell = models.ForeignKey(Cell, on_delete=models.CASCADE)
 
     height = models.DecimalField(decimal_places=2, max_digits=9, default=1)
@@ -67,3 +70,12 @@ class Cargo(models.Model):
     #     super().clean()
     #     try:
     #         parse(self.date_dated)
+
+
+class Droid(models.Model):
+    title = models.CharField(max_length=200, null=True)
+
+    cargo = models.ForeignKey(Cargo, on_delete=models.SET_NULL, null=True)
+
+    def __str__(self):
+        return f'{str(self.title)} - {str(self.id)}'

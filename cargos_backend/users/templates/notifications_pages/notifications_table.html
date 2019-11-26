@@ -1,26 +1,40 @@
 {% load notifications_tags %}
-<table class="table table-striped table-hover" id="notifies_table">
-    <thead class="thead">
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">User</th>
-        <th scope="col">Cargo</th>
-        <th scope="col">Message</th>
-        <th scope="col">Description</th>
-        <th scope="col">Timestamp</th>
-        <th scope="col">Info</th>
-        <th scope="col">Remove</th>
-        <th scope="col">Ignore</th>
-    </tr>
-    </thead>
-    <tbody>
 
-    {% notifications_unread as unread_count %}
-    {% if unread_count %}
-        <h5 class="text-info text-center"> You have <strong style="border: solid">{{ unread_count }}</strong> unread
-            notifications. </h5>
-    {% endif %}
 
-    {% include 'notifications_pages/notifications_unread_first.html' %}
-    </tbody>
-</table>
+<!--================Cart Area =================-->
+<section class="cart_area">
+    <div class="container">
+        {% notifications_unread as unread_count %}
+        {% if unread_count %}
+
+            <div class="check_title" style="background-color: #e8f0f2; padding: 5px">
+                <h5 class="text-secondary text-center"> You have <strong
+                        style="color: #C5322D">{{ unread_count }}</strong> unread
+                    notifications. </h5>
+            </div>
+        {% endif %}
+        <div class="cart_inner">
+            <div class="table-responsive table-hover">
+                <table class="table" id="notifies_table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Timestamp</th>
+                        <th scope="col">Info</th>
+                        <th scope="col">Remove</th>
+                        <th scope="col">Ignore</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% include 'notifications_pages/notifications_unread_first.html' %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Cart Area =================-->

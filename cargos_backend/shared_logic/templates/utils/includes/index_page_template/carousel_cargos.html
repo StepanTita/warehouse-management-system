@@ -6,7 +6,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 text-center">
                     <div class="section-title">
-                        <h1>Latest Products</h1>
+                        <h1>Latest Cargos</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et
                             dolore
@@ -15,39 +15,42 @@
                 </div>
             </div>
             <div class="row">
-                <!-- single product -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product">
-                        <img class="img-fluid" src="img/product/p1.jpg" alt="">
-                        <div class="product-details">
-                            <h6>addidas New Hammer sole
-                                for Sports person</h6>
-                            <div class="price">
-                                <h6>$150.00</h6>
-                                <h6 class="l-through">$210.00</h6>
-                            </div>
-                            <div class="prd-bottom">
+                {% for cargo in cargos_index %}
+                    <!-- single product -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-product">
+                            <div class="product-details">
+                                <h6>{{ cargo.title }}</h6>
+                                <p>
+                                    {{ cargo.cell }}
+                                </p>
+                                <div class="price">
+                                    <h6 class="text text-warning">#{{ cargo.id }}</h6>
+                                    <h6 class="text text-secondary">{{ cargo.date_added }}</h6>
+                                </div>
+                                <div class="prd-bottom">
 
-                                <a href="" class="social-info">
-                                    <span class="ti-bag"></span>
-                                    <p class="hover-text">add to bag</p>
-                                </a>
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-heart"></span>
-                                    <p class="hover-text">Wishlist</p>
-                                </a>
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-sync"></span>
-                                    <p class="hover-text">compare</p>
-                                </a>
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-move"></span>
-                                    <p class="hover-text">view more</p>
-                                </a>
+                                    <a href="{% url 'preview_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-magnifier"></span>
+                                        <p class="hover-text">View</p>
+                                    </a>
+                                    <a href="{% url 'update_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-sync"></span>
+                                        <p class="hover-text">Update</p>
+                                    </a>
+                                    <a href="{% url 'delete_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-trash"></span>
+                                        <p class="hover-text">Remove</p>
+                                    </a>
+                                    <a href="{% url 'ret_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-rocket"></span>
+                                        <p class="hover-text">Retrieve</p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -57,7 +60,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 text-center">
                     <div class="section-title">
-                        <h1>Coming Products</h1>
+                        <h1>Dated cargos</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et
                             dolore
@@ -66,39 +69,42 @@
                 </div>
             </div>
             <div class="row">
-                <!-- single product -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-product">
-                        <img class="img-fluid" src="img/product/p8.jpg" alt="">
-                        <div class="product-details">
-                            <h6>addidas New Hammer sole
-                                for Sports person</h6>
-                            <div class="price">
-                                <h6>$150.00</h6>
-                                <h6 class="l-through">$210.00</h6>
-                            </div>
-                            <div class="prd-bottom">
+                {% for cargo in cargos_dated_index %}
+                    <!-- single product -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-product">
+                            <div class="product-details">
+                                <h6>{{ cargo.title }}</h6>
+                                <p>
+                                    {{ cargo.cell }}
+                                </p>
+                                <div class="price">
+                                    <h6 class="text text-warning">#{{ cargo.id }}</h6>
+                                    <h6 class="text text-secondary">{{ cargo.date_dated }}</h6>
+                                </div>
+                                <div class="prd-bottom">
 
-                                <a href="" class="social-info">
-                                    <span class="ti-bag"></span>
-                                    <p class="hover-text">add to bag</p>
-                                </a>
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-heart"></span>
-                                    <p class="hover-text">Wishlist</p>
-                                </a>
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-sync"></span>
-                                    <p class="hover-text">compare</p>
-                                </a>
-                                <a href="" class="social-info">
-                                    <span class="lnr lnr-move"></span>
-                                    <p class="hover-text">view more</p>
-                                </a>
+                                    <a href="{% url 'preview_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-magnifier"></span>
+                                        <p class="hover-text">View</p>
+                                    </a>
+                                    <a href="{% url 'update_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-sync"></span>
+                                        <p class="hover-text">Update</p>
+                                    </a>
+                                    <a href="{% url 'delete_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-trash"></span>
+                                        <p class="hover-text">Remove</p>
+                                    </a>
+                                    <a href="{% url 'ret_cargo' pk=cargo.id %}" class="social-info">
+                                        <span class="lnr lnr-rocket"></span>
+                                        <p class="hover-text">Retrieve</p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

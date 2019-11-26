@@ -1,10 +1,12 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, UpdateView, DeleteView, DetailView
 
-from shared_logic.database_queries import create_search_queryset, get_all_cargos, get_cargo_by_pk
+from shared_logic.database_queries import create_search_queryset, get_all_cargos, get_cargo_by_pk, get_cargos_todate
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
 from shared_logic.util_vars import CARGOS_PER_PAGE
 from .cargos_saving import save_cargo
@@ -16,7 +18,13 @@ from .models import Cargo
 @login_required(login_url="users:sign_in")
 def index(request):
     search_form = SearchForm()
-    return render(request, 'main_control/controller/control.html', {'search_form': search_form, 'is_index': True})
+    return render(request, 'main_control/controller/control.html',
+                  {
+                      'search_form': search_form,
+                      'is_index': True,
+                      'cargos_index': get_all_cargos(date_sort_reversed=True)[:4],
+                      'cargos_dated_index': get_cargos_todate(datetime.now().date())[:4],
+                  })
 
 
 @view_status_logger
@@ -83,11 +91,14 @@ class CargoListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['table_name'] = 'View cargos'
         context['search_form'] = SearchForm()
+
         return context
 
     @class_status_logger
     def get_queryset(self):
-        return get_all_cargos(date_sort_reversed=True)
+        self.paginate_by = int(self.request.GET.get('show', CARGOS_PER_PAGE))
+        sort_reversed = self.request.GET.get('sort', '1')
+        return get_all_cargos(date_sort_reversed=True if sort_reversed == '1' else False)
 
 
 class CargoUpdate(LoginRequiredMixin, UpdateView):

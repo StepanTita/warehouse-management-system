@@ -79,10 +79,11 @@ def notify_remove(request):
 
 @login_required(login_url='sign_in')
 def notifications_view(request):
-    notifs_total = get_notifications_unread_first(request.user)
-    paginator = Paginator(notifs_total, NOTIFICATIONS_PER_PAGE)
+    notifs_total = get_notifications_unread_first(request.user,
+                                                  reversed=True if request.GET.get('sort', '1') == '1' else False)
+    paginator = Paginator(notifs_total, int(request.GET.get('show', NOTIFICATIONS_PER_PAGE)))
 
-    page = request.GET.get('page', 0)
+    page = request.GET.get('page', 1)
     notifs_per_page = paginator.get_page(page)
 
     return render(request, 'notifications_pages/notifications_page.html',
@@ -115,6 +116,12 @@ class SignInFormView(FormView):
     form_class = AuthenticationForm
     # form_class = CustomAuthenticationForm
     template_name = "user_actions/signIn.html"
+
+    @class_status_logger
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['table_name'] = "Sign In"
+        return context
 
     @class_status_logger
     def form_valid(self, form):

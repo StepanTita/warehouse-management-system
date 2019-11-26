@@ -45,6 +45,7 @@ ADMINS = [('stepan', 'stepun.tita@gmail.com'), ]
 # Application definition
 
 INSTALLED_APPS = [
+    'cargos_backend.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

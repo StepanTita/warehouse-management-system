@@ -95,9 +95,10 @@ def get_all_cells():
 
 
 # NOTIFICATION
-def get_notifications_unread_first(user):
-    unread = user.notifications.unread().order_by('-timestamp')
-    read = user.notifications.read().order_by('-timestamp')
+def get_notifications_unread_first(user, reversed=True):
+    sign = '-' if reversed else ''
+    unread = user.notifications.unread().order_by(f'{sign}timestamp')
+    read = user.notifications.read().order_by(f'{sign}timestamp')
     total = (unread, read)
     result = list(chain(*total))
     return result

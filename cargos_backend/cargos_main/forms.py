@@ -24,17 +24,17 @@ class NewCargoForm(forms.Form):
     date_added = forms.DateTimeField(initial=dt.datetime.now, localize=True,
                                      widget=forms.TextInput(
                                          attrs={'type': 'date'}
-                                     ), required=False)
+                                     ), required=True)
     date_dated = forms.DateField(
         required=True,
         widget=forms.TextInput(
-            attrs={'type': 'date', 'value': '111'}
+            attrs={'type': 'date'}
         ),
         initial=dt.datetime.now,
         localize=True
     )
 
-    rotatable = forms.BooleanField(label='Rotatable', required=False)
+    rotatable = forms.BooleanField(label='Rotatable', required=False, widget=forms.NullBooleanSelect)
 
     # Widgets
     title.widget = forms.TextInput()
@@ -42,7 +42,7 @@ class NewCargoForm(forms.Form):
     storage.widget = forms.Select()
 
     date_added.widget.attrs.update({'placeholder': 'Select a date', })
-    date_dated.widget.attrs.update({'placeholder': 'Select a date', 'class': 'col-md-7'})
+    date_dated.widget.attrs.update({'placeholder': 'Select a date', })
 
     height.widget.attrs.update({'placeholder': '0.01...100', })
     length.widget.attrs.update({'placeholder': '0.01...100', })

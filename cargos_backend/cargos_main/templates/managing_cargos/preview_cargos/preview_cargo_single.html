@@ -1,45 +1,156 @@
-<table class="table table-hover table-bordered table-striped">
-    <tbody>
-    <tr>
-        <td>#</td>
-        <th scope="row">{{ cargo.id }}</th>
-    </tr>
-    <tr>
-        <td>Cell:</td>
-        <td>{{ cargo.cell }}</td>
-    </tr>
-    <tr>
-        <td>Date added:</td>
-        <td>{{ cargo.date_added }}</td>
-    </tr>
-    <tr>
-        <td>Title:</td>
-        <td><a href="/preview_cargos/{{ cargo.id }}">{{ cargo.title }}</a></td>
-    </tr>
-    <tr>
-        <td>Height:</td>
-        <td>{{ cargo.height }}</td>
-    </tr>
-    <tr>
-        <td>Length</td>
-        <td>{{ cargo.length }}</td>
-    </tr>
-    <tr>
-        <td>Width</td>
-        <td>{{ cargo.width }}</td>
-    </tr>
-    <tr>
-        <td>Date dated</td>
-        <td>{{ cargo.date_dated }}</td>
-    </tr>
-    <tr>
-        <td>Description</td>
-        <td>{{ cargo.description }}</td>
-    </tr>
-    </tbody>
-</table>
-<div class="container-fluid">
-    <h4><a href="{% url 'update_cargo' pk=cargo.id %}">Edit</a></h4>
-    <h4><a href="{% url 'delete_cargo' pk=cargo.id %}">Delete</a></h4>
-</div>
+{% load static i18n %}
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <!--<div class="col-lg-6">
+                <div class="s_Product_carousel">
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                    </div>
+                    <div class="single-prd-item">
+                        <img class="img-fluid" src="img/category/s-p1.jpg" alt="">
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3><a href="/preview_cargos/{{ cargo.id }}">{{ cargo.title }}</a></h3>
+                    <h2>#{{ cargo.id }}</h2>
+                    <ul class="list">
+                        <li>
+                            <div class="active"><strong>Storage</strong> : {{ cargo.cell }}</div>
+                        </li>
+                        <li>
+                            <div><strong>Rotatable</strong> : {{ cargo.rotatable }}</div>
+                        </li>
+                    </ul>
+                    <p>
+                        {% if cargo.description %}
+                            {{ cargo.description }}
+                        {% else %}
+                            {% trans 'No short description provided' %}...
+                        {% endif %}
+                    </p>
 
+                    <div class="product_count">
+
+                        <div class="text"><strong>Date added:</strong> {{ cargo.date_added }}</div>
+
+                        <div class="text"><strong>Date dated:</strong> {{ cargo.date_dated }}</div>
+                    </div>
+                    <div class="card_area d-flex align-items-center">
+                        <a class="primary-btn" href="{% url 'update_cargo' pk=cargo.id %}">{% trans 'Update' %}</a>
+                        <a class="icon_btn" href="{% url 'delete_cargo' pk=cargo.id %}"><i
+                                class="lnr lnr lnr-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--================End Single Product Area =================-->
+
+<!--================Product Description Area =================-->
+<section class="product_description_area">
+    <div class="container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                   aria-selected="true">Description</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                   aria-controls="profile"
+                   aria-selected="false">Specification</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <p>
+                    {% if cargo.description %}
+                        {{ cargo.description }}
+                    {% else %}
+                        {% trans 'No short description provided... ' %}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Width</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.width }}m</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Height</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.height }}m</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Length</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.length }}m</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Weight</strong>
+                            </td>
+                            <td>
+                                <h5>52gm</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Rotatable</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.rotatable }}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Fresh Until</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.date_dated }}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">When added to the storage</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.date_added }}</h5>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong class="text text-secondary">Cell</strong>
+                            </td>
+                            <td>
+                                <h5>{{ cargo.cell }}</h5>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--================End Product Description Area =================-->

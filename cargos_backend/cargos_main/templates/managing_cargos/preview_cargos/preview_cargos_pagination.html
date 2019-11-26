@@ -1,18 +1,22 @@
 <!-- Start Filter Bar -->
+
 <div class="filter-bar d-flex flex-wrap align-items-center">
-    <div class="sorting">
-        <select>
-            <option value="1">Date added</option>
-            <option value="1">Date dated</option>
-        </select>
-    </div>
-    <div class="sorting mr-auto">
-        <select>
-            <option value="1">Show 5</option>
-            <option value="1">Show 10</option>
-            <option value="1">Show 15</option>
-        </select>
-    </div>
+    <form action="#" method="get" class="row container">
+        {% csrf_token %}
+        <div class="sorting">
+            <select name="sort" onchange="this.form.submit()">
+                <option value="1">Date added ascending</option>
+                <option value="2">Date added descending</option>
+            </select>
+        </div>
+        <div class="sorting mr-auto">
+            <select name="show" onchange="this.form.submit()">
+                <option value="5">Show 5</option>
+                <option value="10">Show 10</option>
+                <option value="15">Show 15</option>
+            </select>
+        </div>
+    </form>
 
     <div class="pagination">
         <a {% if page_obj.has_previous %}

@@ -1,52 +1,48 @@
-<table class="table table-hover table-bordered table-striped">
-    <tbody>
-    <tr>
-        <td>#</td>
-        <th scope="row">{{ notification.id }}</th>
-    </tr>
-    <tr>
-        <td>User:</td>
-        <td>{{ notification.recipient }}</td>
-    </tr>
-    <tr>
-        <td>Cargo:</td>
-        {% if notification.actor %}
-            <td>{{ notification.actor }}</td>
-        {% else %}
-            <td class="text-secondary">Nothing...</td>
-        {% endif %}
-    </tr>
-    <tr>
-        <td>Message:</td>
-        {% if notification.verb %}
-            <td>{{ notification.verb }}</td>
-        {% else %}
-            <td class="text-secondary">Nothing...</td>
-        {% endif %}
-    </tr>
-    <tr>
-        <td>Description:</td>
-        {% if notification.description %}
-            <td>{{ notification.description }}</td>
-        {% else %}
-            <td class="text-secondary">Nothing...</td>
-        {% endif %}
-    </tr>
-    <tr>
-        <td>Timestamp</td>
-        <td>{{ notification.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notification.timestamp|time:"h:i a" }}</td>
-    </tr>
-    </tbody>
-</table>
-<div class="container-fluid">
-    <button type="button" class="btn btn-danger col-md-2 remove-single">Remove</button>
+{% load static i18n %}
+<!--================Single Product Area =================-->
+<div class="product_image_area mb-5">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3><a href="/notifications_pages/{{ notification.id }}">Cargo has spoilt</a></h3>
+                    <h2>#{{ notification.id }}</h2>
+                    <ul class="list">
+                        <li>
+                            <div class="active"><strong>User</strong> : {{ notification.recipient }}</div>
+                        </li>
+                        <li>
+                            <div><strong>Cargo</strong> :
+                                {% if notification.actor %}
+                                    {{ notification.actor }}
+                                {% else %}
+                                    <span class="text-secondary">Nothing...</span>
+                                {% endif %}</div>
+                        </li>
+                    </ul>
+                    <p>
+                        {% if notification.verb %}
+                            {{ notification.verb }}
+                        {% else %}
+                            {% trans 'No message provided' %}...
+                        {% endif %}
+                    </p>
 
-    <button type="button" class="btn btn-warning col-md-2 ignore-single" {% if not notification.unread %}
-            disabled {% endif %}>Ignore
-    </button>
+                    <div class="product_count">
 
-    <button type="button" class="btn btn-primary col-md-2 unignore-single" {% if notification.unread %}
-            disabled {% endif %}>Unignore
-    </button>
+                        <div class="text"><strong>Time stamp:</strong> {{ notification.timestamp }}</div>
+                    </div>
+                    <div class="card_area d-flex align-items-center">
+                        <button class="btn icon_btn ignore-single" {% if not notification.unread %}
+                                disabled {% endif %}><span class="lnr lnr-volume"></span></button>
+                        <button class="btn primary-btn remove-single">{% trans 'Remove' %}</button>
+                        <button class="btn icon_btn unignore-single" {% if notification.unread %}
+                                disabled {% endif %}><span class="lnr lnr-volume-high"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
+<!--================End Single Product Area =================-->
