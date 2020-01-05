@@ -1,3 +1,5 @@
+{% load static i18n %}
+
 {% for notify in notifications %}
     {% if notify.unread %}
         <tr class="table-warning">
@@ -10,50 +12,50 @@
 {% if notify.recipient %}
     <td>{{ notify.recipient }}</td>
 {% else %}
-    <td class="text-secondary">Nothing...</td>
+    <td class="text-secondary">{% trans 'Nothing' %}...</td>
 {% endif %}
 
 {% if notify.actor %}
     <td><a href="{% url 'preview_cargo' pk=notify.actor.id %}">{{ notify.actor }}</a></td>
 {% else %}
-    <td class="text-secondary"><a href="">Nothing...</a></td>
+    <td class="text-secondary"><a href="">{% trans 'Nothing' %}...</a></td>
 {% endif %}
 
 
 {% if notify.verb %}
     <td>{{ notify.verb }}</td>
 {% else %}
-    <td class="text-secondary">Nothing...</td>
+    <td class="text-secondary">{% trans 'Nothing' %}...</td>
 {% endif %}
 
 {% if notify.description %}
     <td>{{ notify.description }}</td>
 {% else %}
-    <td class="text-secondary">Nothing...</td>
+    <td class="text-secondary">{% trans 'Nothing' %}...</td>
 {% endif %}
 
 <td>{{ notify.timestamp|date:"SHORT_DATE_FORMAT" }} {{ notify.timestamp|time:"H:i" }}</td>
 
 {% if notify.actor.id %}
     <td><a href="{% url 'users:notification_single' pk=notify.id %}"
-           class="btn btn-info col-md-12">Info</a></td>
+           class="btn btn-info col-md-12">{% trans 'Info' %}</a></td>
 {% else %}
     <td>
-        <button class="btn btn-info col-md-12" disabled="disabled">Info</button>
+        <button class="btn btn-info col-md-12" disabled="disabled">{% trans 'Info' %}</button>
     </td>
 {% endif %}
 
 <td>
-    <button type="button" class="btn btn-danger col-md-12 remove">Remove</button>
+    <button type="button" class="btn btn-danger col-md-12 remove">{% trans 'Remove' %}</button>
 </td>
 <td>
     <button type="button" class="btn btn-warning col-md-12 ignore" {% if not notify.unread %} disabled {% endif %}>
-        Ignore
+        {% trans 'Ignore' %}
     </button>
 </td>
 <td>
     <button type="button" class="btn btn-primary col-md-12 unignore" {% if notify.unread %} disabled {% endif %}>
-        Unignore
+        {% trans 'Unignore' %}
     </button>
 </td>
 </tr>

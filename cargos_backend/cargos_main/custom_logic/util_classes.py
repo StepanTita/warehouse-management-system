@@ -25,6 +25,9 @@ class Cell(object):
     def __str__(self):
         return str(self.height) + ' ' + str(self.length) + ' ' + str(self.width)
 
+    def __repr__(self):
+        return str(self.height) + ' ' + str(self.length) + ' ' + str(self.width)
+
 
 class Cargo(object):
     def __init__(self, height, length, width, rotatable):

@@ -28,13 +28,13 @@
                 <div class="form-row">
                     {{ form.description|as_crispy_field }}
                     <div class="form-group col-md-6">
-                    {{ form.date_added|as_crispy_field }}
-                    {{ form.date_dated|as_crispy_field }}
-                </div>
+                        {{ form.date_added|as_crispy_field }}
+                        {{ form.date_dated|as_crispy_field }}
+                    </div>
                 </div>
 
                 <div class="col-md-12 form-group row d-flex justify-content-center">
-                    <button type="submit" class="btn primary-btn">Add cargo</button>
+                    <button type="submit" class="btn primary-btn">{% trans 'Add cargo' %}</button>
                 </div>
             </form>
         </div>

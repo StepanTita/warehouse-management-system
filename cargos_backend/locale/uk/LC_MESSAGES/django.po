@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-09 00:51+0200\n"
+"POT-Creation-Date: 2019-11-26 10:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,30 +21,220 @@ msgstr ""
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 
-#: shared_logic/templates/utils/includes/menu.html:16
-msgid "Manage Storage"
-msgstr "Управління сховищем"
+#: cargos_main/templates/managing_cargos/delete_cargo/delete_cargo.html:38
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:16
+msgid "Width"
+msgstr "Ширина"
 
-#: shared_logic/templates/utils/includes/menu.html:19
-msgid "View Storage"
+#: cargos_main/templates/managing_cargos/delete_cargo/delete_cargo.html:49
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:14
+msgid "Height"
+msgstr "Висота"
+
+#: cargos_main/templates/managing_cargos/delete_cargo/delete_cargo.html:60
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:15
+msgid "Length"
+msgstr "Довжина"
+
+#: cargos_main/templates/managing_cargos/delete_cargo/delete_cargo.html:71
+msgid "CELL"
+msgstr "КОМІРКА"
+
+#: cargos_main/templates/managing_cargos/delete_cargo/delete_cargo.html:82
+msgid "DATE ADDED"
+msgstr "ДАТА ДОДАННЯ"
+
+#: cargos_main/templates/managing_cargos/delete_cargo/delete_cargo.html:93
+msgid "DATE DATED"
+msgstr "ДАТА ЗІПСУВАННЯ"
+
+#: cargos_main/templates/managing_cargos/new_cargo/create_new_cargo.html:9
+#: cargos_main/templates/managing_cargos/update_cargo/update_cargo.html:17
+msgid "Want to see the existing cargos?"
+msgstr "Хочете переглянути наявні вантажі?"
+
+#: cargos_main/templates/managing_cargos/new_cargo/create_new_cargo.html:10
+#: cargos_main/templates/managing_cargos/update_cargo/update_cargo.html:18
+msgid "Click here to go"
+msgstr "Натисніть сюди щоб про продовжити"
+
+#: cargos_main/templates/managing_cargos/new_cargo/create_new_cargo.html:37
+msgid "Add cargo"
+msgstr "Додати новий вантаж"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:25
+#, fuzzy
+#| msgid "View Storage"
+msgid "Storage"
 msgstr "Переглянути сховище"
 
-#: shared_logic/templates/utils/includes/menu.html:22
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:28
+msgid "Rotatable"
+msgstr "Обертаючийся"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:35
+msgid "No short description provided"
+msgstr "Не предоставлено корткий опис"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:41
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:12
+msgid "Date added"
+msgstr "Дата додавання"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:43
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:17
+msgid "Date dated"
+msgstr "Дата зіпсування"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:46
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:94
+msgid "Update"
+msgstr "Оновити"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:63
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:18
+#: users/templates/notifications_pages/notifications_table.html:24
+msgid "Description"
+msgstr "Опис"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:68
+msgid "Specification"
+msgstr "Специфікація"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:77
+msgid "No short description provided... "
+msgstr "Не предоставлено корткий опис"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:8
+#: users/templates/notifications_pages/notifications_pagination.html:9
+msgid "Date added ascending"
+msgstr "Дата додавання зростаюча"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:9
+#: users/templates/notifications_pages/notifications_pagination.html:10
+msgid "Date dadded descending"
+msgstr "Дата додавання спадна"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:14
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:15
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:16
+#: users/templates/notifications_pages/notifications_pagination.html:15
+#: users/templates/notifications_pages/notifications_pagination.html:16
+#: users/templates/notifications_pages/notifications_pagination.html:17
+msgid "Show"
+msgstr "Показати"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:11
+msgid "Cell"
+msgstr "Комірка"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:13
+msgid "Title"
+msgstr "Назва"
+
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:19
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:102
+msgid "Retrieve"
+msgstr "Дістати вантаж"
+
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:10
+msgid "Latest Cargos"
+msgstr "Останні додані вантажі"
+
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:64
+msgid "Dated Cargos"
+msgstr "Зіпсовані вантажі"
+
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:90
+msgid "View"
+msgstr "Переглянути"
+
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:98
+#: users/templates/notifications_pages/notification_single.html:38
+#: users/templates/notifications_pages/notifications_table.html:27
+#: users/templates/notifications_pages/notifications_unread_first.html:49
+msgid "Remove"
+msgstr "Видалити"
+
+#: shared_logic/templates/utils/includes/page_template/index_banner.html:17
+#: shared_logic/templates/utils/includes/page_template/menu.html:30
 msgid "Add new cargo"
 msgstr "Додати новий вантаж"
 
-#: shared_logic/templates/utils/includes/menu.html:25
-msgid "Retrieve cargo"
-msgstr "Дістати вантаж"
+#: shared_logic/templates/utils/includes/page_template/menu.html:24
+msgid "Manage Storage"
+msgstr "Управління сховищем"
 
-#: shared_logic/templates/utils/includes/menu.html:41
+#: shared_logic/templates/utils/includes/page_template/menu.html:27
+msgid "View Storage"
+msgstr "Переглянути сховище"
+
+#: shared_logic/templates/utils/includes/page_template/menu.html:46
 msgid "Admin panel"
 msgstr "Панель адміна"
 
-#: shared_logic/templates/utils/includes/menu.html:43
+#: shared_logic/templates/utils/includes/page_template/menu.html:55
 msgid "Log out"
 msgstr "Вийти"
 
-#: shared_logic/templates/utils/includes/menu.html:50
+#: shared_logic/templates/utils/includes/page_template/menu.html:61
 msgid "Sign In"
 msgstr "Увійти"
+
+#: users/templates/notifications_pages/notification_single.html:8
+msgid "Cargo has spoilt"
+msgstr "Вантаж зіпсувався"
+
+#: users/templates/notifications_pages/notification_single.html:12
+#: users/templates/notifications_pages/notifications_table.html:21
+msgid "User"
+msgstr "Користувач"
+
+#: users/templates/notifications_pages/notification_single.html:15
+#: users/templates/notifications_pages/notifications_table.html:22
+msgid "Cargo"
+msgstr "Вантаж"
+
+#: users/templates/notifications_pages/notification_single.html:19
+#: users/templates/notifications_pages/notifications_unread_first.html:15
+#: users/templates/notifications_pages/notifications_unread_first.html:21
+#: users/templates/notifications_pages/notifications_unread_first.html:28
+#: users/templates/notifications_pages/notifications_unread_first.html:34
+msgid "Nothing"
+msgstr "Нічого"
+
+#: users/templates/notifications_pages/notification_single.html:27
+msgid "No message provided"
+msgstr "Не предоставлено повідомлення"
+
+#: users/templates/notifications_pages/notification_single.html:33
+#: users/templates/notifications_pages/notifications_table.html:25
+msgid "Timestamp"
+msgstr "Часова відмітка"
+
+#: users/templates/notifications_pages/notifications_table.html:11
+msgid "You have"
+msgstr "У вас"
+
+#: users/templates/notifications_pages/notifications_table.html:12
+msgid "unread notifications"
+msgstr "не протчитані нотифікації"
+
+#: users/templates/notifications_pages/notifications_table.html:23
+msgid "Message"
+msgstr "Повідомлення"
+
+#: users/templates/notifications_pages/notifications_table.html:26
+#: users/templates/notifications_pages/notifications_unread_first.html:41
+#: users/templates/notifications_pages/notifications_unread_first.html:44
+msgid "Info"
+msgstr "Інформація"
+
+#: users/templates/notifications_pages/notifications_table.html:28
+#: users/templates/notifications_pages/notifications_unread_first.html:53
+msgid "Ignore"
+msgstr "Ігнорувати"
+
+#: users/templates/notifications_pages/notifications_unread_first.html:58
+msgid "Unignore"
+msgstr "Перестати ігнорувати"

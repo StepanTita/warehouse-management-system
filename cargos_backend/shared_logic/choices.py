@@ -7,5 +7,8 @@ CATEGORY_CHOICES = (
     (3, "Storages")
 )
 
-fields_choices = tuple([(i + 1, val) for i, val in enumerate(Cargo._meta.get_fields())])[1:]
+fields = Cargo._meta.get_fields()
+fields_choices = [(i + 1, val) for i, val in enumerate(fields)][1:]
+print(fields_choices)
+fields_choices = [field for field in fields_choices if field[0] not in (2, 4)]
 FIELDS_CHOICES = tuple(map(lambda x: to_view_choice(x), fields_choices))

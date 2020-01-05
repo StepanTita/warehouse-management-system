@@ -1,3 +1,4 @@
+{% load static i18n %}
 <!--================Cart Area =================-->
 <section class="cart_area">
     <div class="container">
@@ -7,15 +8,15 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Cell</th>
-                        <th scope="col">Date added</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Height</th>
-                        <th scope="col">Length</th>
-                        <th scope="col">Width</th>
-                        <th scope="col">Date dated</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Retrieve</th>
+                        <th scope="col">{% trans 'Cell' %}</th>
+                        <th scope="col">{% trans 'Date added' %}</th>
+                        <th scope="col">{% trans 'Title' %}</th>
+                        <th scope="col">{% trans 'Height' %}</th>
+                        <th scope="col">{% trans 'Length' %}</th>
+                        <th scope="col">{% trans 'Width' %}</th>
+                        <th scope="col">{% trans 'Date dated' %}</th>
+                        <th scope="col">{% trans 'Description' %}</th>
+                        <th scope="col">{% trans 'Retrieve' %}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,7 +32,8 @@
                             <td>{{ cargo.width }}</td>
                             <td>{{ cargo.date_dated }}</td>
                             <td>{{ cargo.description }}</td>
-                            <td><a href="{% url 'ret_cargo' pk=cargo.id %}" class="btn btn-success">Retrieve</a></td>
+                            <td><a href="{% url 'ret_cargo' pk=cargo.id %}"
+                                   class="btn btn-success">{% trans 'Retrieve' %}</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

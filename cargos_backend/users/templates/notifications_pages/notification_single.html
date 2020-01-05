@@ -5,18 +5,18 @@
         <div class="row s_product_inner">
             <div class="col-lg-5 offset-lg-1">
                 <div class="s_product_text">
-                    <h3><a href="/notifications_pages/{{ notification.id }}">Cargo has spoilt</a></h3>
+                    <h3><a href="/notifications_pages/{{ notification.id }}">{% trans 'Cargo has spoilt' %}</a></h3>
                     <h2>#{{ notification.id }}</h2>
                     <ul class="list">
                         <li>
-                            <div class="active"><strong>User</strong> : {{ notification.recipient }}</div>
+                            <div class="active"><strong>{% trans 'User' %}</strong> : {{ notification.recipient }}</div>
                         </li>
                         <li>
-                            <div><strong>Cargo</strong> :
+                            <div><strong>{% trans 'Cargo' %}</strong> :
                                 {% if notification.actor %}
                                     {{ notification.actor }}
                                 {% else %}
-                                    <span class="text-secondary">Nothing...</span>
+                                    <span class="text-secondary">{% trans 'Nothing' %}...</span>
                                 {% endif %}</div>
                         </li>
                     </ul>
@@ -30,7 +30,7 @@
 
                     <div class="product_count">
 
-                        <div class="text"><strong>Time stamp:</strong> {{ notification.timestamp }}</div>
+                        <div class="text"><strong>{% trans 'Timestamp' %}:</strong> {{ notification.timestamp }}</div>
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <button class="btn icon_btn ignore-single" {% if not notification.unread %}

@@ -8,16 +8,13 @@ from shared_logic.from_choice import to_format
 from users.models import DateNotifications
 
 
-def create_search_queryset(data):
-    search = data['search']
-    storage = data['storages']
-    fields = data.getlist('fields')
-
+def create_search_queryset(search, storage, fields):
     queryset = Cargo.objects.all().filter(
         cell__in=Cell.objects.filter(storage_id=int(storage)))
     # category = to_category_name(int(data['category']), CATEGORY_CHOICES)
 
     entry_query = get_query(search, [to_format(field) for field in fields])
+    print(entry_query)
     found_entries = Cargo.objects.filter(entry_query).order_by("-date_added")
     return found_entries
 
@@ -78,6 +75,10 @@ def get_storage_by_pk(pk=-1):
     return Storage.objects.get(pk=pk)
 
 
+def get_all_storages():
+    return Storage.objects.all()
+
+
 # CELL
 def get_cell_of_storage(row, elevation, pos, storage_id):
     return Cell.objects.get(row=row,
@@ -87,11 +88,15 @@ def get_cell_of_storage(row, elevation, pos, storage_id):
 
 
 def get_cell_of_cargo(cell_pks, storage):
-    return Cell.objects.all().filter(pk__in=cell_pks, storage=storage)
+    return Cell.objects.all().filter(pk__in=cell_pks, storage__exact=storage)
 
 
 def get_all_cells():
     return Cell.objects.all()
+
+
+def get_all_cells_of_storage(storage):
+    return Cell.objects.all().filter(storage=storage)
 
 
 # NOTIFICATION

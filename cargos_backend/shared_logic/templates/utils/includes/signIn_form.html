@@ -8,10 +8,9 @@
                 <div class="login_box_img">
                     <img class="img-fluid" src="{% static 'img/login.jpg' %}" alt="">
                     <div class="hover">
-                        <h4>New to our website?</h4>
-                        <p>There are advances being made in science and technology everyday, and a good example of this
-                            is the</p>
-                        <a class="primary-btn" href="#">Create an Account</a>
+                        <h4>{% trans 'A cargos managing service' %}</h4>
+                        <p>{% trans 'If you are a manager you may log in, if you are not yet registered, please contact admin.' %}</p>
+                        <a class="primary-btn" href="#">Coordinate A.</a>
                     </div>
                 </div>
             </div>
@@ -19,9 +18,9 @@
                 <div class="login_form_inner">
                     <h3>Log in to enter</h3>
                     <form class="row login_form" action="{{ next }}" method="post" id="contactForm">
-                            {% csrf_token %}
+                        {% csrf_token %}
                         <div class="col-md-12 form-group">
-							    {{ form.username|as_crispy_field }}
+                            {{ form.username|as_crispy_field }}
 							</div>
                         <div class="col-md-12 form-group">
 								{{ form.password|as_crispy_field }}

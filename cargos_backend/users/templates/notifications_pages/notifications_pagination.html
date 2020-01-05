@@ -1,19 +1,20 @@
 <!-- Start Filter Bar -->
+{% load static i18n %}
 <div class="filter-bar d-flex flex-wrap align-items-center">
     <
     <form action="#" method="get" class="row container">
         {% csrf_token %}
         <div class="sorting">
             <select name="sort" onchange="this.form.submit()">
-                <option value="1">Date added ascending</option>
-                <option value="2">Date added descending</option>
+                <option value="1">{% trans 'Date added ascending' %}</option>
+                <option value="2">{% trans 'Date dadded descending' %}</option>
             </select>
         </div>
         <div class="sorting mr-auto">
             <select name="show" onchange="this.form.submit()">
-                <option value="5">Show 5</option>
-                <option value="10">Show 10</option>
-                <option value="15">Show 15</option>
+                <option value="5">{% trans 'Show' %} 5</option>
+                <option value="10">{% trans 'Show' %} 10</option>
+                <option value="15">{% trans 'Show' %} 15</option>
             </select>
         </div>
     </form>

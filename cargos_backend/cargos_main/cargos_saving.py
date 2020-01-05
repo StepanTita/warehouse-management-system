@@ -4,8 +4,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 
-from shared_logic.database_queries import get_storage_by_pk, get_cargos_value_list, get_cell_of_storage, get_all_cells, \
-    get_cell_of_cargo
+from shared_logic.database_queries import get_storage_by_pk, get_cargos_value_list, get_cell_of_storage, \
+    get_cell_of_cargo, get_all_cells_of_storage
 from shared_logic.util_vars import UNSPECIFIED
 from .custom_logic.new_cargo_logic import add_new_cargo_unformated
 from .models import Storage, Cargo, Cell
@@ -17,7 +17,7 @@ def save_cargo(data):
 
     cell_vals = get_cell_of_cargo(get_cargos_value_list('cell', distinct=True), storage)
 
-    new_cell_vals = get_all_cells().difference(cell_vals)
+    new_cell_vals = get_all_cells_of_storage(storage).difference(cell_vals)
 
     new_row, new_el, new_pos = add_new_cargo_unformated(
         {
@@ -111,4 +111,5 @@ def update_cells(sender, instance, **kwargs):
     for i in range(rs):
         for j in range(els):
             for k in range(pos):
-                add_cell_fields(row=i, el=j, pos=k, storage=instance)
+                if Cell.objects.all().get(row=i, elevation=j, position=k, storage=instance) is None:
+                    add_cell_fields(row=i, el=j, pos=k, storage=instance)

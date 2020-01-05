@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
 
 from . import views
 
@@ -28,4 +29,8 @@ urlpatterns = [
     path('notificationSingle/<int:pk>/', views.NotificationDetailView.as_view(), name='notification_single'),
     path('notifyIgnore/', views.notify_ignore, name='notify_ignore'),
     path('notifyRemove/', views.notify_remove, name='notify_remove'),
+    path('mobileObjects/', views.MobileObjectsView.as_view(), name='mobile_objects'),
+    path('mobileNotifications/', views.MobileNotificationsView.as_view(), name='mobile_notifications'),
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
+    path('userIDRequester', views.UserIDRequesterView.as_view(), name='user_id_requester')
 ]

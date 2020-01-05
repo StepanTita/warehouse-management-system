@@ -1,5 +1,5 @@
 {% load notifications_tags %}
-
+{% load static i18n %}
 
 <!--================Cart Area =================-->
 <section class="cart_area">
@@ -8,9 +8,8 @@
         {% if unread_count %}
 
             <div class="check_title" style="background-color: #e8f0f2; padding: 5px">
-                <h5 class="text-secondary text-center"> You have <strong
-                        style="color: #C5322D">{{ unread_count }}</strong> unread
-                    notifications. </h5>
+                <h5 class="text-secondary text-center"> {% trans 'You have' %} <strong
+                        style="color: #C5322D">{{ unread_count }}</strong> {% trans 'unread notifications' %}. </h5>
             </div>
         {% endif %}
         <div class="cart_inner">
@@ -19,14 +18,14 @@
                     <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">User</th>
-                        <th scope="col">Cargo</th>
-                        <th scope="col">Message</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Timestamp</th>
-                        <th scope="col">Info</th>
-                        <th scope="col">Remove</th>
-                        <th scope="col">Ignore</th>
+                        <th scope="col">{% trans 'User' %}</th>
+                        <th scope="col">{% trans 'Cargo' %}</th>
+                        <th scope="col">{% trans 'Message' %}</th>
+                        <th scope="col">{% trans 'Description' %}</th>
+                        <th scope="col">{% trans 'Timestamp' %}</th>
+                        <th scope="col">{% trans 'Info' %}</th>
+                        <th scope="col">{% trans 'Remove' %}</th>
+                        <th scope="col">{% trans 'Ignore' %}</th>
                     </tr>
                     </thead>
                     <tbody>

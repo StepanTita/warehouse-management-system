@@ -7,6 +7,7 @@ from .util_classes import Cargo, Cell
 
 def add_new_cargo_unformated(cargo, cells, storage_rows, storage_elevations, storage_positions):
     new_cargo = Cargo(float(cargo['height']), float(cargo['length']), float(cargo['width']), cargo['rotatable'])
+
     storage = [[[Cell(0, 0, 0) for _ in range(storage_positions + 1)] for _ in range(storage_elevations + 1)] for _ in range(storage_rows + 1)]
     for cell in cells:
         i, j, k = cell.row, cell.elevation, cell.position

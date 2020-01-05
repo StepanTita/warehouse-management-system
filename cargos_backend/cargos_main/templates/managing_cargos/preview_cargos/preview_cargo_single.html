@@ -22,10 +22,10 @@
                     <h2>#{{ cargo.id }}</h2>
                     <ul class="list">
                         <li>
-                            <div class="active"><strong>Storage</strong> : {{ cargo.cell }}</div>
+                            <div class="active"><strong>{% trans 'Storage' %}</strong> : {{ cargo.cell }}</div>
                         </li>
                         <li>
-                            <div><strong>Rotatable</strong> : {{ cargo.rotatable }}</div>
+                            <div><strong>{% trans 'Rotatable' %}</strong> : {{ cargo.rotatable }}</div>
                         </li>
                     </ul>
                     <p>
@@ -38,9 +38,9 @@
 
                     <div class="product_count">
 
-                        <div class="text"><strong>Date added:</strong> {{ cargo.date_added }}</div>
+                        <div class="text"><strong>{% trans 'Date added' %}:</strong> {{ cargo.date_added }}</div>
 
-                        <div class="text"><strong>Date dated:</strong> {{ cargo.date_dated }}</div>
+                        <div class="text"><strong>{% trans 'Date dated' %}:</strong> {{ cargo.date_dated }}</div>
                     </div>
                     <div class="card_area d-flex align-items-center">
                         <a class="primary-btn" href="{% url 'update_cargo' pk=cargo.id %}">{% trans 'Update' %}</a>
@@ -60,12 +60,12 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
                 <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
-                   aria-selected="true">Description</a>
+                   aria-selected="true">{% trans 'Description' %}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
                    aria-controls="profile"
-                   aria-selected="false">Specification</a>
+                   aria-selected="false">{% trans 'Specification' %}</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">

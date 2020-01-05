@@ -1,3 +1,4 @@
+{% load static i18n %}
 <!-- start product Area -->
 <section class="owl-carousel active-product-area section_gap">
     <!-- single product slide -->
@@ -6,7 +7,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 text-center">
                     <div class="section-title">
-                        <h1>Latest Cargos</h1>
+                        <h1>{% trans 'Latest Cargos' %}</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et
                             dolore
@@ -29,22 +30,22 @@
                                     <h6 class="text text-secondary">{{ cargo.date_added }}</h6>
                                 </div>
                                 <div class="prd-bottom">
-
+                                    {% load static i18n %}
                                     <a href="{% url 'preview_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-magnifier"></span>
-                                        <p class="hover-text">View</p>
+                                        <p class="hover-text">{% trans 'View' %}</p>
                                     </a>
                                     <a href="{% url 'update_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">Update</p>
+                                        <p class="hover-text">{% trans 'Update' %}</p>
                                     </a>
                                     <a href="{% url 'delete_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-trash"></span>
-                                        <p class="hover-text">Remove</p>
+                                        <p class="hover-text">{% trans 'Remove' %}</p>
                                     </a>
                                     <a href="{% url 'ret_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-rocket"></span>
-                                        <p class="hover-text">Retrieve</p>
+                                        <p class="hover-text">{% trans 'Retrieve' %}</p>
                                     </a>
                                 </div>
                             </div>
@@ -60,7 +61,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-6 text-center">
                     <div class="section-title">
-                        <h1>Dated cargos</h1>
+                        <h1>{% trans 'Dated Cargos' %}</h1>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et
                             dolore
@@ -86,19 +87,19 @@
 
                                     <a href="{% url 'preview_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-magnifier"></span>
-                                        <p class="hover-text">View</p>
+                                        <p class="hover-text">{% trans 'View' %}</p>
                                     </a>
                                     <a href="{% url 'update_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-sync"></span>
-                                        <p class="hover-text">Update</p>
+                                        <p class="hover-text">{% trans 'Update' %}</p>
                                     </a>
                                     <a href="{% url 'delete_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-trash"></span>
-                                        <p class="hover-text">Remove</p>
+                                        <p class="hover-text">{% trans 'Remove' %}</p>
                                     </a>
                                     <a href="{% url 'ret_cargo' pk=cargo.id %}" class="social-info">
                                         <span class="lnr lnr-rocket"></span>
-                                        <p class="hover-text">Retrieve</p>
+                                        <p class="hover-text">{% trans 'Retrieve' %}</p>
                                     </a>
                                 </div>
                             </div>

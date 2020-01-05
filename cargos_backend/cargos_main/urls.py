@@ -27,4 +27,5 @@ urlpatterns = [
     path('preview_cargos/', views.CargoListView.as_view(),  # queryset=Cargo.objects.all().order_by("-date_added")
          name='preview_cargos'),
     path('search_result/', views.CargoSearchListView.as_view(), name='search_result'),
+    path('search_request/', views.SearchRequestView.as_view(), name='search_request')
 ]

@@ -15,9 +15,16 @@ class Storage(models.Model):
     positions = models.IntegerField(validators=[MinValueValidator(1),
                                                 MaxValueValidator(100)])  # x
 
-    default_height = models.DecimalField(decimal_places=2, max_digits=9, default=1)
-    default_length = models.DecimalField(decimal_places=2, max_digits=9, default=1)
-    default_width = models.DecimalField(decimal_places=2, max_digits=9, default=1)
+    default_height = models.DecimalField(decimal_places=2, max_digits=9, default=1,
+                                         validators=[MinValueValidator(1),
+                                                     MaxValueValidator(100)])
+    default_length = models.DecimalField(decimal_places=2, max_digits=9, default=1,
+                                         validators=[MinValueValidator(1),
+                                                     MaxValueValidator(100)]
+                                         )
+    default_width = models.DecimalField(decimal_places=2, max_digits=9, default=1,
+                                        validators=[MinValueValidator(1),
+                                                    MaxValueValidator(100)])
 
     def __str__(self):
         return str(self.name) + ', rs: ' + str(self.rows) + ' es: ' + str(self.elevations) + ' ps: ' + str(
@@ -29,9 +36,15 @@ class Cell(models.Model):
     elevation = models.IntegerField()  # y
     position = models.IntegerField()  # x
 
-    height = models.DecimalField(decimal_places=2, max_digits=9, default=1)
-    length = models.DecimalField(decimal_places=2, max_digits=9, default=1)
-    width = models.DecimalField(decimal_places=2, max_digits=9, default=1)
+    height = models.DecimalField(decimal_places=2, max_digits=9, default=1,
+                                 validators=[MinValueValidator(1),
+                                             MaxValueValidator(100)])
+    length = models.DecimalField(decimal_places=2, max_digits=9, default=1,
+                                 validators=[MinValueValidator(1),
+                                             MaxValueValidator(100)]
+                                 )
+    width = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
+                                                                                       MaxValueValidator(100)])
 
     storage = models.ForeignKey(Storage, on_delete=models.CASCADE)
 
@@ -43,7 +56,9 @@ class Cell(models.Model):
 
     def clean(self):
         super().clean()
-        if self.storage.rows * self.storage.elevations * self.storage.positions >= len(
+        if Cell.objects.get(pk=self.pk):
+            return
+        elif self.storage.rows * self.storage.elevations * self.storage.positions >= len(
                 Cell.objects.filter(storage=self.storage)):
             raise ValidationError('You cannot create more cells for this storage')
 
@@ -51,9 +66,12 @@ class Cell(models.Model):
 class Cargo(models.Model):
     cell = models.ForeignKey(Cell, on_delete=models.CASCADE)
 
-    height = models.DecimalField(decimal_places=2, max_digits=9, default=1)
-    length = models.DecimalField(decimal_places=2, max_digits=9, default=1)
-    width = models.DecimalField(decimal_places=2, max_digits=9, default=1)
+    height = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
+                                                                                        MaxValueValidator(100)])
+    length = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
+                                                                                        MaxValueValidator(100)])
+    width = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
+                                                                                       MaxValueValidator(100)])
 
     description = models.CharField(max_length=500)
     title = models.CharField(max_length=200)
