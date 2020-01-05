@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-11-26 10:05+0200\n"
+"POT-Creation-Date: 2020-01-05 20:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,6 +87,7 @@ msgid "Date dated"
 msgstr "Дата зіпсування"
 
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargo_single.html:46
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:40
 #: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:94
 msgid "Update"
 msgstr "Оновити"
@@ -106,21 +107,21 @@ msgid "No short description provided... "
 msgstr "Не предоставлено корткий опис"
 
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:8
-#: users/templates/notifications_pages/notifications_pagination.html:9
+#: users/templates/notifications_pages/notifications_pagination.html:8
 msgid "Date added ascending"
 msgstr "Дата додавання зростаюча"
 
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:9
-#: users/templates/notifications_pages/notifications_pagination.html:10
+#: users/templates/notifications_pages/notifications_pagination.html:9
 msgid "Date dadded descending"
 msgstr "Дата додавання спадна"
 
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:14
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:15
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_pagination.html:16
+#: users/templates/notifications_pages/notifications_pagination.html:14
 #: users/templates/notifications_pages/notifications_pagination.html:15
 #: users/templates/notifications_pages/notifications_pagination.html:16
-#: users/templates/notifications_pages/notifications_pagination.html:17
 msgid "Show"
 msgstr "Показати"
 
@@ -133,6 +134,8 @@ msgid "Title"
 msgstr "Назва"
 
 #: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:19
+#: cargos_main/templates/managing_cargos/preview_cargos/preview_cargos_table.html:36
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:48
 #: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:102
 msgid "Retrieve"
 msgstr "Дістати вантаж"
@@ -141,20 +144,22 @@ msgstr "Дістати вантаж"
 msgid "Latest Cargos"
 msgstr "Останні додані вантажі"
 
-#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:64
-msgid "Dated Cargos"
-msgstr "Зіпсовані вантажі"
-
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:36
 #: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:90
 msgid "View"
 msgstr "Переглянути"
 
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:44
 #: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:98
 #: users/templates/notifications_pages/notification_single.html:38
 #: users/templates/notifications_pages/notifications_table.html:27
 #: users/templates/notifications_pages/notifications_unread_first.html:49
 msgid "Remove"
 msgstr "Видалити"
+
+#: shared_logic/templates/utils/includes/index_page_template/carousel_cargos.html:64
+msgid "Dated Cargos"
+msgstr "Зіпсовані вантажі"
 
 #: shared_logic/templates/utils/includes/page_template/index_banner.html:17
 #: shared_logic/templates/utils/includes/page_template/menu.html:30
@@ -180,6 +185,16 @@ msgstr "Вийти"
 #: shared_logic/templates/utils/includes/page_template/menu.html:61
 msgid "Sign In"
 msgstr "Увійти"
+
+#: shared_logic/templates/utils/includes/signIn_form.html:11
+msgid "A cargos managing service"
+msgstr "Сервіс роботи із вантажами"
+
+#: shared_logic/templates/utils/includes/signIn_form.html:12
+msgid ""
+"If you are a manager you may log in, if you are not yet registered, please "
+"contact admin."
+msgstr "Ви можете зайти, будучи менеджером, або, якщо ви незареєстрований користувач - зверніться до адміна по допомогу."
 
 #: users/templates/notifications_pages/notification_single.html:8
 msgid "Cargo has spoilt"

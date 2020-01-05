@@ -49,16 +49,16 @@
                         .text('Unignore')
                         .addClass('btn btn-primary col-md-12 unignore')
                         .attr({'disabled': item.unread})),
-            ).addClass(item.unread ? 'table-warning' : 'table-secondary').appendTo('#notifies_table tbody');
+            ).addClass(item.unread ? 'table-warning' : 'bg bg-white').appendTo('#notifies_table tbody');
             //console.log(tr.wrap('<p>').html());
         });
     }
 
-    function ignore(pk, mode) {
+    function ignore(pk, mode, show) {
         $.ajax({
             type: "GET",
             url: "{% url 'users:notify_ignore' %}",
-            data: {'pk': pk, 'ignore': mode},
+            data: {'pk': pk, 'ignore': mode, 'show': show},
             success: function (data) {
                 // generate new table
                 console.log(data);
@@ -70,11 +70,11 @@
         });
     }
 
-    function remove(pk) {
+    function remove(pk, show) {
         $.ajax({
             type: "GET",
             url: "{% url 'users:notify_remove' %}",
-            data: {'pk': pk},
+            data: {'pk': pk, 'show': show},
             success: function (data) {
                 // generate new table
                 console.log(data);
@@ -86,24 +86,31 @@
         });
     }
 
+    var show = 5;
     $(document).ready(function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        show = urlParams.get('show');
+        if (show === null) {
+            show = 5
+        }
+        console.log(show)
     });
 
     $(document).on('click', '.ignore', function (e) {
         let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
         console.log(pk);
-        ignore(pk, true)
+        ignore(pk, true, show)
     });
 
     $(document).on('click', '.unignore', function (e) {
         let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
         console.log(pk);
-        ignore(pk, false)
+        ignore(pk, false, show)
     });
 
     $(document).on('click', '.remove', function (e) {
         let pk = $(e.target.parentElement.parentElement).find('.pk')[0].innerText;
         console.log(pk);
-        remove(pk)
+        remove(pk, show)
     });
 </script>

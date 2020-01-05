@@ -14,7 +14,6 @@ def create_search_queryset(search, storage, fields):
     # category = to_category_name(int(data['category']), CATEGORY_CHOICES)
 
     entry_query = get_query(search, [to_format(field) for field in fields])
-    print(entry_query)
     found_entries = Cargo.objects.filter(entry_query).order_by("-date_added")
     return found_entries
 

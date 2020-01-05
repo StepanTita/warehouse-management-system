@@ -126,7 +126,6 @@ class SearchRequestView(APIView):
 
         json_data = json.loads(search_json)
         result = [obj['fields'] for obj in json_data]
-        print(result)
         return Response(result)
 
 

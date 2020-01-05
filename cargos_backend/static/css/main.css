@@ -11,10 +11,6 @@
     padding: 0;
 }
 
-.nice-select {
-    float: none !important;
-}
-
 .section_gap {
     padding: 100px 0;
 }
@@ -1002,7 +998,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-checkbox input:checked + label {
-    background: url(../img/elements/primary-check.png) no-repeat center center/cover;
     border: none;
 }
 
@@ -1040,7 +1035,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .confirm-checkbox input:checked + label {
-    background: url(../img/elements/success-check.png) no-repeat center center/cover;
     border: none;
 }
 
@@ -1083,7 +1077,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disabled-checkbox input:checked + label {
-    background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
     border: none;
 }
 
@@ -1121,7 +1114,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .primary-radio input:checked + label {
-    background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
     border: none;
 }
 
@@ -1159,7 +1151,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .confirm-radio input:checked + label {
-    background: url(../img/elements/success-radio.png) no-repeat center center/cover;
     border: none;
 }
 
@@ -1202,7 +1193,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .disabled-radio input:checked + label {
-    background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
     border: none;
 }
 
@@ -2201,8 +2191,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .exclusive-deal-area .exclusive-left {
-    position: realtive;
-    background: url(../img/exclusive.jpg) center no-repeat;
     background-size: cover;
     text-align: center;
     padding: 275px 0;
@@ -2691,16 +2679,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .quick-view-carousel-details .owl-controls .owl-dots .owl-dot:nth-child(1) {
-    background: url(../img/ob1.jpg);
     margin-left: 0;
 }
 
 .quick-view-carousel-details .owl-controls .owl-dots .owl-dot:nth-child(2) {
-    background: url(../img/ob2.jpg);
 }
 
 .quick-view-carousel-details .owl-controls .owl-dots .owl-dot:nth-child(3) {
-    background: url(../img/ob3.jpg);
 }
 
 .quick-view-carousel-details .owl-controls .owl-dots .owl-dot.active {
@@ -2719,16 +2704,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .organic-body .quick-view-carousel .owl-controls .owl-dots .owl-dot:nth-child(1) {
-    background: url(../img/organic-food/ob1.jpg);
     margin-left: 0;
 }
 
 .organic-body .quick-view-carousel .owl-controls .owl-dots .owl-dot:nth-child(2) {
-    background: url(../img/organic-food/ob2.jpg);
 }
 
 .organic-body .quick-view-carousel .owl-controls .owl-dots .owl-dot:nth-child(3) {
-    background: url(../img/organic-food/ob3.jpg);
 }
 
 .organic-body .organic span {
@@ -3641,7 +3623,6 @@ label {
     content: "";
     height: 1px;
     width: 500px;
-    background: url(../img/logo/title-line.png) repeat;
     top: 50%;
     right: 120%;
     transform: translateY(-50%);
@@ -3652,7 +3633,6 @@ label {
     content: "";
     height: 1px;
     width: 500px;
-    background: url(../img/logo/title-line.png) repeat;
     top: 50%;
     left: 120%;
     transform: translateY(-50%);
@@ -3676,7 +3656,6 @@ label {
     content: "";
     height: 1px;
     width: 200px;
-    background: url(../img/logo/title-line.png) repeat;
     top: 50%;
     right: 107%;
     transform: translateY(-50%);
@@ -3687,7 +3666,6 @@ label {
     content: "";
     height: 1px;
     width: 2000px;
-    background: url(../img/logo/title-line.png) repeat;
     top: 50%;
     left: 107%;
     transform: translateY(-50%);
@@ -3767,7 +3745,6 @@ label {
     border-radius: 50%;
     transform: rotate(-25deg);
     position: absolute;
-    background: url(../img/logo/discount-shape.svg) no-repeat center center/cover;
     z-index: 5;
 }
 

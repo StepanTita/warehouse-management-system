@@ -1,8 +1,7 @@
 <!-- Start Filter Bar -->
 {% load static i18n %}
 <div class="filter-bar d-flex flex-wrap align-items-center">
-    <
-    <form action="#" method="get" class="row container">
+    <form action="#" method="get" class="row col-md-6">
         {% csrf_token %}
         <div class="sorting">
             <select name="sort" onchange="this.form.submit()">
@@ -20,7 +19,7 @@
     </form>
 
 
-    <div class="pagination">
+    <div class="pagination col-md-6 d-flex justify-content-end">
         <a {% if notifications.has_previous %}
             href="?page={{ notifications.previous_page_number }}&{{ search_params }}" {% endif %}
             class="prev-arrow">

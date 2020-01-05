@@ -12,21 +12,6 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
-# ~~~~~~~~~~~~~~~~MAIL~~~~~~~~~~~~~~~~
-# MAILER_LIST = ['shahid@trialx.com']
-#
-# EMAIL_HOST = 'smtp.XXXX'
-#
-# EMAIL_HOST_USER = 'abc'
-#
-# EMAIL_HOST_PASSWORD = '123'
-#
-# EMAIL_PORT = 587
-#
-# EMAIL_USE_TLS = True
-#
-# DEFAULT_FROM_EMAIL = 'info@trialx.com'
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -34,13 +19,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'jl64p-4vhdoqnmubi8%%dwsws=6w*8dto*#3k%e65!#dbi(#wc'
+SECRET_KEY = '------------HIDDEN------------'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-ADMINS = [('stepan', 'stepun.tita@gmail.com'), ]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # TO CHANGE
+ADMINS = (('stepan', 'stepun.tita@gmail.com'),)
 
 # Application definition
 
@@ -230,8 +215,14 @@ DJANGO_NOTIFICATIONS_CONFIG = {'SOFT_DELETE': True}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+# Configure Django App for Heroku.
+import django_heroku
+
+django_heroku.settings(locals())

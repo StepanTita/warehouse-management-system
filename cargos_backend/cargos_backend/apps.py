@@ -18,9 +18,9 @@ class SuitConfig(DjangoSuitConfig):
             ChildItem(model='notifications.notification'),
         ], icon='fa fa-exclamation'),
         ParentItem('Right Side Menu', children=[
+            ChildItem('Backup', url='backup_view'),
             ChildItem('Password change', url='admin:password_change'),
             ChildItem('Open Google', url='http://google.com', target_blank=True),
-            ChildItem('Backup', url='backup_view')
 
         ], align_right=True, icon='fa fa-cog'),
     )

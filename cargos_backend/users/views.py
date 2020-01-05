@@ -66,10 +66,10 @@ def notify_ignore(request):
     notifies_as_table_unread, notifies_as_table_read = notifies_response(request.user,
                                                                          request.GET.get('pk'),
                                                                          request.GET.get('ignore'))
-
+    show = int(request.GET.get('show', 5))
     return JsonResponse({
-        'notifies_unread': notifies_as_table_unread,
-        'notifies_read': notifies_as_table_read,
+        'notifies_unread': notifies_as_table_unread[:show],
+        'notifies_read': notifies_as_table_read[:show - len(notifies_as_table_unread[:show])],
         'locale': request.LANGUAGE_CODE,
     })
 
@@ -78,10 +78,10 @@ def notify_ignore(request):
 def notify_remove(request):
     notifies_as_table_unread, notifies_as_table_read = notifies_response(request.user,
                                                                          request.GET.get('pk'))
-
+    show = int(request.GET.get('show', 5))
     return JsonResponse({
-        'notifies_unread': notifies_as_table_unread,
-        'notifies_read': notifies_as_table_read,
+        'notifies_unread': notifies_as_table_unread[:show],
+        'notifies_read': notifies_as_table_read[:show - len(notifies_as_table_unread[:show])],
         'locale': request.LANGUAGE_CODE,
     })
 
@@ -160,10 +160,7 @@ def csrf_exempt(view_func):
 @csrf_exempt
 def authentificate_mobile(request):
     json_data = json.loads(request.body)
-    print(json_data)
-    print("~~~~~~~Hi~~~~~~~")
     if request.method == 'POST':
-        print("~~~~~~~POST~OK~~~~~~~")
         user_login = json_data['login']
         password = json_data['password']
         try:
@@ -182,11 +179,9 @@ class MobileObjectsView(APIView):
         data = serializers.serialize("json", Cargo.objects.all())
         json_data = json.loads(data)
         result = [obj['fields'] for obj in json_data]
-        # print(result)
         return Response(result)
 
     def post(self, request):
-        # print(help(request))
         content = {'message': 'Hello, World!'}
         return Response(content)
 
@@ -209,7 +204,6 @@ class MobileNotificationsView(APIView):
             result = [obj['fields'] for obj in json_data]
             result = [{'verb': notif['verb'], 'target': self.get_cargo_name_safe(notif['actor_object_id'])} for notif in
                       result]
-            # print(result)
             return Response(result)
         else:
             data = Notification.objects.filter(recipient=request.user.id)
@@ -224,11 +218,9 @@ class MobileNotificationsView(APIView):
             result = [obj['fields'] for obj in json_data]
             result = [{'verb': notif['verb'], 'target': self.get_cargo_name_safe(notif['actor_object_id'])} for notif in
                       result]
-            print(result)
             return Response(result)
 
     def post(self, request):
-        # print(help(request))
         content = {'message': 'Hello, World!'}
         return Response(content)
 
