@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'notifications',
     'crispy_forms',
     'rest_framework.authtoken',
+    'dbbackup_ui',
 
     # Local Apps
     'cargos_main',

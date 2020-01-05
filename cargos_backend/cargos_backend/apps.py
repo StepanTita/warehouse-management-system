@@ -20,6 +20,7 @@ class SuitConfig(DjangoSuitConfig):
         ParentItem('Right Side Menu', children=[
             ChildItem('Password change', url='admin:password_change'),
             ChildItem('Open Google', url='http://google.com', target_blank=True),
+            ChildItem('Backup', url='backup_view')
 
         ], align_right=True, icon='fa fa-cog'),
     )

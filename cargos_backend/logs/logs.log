@@ -64506,3 +64506,95 @@ INFO "GET /users/notifyCreate/ HTTP/1.1" 200 17
 INFO "GET /users/notifyCreate/ HTTP/1.1" 200 17
 INFO "GET /users/notifyCreate/ HTTP/1.1" 200 17
 INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 2209
+INFO Watching for file changes with StatReloader
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /users/notificationsView/ HTTP/1.1" 200 24389
+INFO "GET /static/css/main.css HTTP/1.1" 304 0
+WARNING "GET /users/notificationsView/img/i1.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i5.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i3.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i2.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i4.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i7.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i8.jpg HTTP/1.1" 404 6354
+WARNING "GET /users/notificationsView/img/i6.jpg HTTP/1.1" 404 6354
+INFO "GET /static/img/fav.png HTTP/1.1" 200 2566
+INFO "GET /admin/ HTTP/1.1" 200 13878
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 2209
+INFO "GET /admin/ HTTP/1.1" 200 13878
+WARNING Django Suit was unable to retrieve apps list for menu.
+ERROR "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 500 287102
+WARNING "GET /admin/backups/ HTTP/1.1" 404 6666
+WARNING Django Suit was unable to retrieve apps list for menu.
+ERROR "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 500 287231
+INFO Watching for file changes with StatReloader
+INFO "GET /admin/ HTTP/1.1" 200 13878
+INFO "GET /admin/ HTTP/1.1" 200 13878
+INFO "GET /admin/ HTTP/1.1" 200 13878
+INFO "GET /admin/ HTTP/1.1" 200 13878
+INFO "GET /admin/authtoken/token/ HTTP/1.1" 200 11410
+INFO "GET /admin/jsi18n/ HTTP/1.1" 200 3223
+INFO "GET /admin/cargos_main/cargo/ HTTP/1.1" 200 11672
+INFO "GET /admin/jsi18n/ HTTP/1.1" 200 3223
+INFO "GET /admin/auth/user/ HTTP/1.1" 200 13401
+INFO "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO "GET /admin/jsi18n/ HTTP/1.1" 200 3223
+INFO "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO "GET /static/admin/img/icon-yes.svg HTTP/1.1" 304 0
+INFO "GET /admin/password_change/ HTTP/1.1" 200 8303
+INFO "GET / HTTP/1.1" 200 34461
+WARNING "GET /img/i1.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i2.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i3.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i5.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i6.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i8.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i7.jpg HTTP/1.1" 404 4092
+WARNING "GET /img/i4.jpg HTTP/1.1" 404 4092
+INFO "GET /inbox/notifications/api/unread_list/?max=5 HTTP/1.1" 200 2209
+INFO "GET /admin/ HTTP/1.1" 200 13878
+WARNING "GET /admin/backups HTTP/1.1" 404 6568
+WARNING "GET /admin/backups/ HTTP/1.1" 404 6666
+WARNING Django Suit was unable to retrieve apps list for menu.
+ERROR "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 500 287102
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/apps.py changed, reloading.
+INFO Watching for file changes with StatReloader
+WARNING Django Suit was unable to retrieve apps list for menu.
+ERROR "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 500 287362
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/apps.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 200 5256
+INFO "GET /static/admin/css/base.css HTTP/1.1" 200 16378
+INFO "GET /static/admin/css/fonts.css HTTP/1.1" 304 0
+INFO "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO "GET /static/admin/fonts/Roboto-Bold-webfont.woff HTTP/1.1" 200 86184
+INFO "GET /static/admin/fonts/Roboto-Light-webfont.woff HTTP/1.1" 200 85692
+INFO "GET /static/admin/fonts/Roboto-Regular-webfont.woff HTTP/1.1" 200 85876
+INFO "POST /admin/backups/backup-database-and-media/ HTTP/1.1" 200 11716
+INFO "POST /admin/backups/backup-database-and-media/ HTTP/1.1" 200 10617447
+INFO "GET /admin/ HTTP/1.1" 200 8670
+INFO "GET /admin/ HTTP/1.1" 200 8670
+INFO "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 200 5256
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/settings.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /admin/login/?next=/admin/auth/user/ HTTP/1.1" 302 0
+INFO "GET /admin/ HTTP/1.1" 200 13878
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/apps.py changed, reloading.
+INFO Watching for file changes with StatReloader
+WARNING Django Suit was unable to retrieve apps list for menu.
+ERROR "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 500 287368
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/apps.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/apps.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /admin/ HTTP/1.1" 200 14048
+WARNING "GET /admin/dbbackup_ui:backup_view HTTP/1.1" 404 6616
+INFO /home/stepan/PycharmProjects/cargos_backend/cargos_backend/cargos_backend/apps.py changed, reloading.
+INFO Watching for file changes with StatReloader
+INFO "GET /admin/ HTTP/1.1" 200 14066
+WARNING Django Suit was unable to retrieve apps list for menu.
+ERROR "GET /admin/backups/backup-database-and-media/ HTTP/1.1" 500 287386
