@@ -23,9 +23,10 @@ from .forms import NewCargoForm, SearchForm
 from .models import Cargo
 
 
-# @view_status_logger
+@view_status_logger
 @login_required(login_url="users:sign_in")
 def index(request):
+    # raise AttributeError
     search_form = SearchForm()
     return render(request, 'main_control/controller/control.html',
                   {
@@ -36,7 +37,7 @@ def index(request):
                   })
 
 
-# @view_status_logger
+@view_status_logger
 @login_required(login_url='users:sign_in')
 def new_cargo(request):
     search_form = SearchForm()

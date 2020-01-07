@@ -19,18 +19,22 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '------------HIDDEN------------'
+# SECRET_KEY = 'jl64p-4vhdoqnmubi8%%dwsws=6w*8dto*#3k%e65!#dbi(#wc'
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = int(os.environ.get("DEBUG", default=0))
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']  # TO CHANGE
+
 ADMINS = (('stepan', 'stepun.tita@gmail.com'),)
 
 # Application definition
 
 INSTALLED_APPS = [
-    'cargos_backend.apps.SuitConfig',
+    #'cargos_backend.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -99,15 +103,21 @@ WSGI_APPLICATION = 'cargos_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cargos_storage',
-        'USER': 'cargos_admin',
-        'PASSWORD': 'cargos_admin',
-        'HOST': 'localhost',
-        # 'PORT': '5432',
-        'TEST': {
-            'NAME': 'test_cargos_storage',
-        },
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'cargos_storage',
+        # 'USER': 'cargos_admin',
+        # 'PASSWORD': 'cargos_admin',
+        # 'HOST': 'localhost',
+        # # 'PORT': '5432',
+        # 'TEST': {
+        #     'NAME': 'test_cargos_storage',
+        # },
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
 
@@ -129,65 +139,40 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
-            'style': '{',
-        },
-        'simple': {
-            'format': '{levelname} {message}',
-            'style': '{',
-        },
-    },
-    'filters': {
-        'require_debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse',
-        },
-    },
-    'handlers': {
-        'default': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': 'logs/logs.log',
-            'backupCount': 5,
-            'formatter': 'simple',
-        },
-        'console': {
-            'level': 'INFO',
-            'filters': ['require_debug_true'],
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
-        'mail_admins': {
-            'level': 'ERROR',
-            'class': 'django.utils.log.AdminEmailHandler',
-            'include_html': True,
-            'filters': ['require_debug_true', 'require_debug_false'],
-        }
-    },
-    'loggers': {
-        '': {
-            'handlers': ['default'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'django': {
-            'handlers': ['console'],
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-    }
-}
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'filters': {
+#         'require_debug_false': {
+#             '()': 'django.utils.log.RequireDebugFalse'
+#         }
+#     },
+#     'handlers': {
+#         'mail_admins': {
+#             'level': 'ERROR',
+#             'filters': ['require_debug_false'],
+#             'class': 'django.utils.log.AdminEmailHandler'
+#         },
+#         'applogfile': {
+#             'level': 'ERROR',
+#             'filename': os.path.join(BASE_DIR, 'logs/logs.log'),
+#             'maxBytes': 1024 * 1024 * 15,  # 15MB
+#             'backupCount': 10,
+#         },
+#     },
+#     'loggers': {
+#         'django.request': {
+#             'handlers': ['mail_admins', ],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#         'status_logger': {
+#             'handlers': ['applogfile', ],
+#             'level': 'ERROR',
+#             'propagate': True,
+#         },
+#     }
+# }
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
