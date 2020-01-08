@@ -24,7 +24,7 @@ def view_status_logger(func):
         #     raise forms.ValidationError(ve)
         except Exception as e:
             # logging.exception('~' * 30 + 'Errors happened' + 30 * '~')
-            logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+            logging.exception('~' * 30 + 'Errors happened' + 30 * '~')
             ex_args = e
         else:
             return res
@@ -43,7 +43,7 @@ def class_status_logger(func):
         # except ValidationError as ve:
         #     raise ValidationError(ve)
         except Exception as e:
-            logging.error(e.args)
+            logging.exception('~' * 30 + 'Errors happened' + 30 * '~')
             ex_args = e.args
             raise Http404("Query error occurred.", e.args)
         return res

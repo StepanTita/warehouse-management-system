@@ -111,5 +111,5 @@ def update_cells(sender, instance, **kwargs):
     for i in range(rs):
         for j in range(els):
             for k in range(pos):
-                if Cell.objects.all().get(row=i, elevation=j, position=k, storage=instance) is None:
+                if Cell.objects.all().filter(row=i, elevation=j, position=k, storage=instance).first() is None:
                     add_cell_fields(row=i, el=j, pos=k, storage=instance)

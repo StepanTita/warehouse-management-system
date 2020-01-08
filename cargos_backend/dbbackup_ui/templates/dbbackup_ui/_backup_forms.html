@@ -1,0 +1,21 @@
+{% load static i18n %}
+
+<h2>{% trans 'Backup database' %}</h2>
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ database_backup_form.as_p }}
+    <div class="submit-row">
+        <input type="submit" class="button" name="savebackup" value="{% trans 'Download database backup' %}">
+    </div>
+</form>
+<br/>
+<hr/>
+
+<h2>{% trans 'Backup media' %}</h2>
+<form method="post" action=".">
+    {% csrf_token %}
+    {{ media_backup_form.as_p }}
+    <div class="submit-row">
+        <input type="submit" class="button" name="mediabackup" value="{% trans 'Download media backup' %}">
+    </div>
+</form>

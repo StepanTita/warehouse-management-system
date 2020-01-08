@@ -34,7 +34,7 @@ ADMINS = (('stepan', 'stepun.tita@gmail.com'),)
 # Application definition
 
 INSTALLED_APPS = [
-    #'cargos_backend.apps.SuitConfig',
+    'cargos_backend.apps.SuitConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -201,13 +201,16 @@ DJANGO_NOTIFICATIONS_CONFIG = {'SOFT_DELETE': True}
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
-STATIC_URL = '/static/'
-
+# STATIC_URL = '/static/'
+#
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-# Configure Django App for Heroku.
-import django_heroku
+STATIC_URL = "/staticfiles/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
-django_heroku.settings(locals())
+# Configure Django App for Heroku.
+# import django_heroku
+#
+# django_heroku.settings(locals())

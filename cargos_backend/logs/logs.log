@@ -222,3 +222,816 @@ Traceback (most recent call last):
 TypeError: 'NoneType' object is not iterable
 2020-01-07 12:33:58,087 INFO /usr/src/cargos_backend/cargos_backend/settings.py changed, reloading.
 2020-01-07 12:38:03,068 INFO /usr/src/cargos_backend/shared_logic/status_logger/status_logger.py changed, reloading.
+2020-01-07 12:42:45,978 INFO /usr/src/cargos_backend/cargos_backend/settings.py changed, reloading.
+2020-01-07 12:43:39,022 ERROR Internal Server Error: /admin/backups/backup-database-and-media/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 139, in run_command
+    env=full_env)
+  File "/usr/local/lib/python3.6/subprocess.py", line 729, in __init__
+    restore_signals, start_new_session)
+  File "/usr/local/lib/python3.6/subprocess.py", line 1364, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/cargos_backend/dbbackup_ui/views.py", line 44, in post
+    outputfile, filename = database_backup_form.do_backup()
+  File "/usr/src/cargos_backend/dbbackup_ui/forms.py", line 17, in do_backup
+    return backup_database(self.cleaned_data['database'])
+  File "/usr/src/cargos_backend/dbbackup_ui/utils.py", line 12, in backup_database
+    outputfile = connector.create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 76, in create_dump
+    dump = self._create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 37, in _create_dump
+    stdout, stderr = self.run_command(cmd, env=self.dump_env)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 21, in run_command
+    return super(PgDumpConnector, self).run_command(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 150, in run_command
+    "Error running: {}\n{}".format(command, str(err)))
+dbbackup.db.exceptions.CommandConnectorError: Error running:  pg_dump cargos_storage --host=db --port=5432 --username=cargos_admin --no-password --clean 
+[Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+2020-01-07 12:54:43,197 ERROR Internal Server Error: /admin/backups/backup-database-and-media/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 139, in run_command
+    env=full_env)
+  File "/usr/local/lib/python3.6/subprocess.py", line 729, in __init__
+    restore_signals, start_new_session)
+  File "/usr/local/lib/python3.6/subprocess.py", line 1364, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/cargos_backend/dbbackup_ui/views.py", line 44, in post
+    outputfile, filename = database_backup_form.do_backup()
+  File "/usr/src/cargos_backend/dbbackup_ui/forms.py", line 17, in do_backup
+    return backup_database(self.cleaned_data['database'])
+  File "/usr/src/cargos_backend/dbbackup_ui/utils.py", line 12, in backup_database
+    outputfile = connector.create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 76, in create_dump
+    dump = self._create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 37, in _create_dump
+    stdout, stderr = self.run_command(cmd, env=self.dump_env)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 21, in run_command
+    return super(PgDumpConnector, self).run_command(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 150, in run_command
+    "Error running: {}\n{}".format(command, str(err)))
+dbbackup.db.exceptions.CommandConnectorError: Error running:  pg_dump cargos_storage --host=db --port=5432 --username=cargos_admin --no-password --clean 
+[Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+2020-01-07 13:51:23,585 WARNING Not Found: /accounts/login/
+2020-01-07 13:51:23,941 WARNING Not Found: /favicon.ico
+2020-01-07 13:51:31,042 WARNING Not Found: /accounts/login/
+2020-01-07 13:51:34,073 WARNING Not Found: /accounts/login/
+2020-01-07 14:00:10,781 ERROR Internal Server Error: /admin/backups/backup-database-and-media/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 139, in run_command
+    env=full_env)
+  File "/usr/local/lib/python3.6/subprocess.py", line 729, in __init__
+    restore_signals, start_new_session)
+  File "/usr/local/lib/python3.6/subprocess.py", line 1364, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/cargos_backend/dbbackup_ui/views.py", line 44, in post
+    outputfile, filename = database_backup_form.do_backup()
+  File "/usr/src/cargos_backend/dbbackup_ui/forms.py", line 17, in do_backup
+    return backup_database(self.cleaned_data['database'])
+  File "/usr/src/cargos_backend/dbbackup_ui/utils.py", line 12, in backup_database
+    outputfile = connector.create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 76, in create_dump
+    dump = self._create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 37, in _create_dump
+    stdout, stderr = self.run_command(cmd, env=self.dump_env)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 21, in run_command
+    return super(PgDumpConnector, self).run_command(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 150, in run_command
+    "Error running: {}\n{}".format(command, str(err)))
+dbbackup.db.exceptions.CommandConnectorError: Error running:  pg_dump cargos_storage --host=db --port=5432 --username=cargos_admin --no-password --clean 
+[Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+2020-01-07 14:19:03,536 WARNING Not Found: /accounts/login/
+2020-01-07 14:19:40,224 WARNING Not Found: /accounts/login/
+2020-01-07 14:19:51,920 ERROR Internal Server Error: /admin/backups/backup-database-and-media/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 139, in run_command
+    env=full_env)
+  File "/usr/local/lib/python3.6/subprocess.py", line 729, in __init__
+    restore_signals, start_new_session)
+  File "/usr/local/lib/python3.6/subprocess.py", line 1364, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/cargos_backend/dbbackup_ui/views.py", line 44, in post
+    outputfile, filename = database_backup_form.do_backup()
+  File "/usr/src/cargos_backend/dbbackup_ui/forms.py", line 17, in do_backup
+    return backup_database(self.cleaned_data['database'])
+  File "/usr/src/cargos_backend/dbbackup_ui/utils.py", line 12, in backup_database
+    outputfile = connector.create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 76, in create_dump
+    dump = self._create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 37, in _create_dump
+    stdout, stderr = self.run_command(cmd, env=self.dump_env)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 21, in run_command
+    return super(PgDumpConnector, self).run_command(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 150, in run_command
+    "Error running: {}\n{}".format(command, str(err)))
+dbbackup.db.exceptions.CommandConnectorError: Error running:  pg_dump cargos_storage --host=db --port=5432 --username=cargos_admin --no-password --clean 
+[Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+2020-01-07 17:59:49,540 WARNING Not Found: /accounts/login/
+2020-01-07 17:59:49,894 WARNING Not Found: /favicon.ico
+2020-01-07 18:00:04,242 ERROR Internal Server Error: /admin/backups/backup-database-and-media/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 139, in run_command
+    env=full_env)
+  File "/usr/local/lib/python3.6/subprocess.py", line 729, in __init__
+    restore_signals, start_new_session)
+  File "/usr/local/lib/python3.6/subprocess.py", line 1364, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/mixins.py", line 109, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/src/cargos_backend/dbbackup_ui/views.py", line 44, in post
+    outputfile, filename = database_backup_form.do_backup()
+  File "/usr/src/cargos_backend/dbbackup_ui/forms.py", line 17, in do_backup
+    return backup_database(self.cleaned_data['database'])
+  File "/usr/src/cargos_backend/dbbackup_ui/utils.py", line 12, in backup_database
+    outputfile = connector.create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 76, in create_dump
+    dump = self._create_dump()
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 37, in _create_dump
+    stdout, stderr = self.run_command(cmd, env=self.dump_env)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/postgresql.py", line 21, in run_command
+    return super(PgDumpConnector, self).run_command(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/dbbackup/db/base.py", line 150, in run_command
+    "Error running: {}\n{}".format(command, str(err)))
+dbbackup.db.exceptions.CommandConnectorError: Error running:  pg_dump cargos_storage --host=db --port=5432 --username=cargos_admin --no-password --clean 
+[Errno 2] No such file or directory: 'pg_dump': 'pg_dump'
+2020-01-07 19:05:18,002 WARNING Not Found: /accounts/login/
+2020-01-07 19:52:07,542 ERROR Internal Server Error: /admin/cargos_main/storage/add/
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/admin/options.py", line 606, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1634, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/usr/local/lib/python3.6/site-packages/django/utils/decorators.py", line 45, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1522, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1561, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1088, in save_model
+    obj.save()
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/base.py", line 741, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/base.py", line 790, in save_base
+    update_fields=update_fields, raw=raw, using=using,
+  File "/usr/local/lib/python3.6/site-packages/django/dispatch/dispatcher.py", line 175, in send
+    for receiver in self._live_receivers(sender)
+  File "/usr/local/lib/python3.6/site-packages/django/dispatch/dispatcher.py", line 175, in <listcomp>
+    for receiver in self._live_receivers(sender)
+  File "/usr/src/cargos_backend/cargos_main/cargos_saving.py", line 114, in update_cells
+    if Cell.objects.all().get(row=i, elevation=j, position=k, storage=instance) is None:
+  File "/usr/local/lib/python3.6/site-packages/django/db/models/query.py", line 408, in get
+    self.model._meta.object_name
+cargos_main.models.Cell.DoesNotExist: Cell matching query does not exist.
+2020-01-07 19:53:47,879 INFO /usr/src/cargos_backend/cargos_main/cargos_saving.py changed, reloading.
+2020-01-07 19:55:25,008 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:55:29,979 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:55:34,979 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:55:40,973 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:55:46,970 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:55:52,971 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:55:58,971 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:04,956 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:09,956 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:14,967 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:20,966 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:26,956 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:31,976 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:37,957 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:42,967 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:47,978 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:53,973 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:56:59,971 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:57:05,956 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:57:10,957 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined
+2020-01-07 19:57:15,973 ERROR Internal Server Error: /users/notifyCreate/
+Traceback (most recent call last):
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 22, in wrapper
+    res = func(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapped_view
+    resolved_login_url = resolve_url(login_url or settings.LOGIN_URL)
+  File "/usr/local/lib/python3.6/site-packages/django/shortcuts.py", line 148, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/usr/local/lib/python3.6/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' not found. 'sign_in' is not a valid view function or pattern name.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
+    logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
+NameError: name 'logger' is not defined

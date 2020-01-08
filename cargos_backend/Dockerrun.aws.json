@@ -1,0 +1,68 @@
+{
+    "AWSEBDockerrunVersion": 1,
+    "containerDefinitions": [
+        {
+            "essential": true,
+            "image": "postgres:12.0-alpine",
+            "memory": 256,
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/postgresql/data/",
+                    "sourceVolume": "Postgres_Data"
+                }
+            ],
+            "name": "db"
+        },
+        {
+            "essential": true,
+            "image": "stepantita/nginx_cargos_proxy",
+            "memory": 256,
+            "mountPoints": [
+                {
+                    "containerPath": "/home/app/web/staticfiles",
+                    "sourceVolume": "Static_Volume"
+                }
+            ],
+            "name": "nginx",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 1337
+                }
+            ]
+        },
+        {
+            "command": [
+                "gunicorn",
+                "cargos_backend.wsgi:application",
+                "--bind",
+                "0.0.0.0:8000"
+            ],
+            "essential": true,
+            "image": "stepantita/cargos_backend",
+            "memory": 256,
+            "mountPoints": [
+                {
+                    "containerPath": "/home/app/web/staticfiles",
+                    "sourceVolume": "Static_Volume"
+                }
+            ],
+            "name": "web"
+        }
+    ],
+    "family": "",
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "static_volume"
+            },
+            "name": "Static_Volume"
+        },
+        {
+            "host": {
+                "sourcePath": "postgres_data"
+            },
+            "name": "Postgres_Data"
+        }
+    ]
+}
