@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
   web:
-    build: ./cargos_backend
+    build: ""
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./cargos_backend/:/usr/src/cargos_backend/

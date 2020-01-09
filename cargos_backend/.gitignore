@@ -1,5 +1,13 @@
-
+*.pyc
+*~
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+.env.prod
+.env.prod.db
 # Elastic Beanstalk Files
-.elasticbeanstalk/*
+../.elasticbeanstalk/config.yml
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml

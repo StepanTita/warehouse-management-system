@@ -1,22 +1,36 @@
 {
-    "AWSEBDockerrunVersion": 1,
+    "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
             "essential": true,
             "image": "postgres:12.0-alpine",
-            "memory": 256,
+            "memory": 128,
             "mountPoints": [
                 {
                     "containerPath": "/var/lib/postgresql/data/",
                     "sourceVolume": "Postgres_Data"
                 }
             ],
-            "name": "db"
+            "name": "db",
+            "environment": [
+                {
+                    "name": "POSTGRES_USER",
+                    "value": "cargos_admin"
+                },
+                {
+                    "name": "POSTGRES_PASSWORD",
+                    "value": "cargos_admin"
+                },
+                {
+                    "name": "POSTGRES_DB",
+                    "value": "cargos_storage"
+                }
+            ]
         },
         {
-            "essential": true,
+            "essential": false,
             "image": "stepantita/nginx_cargos_proxy",
-            "memory": 256,
+            "memory": 128,
             "mountPoints": [
                 {
                     "containerPath": "/home/app/web/staticfiles",
@@ -24,10 +38,13 @@
                 }
             ],
             "name": "nginx",
+            "links": [
+                "web:web"
+            ],
             "portMappings": [
                 {
-                    "containerPort": 80,
-                    "hostPort": 1337
+                    "containerPort": 8000,
+                    "hostPort": 80
                 }
             ]
         },
@@ -40,14 +57,59 @@
             ],
             "essential": true,
             "image": "stepantita/cargos_backend",
-            "memory": 256,
+            "memory": 128,
             "mountPoints": [
                 {
                     "containerPath": "/home/app/web/staticfiles",
                     "sourceVolume": "Static_Volume"
                 }
             ],
-            "name": "web"
+            "name": "web",
+            "links": [
+                "db:db"
+            ],
+            "environment": [
+                {
+                    "name": "DEBUG",
+                    "value": 0
+                },
+                {
+                    "name": "SECRET_KEY",
+                    "value": "jl64p-4vhdoqnmubi8%%dwsws=6w*8dto*#3k%e65!#dbi(#wc"
+                },
+                {
+                    "name": "DJANGO_ALLOWED_HOSTS",
+                    "value": "localhost 127.0.0.1 [::1] elasticbeanstalk.com 172.31.31.72 0.0.0.0 172.31.10.246 cargos-backend-prod.us-west-2.elasticbeanstalk.com us-west-2.elasticbeanstalk.com"
+                },
+                {
+                    "name": "SQL_ENGINE",
+                    "value": "django.db.backends.postgresql_psycopg2"
+                },
+                {
+                    "name": "SQL_DATABASE",
+                    "value": "cargos_storage"
+                },
+                {
+                    "name": "SQL_USER",
+                    "value": "cargos_admin"
+                },
+                {
+                    "name": "SQL_PASSWORD",
+                    "value": "cargos_admin"
+                },
+                {
+                    "name": "SQL_HOST",
+                    "value": "db"
+                },
+                {
+                    "name": "SQL_PORT",
+                    "value": 5432
+                },
+                {
+                    "name": "DATABASE",
+                    "value": "postgres"
+                }
+            ]
         }
     ],
     "family": "",

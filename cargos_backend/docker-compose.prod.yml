@@ -3,7 +3,7 @@ version: '3.7'
 services:
   web:
     build:
-      context: ./cargos_backend
+      context: ""
       dockerfile: Dockerfile.prod
     image: stepantita/cargos_backend
     command: gunicorn cargos_backend.wsgi:application --bind 0.0.0.0:8000
@@ -12,7 +12,7 @@ services:
     expose:
       - 8000
     env_file:
-      - ./.env.prod
+      - .env.prod
     depends_on:
       - db
   db:
@@ -20,9 +20,9 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     env_file:
-      - ./.env.prod.db
+      - .env.prod.db
   nginx:
-    build: ./nginx
+    build: nginx
     image: stepantita/nginx_cargos_proxy
     volumes:
       - static_volume:/home/app/web/staticfiles
