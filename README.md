@@ -23,4 +23,4 @@ Project Coordinate A. on storage logistics backend --> https://cargos-backend.he
 ![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile6.jpg)<br>
 <br>
 <h3>IOT device</h3>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/iot-device.gif)<br>
+![Alt Text](resources/iot-device.gif)<br>
