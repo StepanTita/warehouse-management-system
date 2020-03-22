@@ -2,25 +2,24 @@
 Project Coordinate A. on storage logistics backend --> https://cargos-backend.herokuapp.com/ <br>
 <br>
 <h3>Web site</h3><br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site1.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site2.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site3.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site4.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site5.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site6.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site7.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site8.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site9.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site10.png)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/site11.png)<br>
+<img  src="resources/site1.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site2.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site3.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site4.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site5.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site6.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site7.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site8.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site9.png" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/site10.png" height="400" alt="kitten-gif"/> <br>
 <br>
 <h3>Mobile application</h3>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile5.jpg)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile1.jpg)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile2.jpg)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile3.jpg)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile4.jpg)<br>
-![Alt Text](https://github.com/StepanTita/backend_coordinate_A/blob/master/resources/mobile6.jpg)<br>
+<img  src="resources/mobile5.jpg" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/mobile1.jpg" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/mobile2.jpg" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/mobile3.jpg" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/mobile4.jpg" height="400" alt="kitten-gif"/> <br>
+<img  src="resources/mobile6.jpg" height="400" alt="kitten-gif"/> <br>
 <br>
 <h3>IOT device</h3>
 <img  src="resources/iot-device.gif" height="400" alt="kitten-gif"/> 
