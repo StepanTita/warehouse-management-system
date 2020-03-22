@@ -3,7 +3,7 @@ Project Coordinate A. on storage logistics backend --> https://cargos-backend.he
 <br>
 <h3>Web site</h3><br>
 <h6>Auth page</h6>
-<img  src="resources/site1.png" height="400" width="600" alt="kitten-gif"/> <br>
+<img  src="resources/site1.png" height="400" width="800" alt="kitten-gif"/> <br>
 <h6>Main page</h6>
 <img  src="resources/site2.png" height="400" alt="kitten-gif"/> <br>
 <h6>Search</h6>
