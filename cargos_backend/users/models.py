@@ -2,7 +2,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
-from cargos_main.models import Cargo
+from cargos_main.models import Cargo, Company
 
 
 class DateNotifications(models.Model):
@@ -12,3 +12,8 @@ class DateNotifications(models.Model):
 
     def __str__(self):
         return f"Cargo {self.cargo} depraved, user: {self.user}, notified"
+
+
+class UserInCompany(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)

@@ -1,8 +1,17 @@
 import datetime as dt
 
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+
+
+class Company(models.Model):
+    vendor = models.CharField(max_length=200)
+    leader = models.ForeignKey(User, on_delete=models.CASCADE)
+    description = models.TextField(max_length=500)
+    data_registered = models.DateField(auto_now_add=True)
+    website = models.CharField(max_length=200)
 
 
 class Storage(models.Model):
@@ -25,6 +34,8 @@ class Storage(models.Model):
     default_width = models.DecimalField(decimal_places=2, max_digits=9, default=1,
                                         validators=[MinValueValidator(1),
                                                     MaxValueValidator(100)])
+
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return str(self.name) + ', rs: ' + str(self.rows) + ' es: ' + str(self.elevations) + ' ps: ' + str(

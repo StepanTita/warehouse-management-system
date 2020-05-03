@@ -4440,7 +4440,6 @@ label {
 
 .pagination {
     margin-top: 10px;
-    border-left: 1px solid #eee;
     border-radius: 0px;
 }
 
@@ -8176,6 +8175,10 @@ label {
 .footer-text a,
 .footer-text i {
     color: #ffba00;
+}
+
+.pick-language-btn {
+    height: 42px;
 }
 
 /*# sourceMappingURL=main.css.map */

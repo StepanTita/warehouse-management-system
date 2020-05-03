@@ -24,9 +24,5 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('i18n/', include('django.conf.urls.i18n')),
     path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
+    path('shared/', include('shared_logic.urls', namespace='shared'))
 ]
-# urlpatterns += i18n_patterns(
-#     path('', include('cargos_main.urls')),
-#     path('users/', include('users.urls')),
-#     prefix_default_language=False
-# )

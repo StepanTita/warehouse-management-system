@@ -4,7 +4,7 @@ from functools import wraps
 
 from django.contrib.auth import logout, login
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.core import serializers
@@ -26,6 +26,7 @@ from shared_logic.database_queries import get_notifications_unread_first, get_ca
     get_all_notifications, get_cargo_by_pk
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
 from shared_logic.util_vars import NOTIFICATIONS_PER_PAGE
+from users.forms import CompanyCreationForm
 from users.notifies_response import notifies_response
 
 
@@ -124,12 +125,14 @@ class NotificationDetailView(LoginRequiredMixin, DetailView):
 class SignInFormView(FormView):
     form_class = AuthenticationForm
     # form_class = CustomAuthenticationForm
-    template_name = "user_actions/signIn.html"
+    template_name = 'user_actions/signIn.html'
 
     @class_status_logger
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['table_name'] = "Sign In"
+        context['table_name'] = 'Sign In'
+        if 'action' in self.request.GET:
+            logout(self.request)
         return context
 
     @class_status_logger
@@ -142,11 +145,42 @@ class SignInFormView(FormView):
         return reverse('index')
 
 
+class SignUpFormView(FormView):
+    form_class = UserCreationForm
+    template_name = 'user_actions/signUp.html'
+
+    @class_status_logger
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['table_name'] = 'Sign Up'
+        if 'action' in self.request.GET:
+            logout(self.request)
+        return context
+
+    @class_status_logger
+    def form_valid(self, form):
+        form.save()
+        return redirect(self.get_success_url())
+
+    @class_status_logger
+    def get_success_url(self):
+        return reverse('index')
+
+
+class CompanyRegisterFormView(FormView):
+    form_class = CompanyCreationForm
+    template_name = 'company_management/registerCompany.html'
+
+    def get(self, request, *args, **kwargs):
+        print(*(f"{k} = '{v}'" for k, v in request.GET.items() if 'csrf' not in k))
+        return super().get(request, *args, **kwargs)
+
+
 # ------------------------MOBILE----------------------------
 
 
 def csrf_exempt(view_func):
-    """Mark a view function as being exempt from the CSRF view protection."""
+    '''Mark a view function as being exempt from the CSRF view protection.'''
 
     # view_func.csrf_exempt = True would also work, but decorators are nicer
     # if they don't have side effects, so return a new function.
@@ -169,14 +203,14 @@ def authentificate_mobile(request):
             found_user = False
 
         return HttpResponse(found_user is None)
-    return HttpResponse("Error")
+    return HttpResponse('Error')
 
 
 class MobileObjectsView(APIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        data = serializers.serialize("json", Cargo.objects.all())
+        data = serializers.serialize('json', Cargo.objects.all())
         json_data = json.loads(data)
         result = [obj['fields'] for obj in json_data]
         return Response(result)
@@ -190,7 +224,7 @@ class MobileNotificationsView(APIView):
     # permission_classes = (IsAuthenticated,)
 
     def get_cargo_name_safe(self, pk):
-        cargo_name = "Not found"
+        cargo_name = 'Not found'
         try:
             cargo_name = get_cargo_by_pk(pk).title
         except ObjectDoesNotExist:
@@ -199,7 +233,7 @@ class MobileNotificationsView(APIView):
 
     def get(self, request):
         if not request.GET:
-            data = serializers.serialize("json", Notification.objects.filter(recipient=request.user.id))
+            data = serializers.serialize('json', Notification.objects.filter(recipient=request.user.id))
             json_data = json.loads(data)
             result = [obj['fields'] for obj in json_data]
             result = [{'verb': notif['verb'], 'target': self.get_cargo_name_safe(notif['actor_object_id'])} for notif in
@@ -213,7 +247,7 @@ class MobileNotificationsView(APIView):
                     notif.emailed = True
                     notif.save()
                     new.append(notif)
-            new_ser = serializers.serialize("json", new)
+            new_ser = serializers.serialize('json', new)
             json_data = json.loads(new_ser)
             result = [obj['fields'] for obj in json_data]
             result = [{'verb': notif['verb'], 'target': self.get_cargo_name_safe(notif['actor_object_id'])} for notif in

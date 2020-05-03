@@ -1,18 +1,30 @@
-<main class="m-5">
-    <div class="cotainer vertical-center">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Sign Up</div>
-                    <div class="card-body">
-                        <form action="" method="post">
-                            {% csrf_token %}
-                            {{ form.as_p }}
-                            <button class="btn btn-success" type="submit">Sign Up</button>
-                        </form>
-                    </div>
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+<section class="login_box_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="login_form_inner">
+                    <h3>Sign up to enter</h3>
+                    <form class="row login_form" method="post" id="contactForm">
+                        {% csrf_token %}
+                        <div class="col-md-12 form-group">
+                            {{ form.username|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.password1|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            {{ form.password2|as_crispy_field }}
+                        </div>
+                        <div class="col-md-12 form-group">
+                            <button type="submit" value="submit" class="primary-btn">Sign Up</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</section>

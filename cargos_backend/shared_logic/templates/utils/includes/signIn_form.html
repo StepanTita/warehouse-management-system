@@ -1,4 +1,6 @@
+{% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% load static i18n %}
 <!--================Login Box Area =================-->
 <section class="login_box_area section_gap">
@@ -10,21 +12,21 @@
                     <div class="hover">
                         <h4>{% trans 'A cargos managing service' %}</h4>
                         <p>{% trans 'If you are a manager you may log in, if you are not yet registered, please contact admin.' %}</p>
-                        <a class="primary-btn" href="#">Coordinate A.</a>
+                        <a class="primary-btn" href="{% url 'users:company_register' %}">Coordinate A.</a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner">
                     <h3>Log in to enter</h3>
-                    <form class="row login_form" action="{{ next }}" method="post" id="contactForm">
+                    <form class="row login_form" method="post" id="contactForm">
                         {% csrf_token %}
                         <div class="col-md-12 form-group">
                             {{ form.username|as_crispy_field }}
-							</div>
+                        </div>
                         <div class="col-md-12 form-group">
-								{{ form.password|as_crispy_field }}
-							</div>
+                            {{ form.password|as_crispy_field }}
+                        </div>
                         <div class="col-md-12 form-group">
                             <button type="submit" value="submit" class="primary-btn">Log In</button>
                         </div>

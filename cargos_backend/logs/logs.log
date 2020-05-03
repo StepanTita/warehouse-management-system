@@ -1035,3 +1035,394 @@ Traceback (most recent call last):
   File "/usr/src/cargos_backend/shared_logic/status_logger/status_logger.py", line 27, in wrapper
     logger.exception('~' * 30 + 'Errors happened' + 30 * '~')
 NameError: name 'logger' is not defined
+2020-03-19 13:09:58,377 ERROR Internal Server Error: /users/signIn/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: auth_user
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 141, in post
+    if form.is_valid():
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/forms/forms.py", line 185, in is_valid
+    return self.is_bound and not self.errors
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/forms/forms.py", line 180, in errors
+    self.full_clean()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/forms/forms.py", line 382, in full_clean
+    self._clean_form()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/forms/forms.py", line 409, in _clean_form
+    cleaned_data = self.clean()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/contrib/auth/forms.py", line 196, in clean
+    self.user_cache = authenticate(self.request, username=username, password=password)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/contrib/auth/__init__.py", line 73, in authenticate
+    user = backend.authenticate(request, **credentials)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/contrib/auth/backends.py", line 20, in authenticate
+    user = UserModel._default_manager.get_by_natural_key(username)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/contrib/auth/base_user.py", line 44, in get_by_natural_key
+    return self.get(**{self.model.USERNAME_FIELD: username})
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/query.py", line 402, in get
+    num = len(clone)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/query.py", line 256, in __len__
+    self._fetch_all()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/query.py", line 1242, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/query.py", line 55, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/sql/compiler.py", line 1100, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: auth_user
+2020-03-19 13:09:59,353 WARNING Not Found: /favicon.ico
+2020-03-19 13:13:53,072 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/cargos_backend/settings.py changed, reloading.
+2020-03-19 13:14:12,128 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/cargos_backend/settings.py changed, reloading.
+2020-03-19 13:37:50,379 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/urls.py changed, reloading.
+2020-03-19 13:38:04,727 WARNING Not Found: /users/signOut/
+2020-03-19 13:38:11,712 WARNING Not Found: /users
+2020-03-19 13:51:44,150 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-03-19 13:55:05,647 ERROR Internal Server Error: /users/signIn/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/defaulttags.py", line 309, in render
+    return nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/defaulttags.py", line 443, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/urls/base.py", line 90, in reverse
+    return iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs))
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/urls/resolvers.py", line 673, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'sign_in' with keyword arguments '{'action': 'out'}' not found. 1 pattern(s) tried: ['users/signIn/$']
+2020-03-19 14:09:58,181 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-03-19 14:10:19,140 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-03-19 14:10:30,275 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-03-19 15:10:24,826 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/cargos_main/forms.py changed, reloading.
+2020-04-27 19:50:34,338 WARNING Forbidden (CSRF token missing or incorrect.): /users/signIn/
+2020-04-27 19:50:34,680 WARNING Not Found: /favicon.ico
+2020-04-27 20:08:27,703 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/models.py changed, reloading.
+2020-04-28 20:17:34,509 WARNING Not Found: /companyRegister/
+2020-04-28 20:17:34,978 WARNING Not Found: /favicon.ico
+2020-04-28 20:17:49,000 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 133, in get
+    return self.render_to_response(self.get_context_data())
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 66, in get_context_data
+    kwargs['form'] = self.get_form()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 33, in get_form
+    return form_class(**self.get_form_kwargs())
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Company() got an unexpected keyword argument 'initial'
+2020-04-28 20:24:12,875 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 133, in get
+    return self.render_to_response(self.get_context_data())
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 66, in get_context_data
+    kwargs['form'] = self.get_form()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 33, in get_form
+    return form_class(**self.get_form_kwargs())
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/db/models/base.py", line 501, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: Company() got an unexpected keyword argument 'initial'
+2020-04-28 20:25:36,864 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-28 20:29:45,940 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-28 20:34:46,331 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-28 20:39:55,140 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 19:40:39,340 WARNING Not Found: /users/registerCompany
+2020-04-30 19:40:39,790 WARNING Not Found: /favicon.ico
+2020-04-30 19:56:20,389 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 20:19:27,279 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 20:22:16,769 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 20:23:35,986 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 20:51:22,040 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 20:52:08,624 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-04-30 20:59:22,691 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:05:17,170 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:08:38,242 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:08:47,126 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 153, in get
+    print(*(f'{k}={v}' for k, v in request.GET if k != 'csrf_token'))
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 153, in <genexpr>
+    print(*(f'{k}={v}' for k, v in request.GET if k != 'csrf_token'))
+ValueError: too many values to unpack (expected 2)
+2020-04-30 21:08:47,602 WARNING Not Found: /favicon.ico
+2020-04-30 21:09:29,008 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:09:31,718 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in get
+    print(*(f'{k}={v}' for k, v in request.GET if k != 'csrf_token'))
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in <genexpr>
+    print(*(f'{k}={v}' for k, v in request.GET if k != 'csrf_token'))
+ValueError: too many values to unpack (expected 2)
+2020-04-30 21:12:04,858 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:12:07,624 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in get
+    print(*(f'{k}={v}' for k, v in dict(request.GET) if 'csrf' not in k))
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in <genexpr>
+    print(*(f'{k}={v}' for k, v in dict(request.GET) if 'csrf' not in k))
+ValueError: too many values to unpack (expected 2)
+2020-04-30 21:12:26,863 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:12:28,867 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in get
+    print([f'{k}={v}' for k, v in dict(request.GET) if 'csrf' not in k])
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in <listcomp>
+    print([f'{k}={v}' for k, v in dict(request.GET) if 'csrf' not in k])
+ValueError: too many values to unpack (expected 2)
+2020-04-30 21:12:39,172 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:12:41,636 ERROR Internal Server Error: /users/companyRegister/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in get
+    print([f'{k}={v}' for k, v in dict(request.GET) if 'csrf' not in k])
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 154, in <listcomp>
+    print([f'{k}={v}' for k, v in dict(request.GET) if 'csrf' not in k])
+ValueError: too many values to unpack (expected 2)
+2020-04-30 21:14:08,090 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:14:32,490 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-04-30 21:14:57,641 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 11:57:41,064 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 11:57:46,695 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 11:58:29,389 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 11:58:44,354 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 12:00:51,071 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 12:02:09,422 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 12:02:22,920 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 12:02:42,570 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 12:04:00,376 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 12:14:23,673 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/urls.py changed, reloading.
+2020-05-03 12:22:00,326 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/urls.py changed, reloading.
+2020-05-03 12:32:46,319 ERROR Internal Server Error: /users/signUp/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/base.py", line 97, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 142, in post
+    return self.form_valid(form)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 57, in form_valid
+    return HttpResponseRedirect(self.get_success_url())
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/views/generic/edit.py", line 52, in get_success_url
+    raise ImproperlyConfigured("No URL to redirect to. Provide a success_url.")
+django.core.exceptions.ImproperlyConfigured: No URL to redirect to. Provide a success_url.
+2020-05-03 12:32:46,604 WARNING Not Found: /favicon.ico
+2020-05-03 12:33:56,376 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:34:38,976 ERROR ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Errors happened~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/shared_logic/status_logger/status_logger.py", line 42, in wrapper
+    res = func(*args, **kwargs)
+  File "/home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py", line 162, in form_valid
+    login(self.request, form.get_user())
+AttributeError: 'UserCreationForm' object has no attribute 'get_user'
+2020-05-03 12:34:38,980 WARNING Not Found: /users/signUp/
+2020-05-03 12:35:15,281 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:38:32,625 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:38:37,741 ERROR Internal Server Error: /users/signUp/
+Traceback (most recent call last):
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/response.py", line 83, in rendered_content
+    content = template.render(context, self._request)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/loader_tags.py", line 188, in render
+    return template.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 173, in render
+    return self._render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 937, in render
+    bit = node.render_annotated(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 904, in render_annotated
+    return self.render(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 987, in render
+    output = self.filter_expression.resolve(context)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/django/template/base.py", line 698, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/stepan/anaconda3/envs/django_cargos/lib/python3.7/site-packages/crispy_forms/templatetags/crispy_forms_filters.py", line 99, in as_crispy_field
+    raise CrispyError('|as_crispy_field got passed an invalid or inexistent field')
+crispy_forms.exceptions.CrispyError: |as_crispy_field got passed an invalid or inexistent field
+2020-05-03 12:40:00,310 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:40:56,200 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:44:03,442 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:45:13,650 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 12:46:30,309 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/views.py changed, reloading.
+2020-05-03 13:04:52,297 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 13:05:20,648 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 13:11:16,978 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 13:22:59,298 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 13:24:50,318 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/users/forms.py changed, reloading.
+2020-05-03 15:08:39,796 INFO /home/stepan/PycharmProjects/backend_coordinate_A/cargos_backend/cargos_main/migrations/0007_auto_20200428_2016.py changed, reloading.
