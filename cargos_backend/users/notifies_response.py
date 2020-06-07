@@ -1,6 +1,6 @@
 from django.urls import reverse
 
-from shared_logic.database_queries import get_notifications_unread_first
+from bridge.database_queries import get_notifications_unread_first
 
 
 def notifies_response(user, notify_pk, ignore=None):

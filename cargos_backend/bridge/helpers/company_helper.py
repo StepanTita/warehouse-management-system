@@ -1,5 +1,5 @@
-from shared_logic.database_queries import get_storages_for_company, get_employees
-from shared_logic.helpers.storage_helper import count_cargos_for_storage
+from bridge.database_queries import get_storages_for_company, get_employees
+from bridge.helpers.storage_helper import count_cargos_for_storage
 
 
 def count_cargos_for_company(company):

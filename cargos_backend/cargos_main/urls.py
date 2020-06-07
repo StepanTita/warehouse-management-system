@@ -18,14 +18,13 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('new_cargo/', views.new_cargo, name='new_cargo'),
-    path('ret_cargo/<int:pk>/', views.ret_cargo, name='ret_cargo'),
+    path('', views.Index.as_view(), name='index'),
+    path('new_cargo/', views.CargoCreateView.as_view(), name='new_cargo'),
+    path('ret_cargo/<int:pk>/', views.RetrieveCargoView.as_view(), name='ret_cargo'),
     path('update_cargo/<int:pk>/', views.CargoUpdate.as_view(), name='update_cargo'),
     path('delete_cargo/<int:pk>/', views.CargoDelete.as_view(), name='delete_cargo'),
     path('preview_cargos/<int:pk>/', views.CargoDetailView.as_view(), name='preview_cargo'),
-    path('preview_cargos/', views.CargoListView.as_view(),  # queryset=Cargo.objects.all().order_by("-date_added")
-         name='preview_cargos'),
+    path('preview_cargos/', views.CargoListView.as_view(), name='preview_cargos'),
     path('search_result/', views.CargoSearchListView.as_view(), name='search_result'),
     path('search_request/', views.SearchRequestView.as_view(), name='search_request')
 ]

@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     # Local Apps
     'cargos_main',
     'users',
-    'shared_logic',
+    'bridge',
 ]
 
 REST_FRAMEWORK = {
@@ -88,7 +88,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'shared_logic.context_processors.current_company',
+                'bridge.context_processors.current_company',
             ],
         },
     },

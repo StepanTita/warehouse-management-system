@@ -1,5 +1,5 @@
+from bridge.from_choice import to_view_choice
 from cargos_main.models import Cargo
-from shared_logic.from_choice import to_view_choice
 
 CATEGORY_CHOICES = (
     (1, "Cargos"),

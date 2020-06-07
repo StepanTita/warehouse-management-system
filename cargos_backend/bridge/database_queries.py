@@ -1,47 +1,7 @@
 from itertools import chain
 
-from django.db.models import Q
-
 from cargos_main.models import Cargo, Cell, Storage, Company, Categorization, Category
-from search import normalize_query
-from shared_logic.from_choice import to_format
 from users.models import DateNotifications, Employee
-
-
-def create_search_queryset(search, storage, fields):
-    queryset = Cargo.objects.all().filter(
-        cell__in=Cell.objects.filter(storage_id=int(storage)))
-    # category = to_category_name(int(data['category']), CATEGORY_CHOICES)
-
-    entry_query = get_query(search, [to_format(field) for field in fields])
-    found_entries = Cargo.objects.filter(entry_query).order_by("-date_added")
-    return found_entries
-
-
-def get_query(query_string, search_fields):
-    """
-        Returns a query, that is a combination of Q objects. That combination
-        aims to search keywords within a model by testing the given search fields.
-
-    :param query_string:
-    :param search_fields:
-    :return:
-    """
-    query = None  # Query to search for every search term
-    terms = normalize_query(query_string)
-    for term in terms:
-        or_query = None  # Query to search for a given term in each field
-        for field_name in search_fields:
-            q = Q(**{"%s__icontains" % field_name: term})
-            if or_query is None:
-                or_query = q
-            else:
-                or_query = or_query | q
-        if query is None:
-            query = or_query
-        else:
-            query = query & or_query
-    return query
 
 
 # CARGO

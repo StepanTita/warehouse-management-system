@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views import View
 from django.views.generic.base import TemplateResponseMixin
 
-from shared_logic.status_logger.status_logger import class_status_logger
+from bridge.status_logger.status_logger import class_status_logger
 from .forms import DatabaseBackupForm, MediaBackupForm
 
 

@@ -2,7 +2,7 @@
 
 {% load static %}
 {% block categories_posts %}
-    {% include 'utils/includes/companies_preview_parts/categories_posts.html' %}
+    {% include 'companies_preview/categories_posts.html' %}
 {% endblock %}
 
 {% block companies_preview %}
@@ -12,12 +12,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
-                        {% include 'utils/includes/companies_preview_parts/companies_preview.html' %}
-                        {% include 'utils/includes/companies_preview_parts/companies_pagination.html' %}
+                        {% include 'companies_preview/companies_preview.html' %}
+                        {% include 'companies_preview/companies_pagination.html' %}
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    {% include 'utils/includes/companies_preview_parts/search_companies.html' %}
+                    {% include 'companies_preview/search_companies.html' %}
                 </div>
             </div>
         </div>

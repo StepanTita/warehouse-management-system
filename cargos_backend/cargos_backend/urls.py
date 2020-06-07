@@ -26,5 +26,5 @@ urlpatterns = [
                   path('users/', include('users.urls')),
                   path('i18n/', include('django.conf.urls.i18n')),
                   path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
-                  path('shared/', include('shared_logic.urls', namespace='shared'))
+                  path('shared/', include('bridge.urls', namespace='shared'))
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

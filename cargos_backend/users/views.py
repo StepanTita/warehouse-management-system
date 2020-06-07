@@ -21,11 +21,12 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-import shared_logic.database_queries as queries
+import bridge.database_queries as queries
+from bridge import context
+from bridge.consts import NOTIFICATIONS_PER_PAGE, COMPANIES_PER_PAGE
+from bridge.helpers.company_helper import count_cargos_for_company, count_employees_for_company
+from bridge.status_logger.status_logger import view_status_logger, class_status_logger
 from cargos_main.models import Cargo, Company
-from shared_logic.helpers.company_helper import count_cargos_for_company, count_employees_for_company
-from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
-from shared_logic.util_vars import NOTIFICATIONS_PER_PAGE, COMPANIES_PER_PAGE
 from users.forms import CompanyCreationForm, EmployeeForm
 from users.models import Employee
 from users.notifies_response import notifies_response
@@ -39,7 +40,7 @@ def sign_out(request):
 
 @view_status_logger
 def access_denied(request):
-    return render(request, 'access_restrictions/access_denied.html')
+    return render(request, 'access_restrictions/../bridge/templates/utils/includes/errors/access_denied.html')
 
 
 @view_status_logger
@@ -124,7 +125,6 @@ class NotificationDetailView(LoginRequiredMixin, DetailView):
 
 class SignInFormView(FormView):
     form_class = AuthenticationForm
-    # form_class = CustomAuthenticationForm
     template_name = 'user_actions/signIn.html'
 
     @class_status_logger
@@ -138,6 +138,9 @@ class SignInFormView(FormView):
     @class_status_logger
     def form_valid(self, form):
         login(self.request, form.get_user())
+        ctx = context.Context.get(self.request)
+        if ctx is None:
+            raise AssertionError
         return redirect(self.get_success_url())
 
     @class_status_logger

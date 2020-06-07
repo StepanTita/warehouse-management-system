@@ -1,4 +1,4 @@
-from shared_logic.database_queries import get_all_cells_of_storage, get_all_cargos_of_cell
+from bridge.database_queries import get_all_cells_of_storage, get_all_cargos_of_cell
 
 
 def count_cargos_for_storage(storage):

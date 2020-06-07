@@ -1,23 +1,24 @@
 from datetime import datetime
 
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.utils import timezone
 
-from shared_logic.database_queries import get_storage_by_pk, get_cargos_value_list, get_cell_of_storage, \
-    get_cell_of_cargo, get_all_cells_of_storage
-from shared_logic.util_vars import UNSPECIFIED
-from .custom_logic.new_cargo_logic import add_new_cargo_unformated
-from .models import Storage, Cargo, Cell
+import bridge.database_queries as queries
+from bridge import consts
+from .logistics.new_cargo_logistics import add_new_cargo_unformated
+from .models import Cargo, Cell
 
 
 def save_cargo(data):
     success = True
-    storage = get_storage_by_pk(pk=data.get('storage', -1))
+    storage = queries.get_storage_by_pk(
+        pk=data.get('storage', -1))  # If no storage specified - then -1 will be used instead
 
-    cell_vals = get_cell_of_cargo(get_cargos_value_list('cell', distinct=True), storage)
+    cell_vals = queries.get_cell_of_cargo(
+        queries.get_cargos_value_list('cell', distinct=True),
+        storage
+    )
 
-    new_cell_vals = get_all_cells_of_storage(storage).difference(cell_vals)
+    new_cell_vals = queries.get_all_cells_of_storage(storage).difference(cell_vals)
 
     new_row, new_el, new_pos = add_new_cargo_unformated(
         {
@@ -30,7 +31,7 @@ def save_cargo(data):
         storage.rows, storage.elevations, storage.positions
     )
 
-    if new_row == UNSPECIFIED:  # No suitable cell in this storage!
+    if new_row == consts.UNSPECIFIED:  # No suitable cell in this storage!
         return not success
 
     add_cargo_fields(new_row, new_el, new_pos, data)
@@ -63,8 +64,12 @@ def parse_date_time(date):
 def add_cargo_fields(new_row, new_el, new_pos, data):
     new_cargo_obj = Cargo()
 
-    new_cargo_obj.cell = get_cell_of_storage(row=new_row, elevation=new_el, pos=new_pos,
-                                             storage_id=int(data['storage']))
+    new_cargo_obj.cell = queries.get_cell_of_storage(
+        row=new_row,
+        elevation=new_el,
+        pos=new_pos,
+        storage_id=int(data['storage'])
+    )
 
     new_cargo_obj.date_added = parse_date_time(data.get('date_added', timezone.now()))
     new_cargo_obj.date_dated = parse_date(data.get('date_dated', timezone.now()))
@@ -93,23 +98,3 @@ def add_cell_fields(row, el, pos, storage):
 
     new_cell.save()
 
-
-# def exclude_occupied_cells(cell_vals):
-#     new_cell_vals = get_all_cells()
-#     for val in cell_vals:
-#         for cell_id in val:
-#             new_cell_vals = new_cell_vals.exclude(pk__exact=cell_id)
-#     return new_cell_vals
-
-
-@receiver(post_save, sender=Storage)
-def update_cells(sender, instance, **kwargs):
-    rs = instance.rows
-    els = instance.elevations
-    pos = instance.positions
-
-    for i in range(rs):
-        for j in range(els):
-            for k in range(pos):
-                if Cell.objects.all().filter(row=i, elevation=j, position=k, storage=instance).first() is None:
-                    add_cell_fields(row=i, el=j, pos=k, storage=instance)

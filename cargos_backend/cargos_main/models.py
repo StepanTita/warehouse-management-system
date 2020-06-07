@@ -5,6 +5,13 @@ from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
+DECIMAL_FORMAT = dict(
+    decimal_places=2,
+    max_digits=9,
+    default=1,
+    validators=[MinValueValidator(1),
+                MaxValueValidator(100)])
+
 
 class Category(models.Model):
     class Meta:
@@ -56,16 +63,9 @@ class Storage(models.Model):
     positions = models.IntegerField(validators=[MinValueValidator(1),
                                                 MaxValueValidator(100)])  # x
 
-    default_height = models.DecimalField(decimal_places=2, max_digits=9, default=1,
-                                         validators=[MinValueValidator(1),
-                                                     MaxValueValidator(100)])
-    default_length = models.DecimalField(decimal_places=2, max_digits=9, default=1,
-                                         validators=[MinValueValidator(1),
-                                                     MaxValueValidator(100)]
-                                         )
-    default_width = models.DecimalField(decimal_places=2, max_digits=9, default=1,
-                                        validators=[MinValueValidator(1),
-                                                    MaxValueValidator(100)])
+    default_height = models.DecimalField(**DECIMAL_FORMAT)
+    default_length = models.DecimalField(**DECIMAL_FORMAT)
+    default_width = models.DecimalField(**DECIMAL_FORMAT)
 
     company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True)
 
@@ -79,15 +79,9 @@ class Cell(models.Model):
     elevation = models.IntegerField()  # y
     position = models.IntegerField()  # x
 
-    height = models.DecimalField(decimal_places=2, max_digits=9, default=1,
-                                 validators=[MinValueValidator(1),
-                                             MaxValueValidator(100)])
-    length = models.DecimalField(decimal_places=2, max_digits=9, default=1,
-                                 validators=[MinValueValidator(1),
-                                             MaxValueValidator(100)]
-                                 )
-    width = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
-                                                                                       MaxValueValidator(100)])
+    height = models.DecimalField(**DECIMAL_FORMAT)
+    length = models.DecimalField(**DECIMAL_FORMAT)
+    width = models.DecimalField(**DECIMAL_FORMAT)
 
     storage = models.ForeignKey(Storage, on_delete=models.CASCADE)
 
@@ -109,12 +103,9 @@ class Cell(models.Model):
 class Cargo(models.Model):
     cell = models.ForeignKey(Cell, on_delete=models.CASCADE)
 
-    height = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
-                                                                                        MaxValueValidator(100)])
-    length = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
-                                                                                        MaxValueValidator(100)])
-    width = models.DecimalField(decimal_places=2, max_digits=9, default=1, validators=[MinValueValidator(1),
-                                                                                       MaxValueValidator(100)])
+    height = models.DecimalField(**DECIMAL_FORMAT)
+    length = models.DecimalField(**DECIMAL_FORMAT)
+    width = models.DecimalField(**DECIMAL_FORMAT)
 
     description = models.CharField(max_length=500)
     title = models.CharField(max_length=200)
@@ -127,15 +118,9 @@ class Cargo(models.Model):
     def __str__(self):
         return str(self.id) + ": " + str(self.title)
 
-    # def clean(self):
-    #     super().clean()
-    #     try:
-    #         parse(self.date_dated)
-
 
 class Droid(models.Model):
     title = models.CharField(max_length=200, null=True)
-
     cargo = models.ForeignKey(Cargo, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

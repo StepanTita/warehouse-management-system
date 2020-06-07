@@ -2,6 +2,10 @@
 
 {% block title %}Controller{% endblock %}
 
+{% block menu %}
+    {% include 'utils/includes/errors/internal_server_error.html' %}
+{% endblock %}
+
 {% block content %}
-    {% include 'search/signUp_form.html' %}
+
 {% endblock %}

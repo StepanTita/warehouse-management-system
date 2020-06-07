@@ -1,3 +1,4 @@
+{% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 {% load static i18n %}
 
@@ -16,11 +17,11 @@
                         {{ form.title|as_crispy_field }}
                     </div>
                     <div class="form-group col-md-4 mb-0">
-                    {{ form.storage|as_crispy_field }}
-                </div>
+                        {{ form.storage|as_crispy_field }}
+                    </div>
                     <div class="form-group col-md-4 mb-0">
-                    {{ form.rotatable|as_crispy_field }}
-                </div>
+                        {{ form.rotatable|as_crispy_field }}
+                    </div>
                 </div>
                 {{ form.height|as_crispy_field }}
                 {{ form.length|as_crispy_field }}
