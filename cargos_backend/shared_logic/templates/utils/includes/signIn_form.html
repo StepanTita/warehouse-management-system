@@ -18,7 +18,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="login_form_inner">
-                    <h3>Log in to enter</h3>
+                    <h3>{% trans 'Log in to enter' %}</h3>
                     <form class="row login_form" method="post" id="contactForm">
                         {% csrf_token %}
                         <div class="col-md-12 form-group">
@@ -28,9 +28,10 @@
                             {{ form.password|as_crispy_field }}
                         </div>
                         <div class="col-md-12 form-group">
-                            <button type="submit" value="submit" class="primary-btn">Log In</button>
+                            <button type="submit" value="submit" class="primary-btn">{% trans 'Log In' %}</button>
                         </div>
                     </form>
+                    <a href="{% url 'users:sign_up' %}"> {% trans 'Do not have account yet? Create one!' %} </a>
                 </div>
             </div>
         </div>

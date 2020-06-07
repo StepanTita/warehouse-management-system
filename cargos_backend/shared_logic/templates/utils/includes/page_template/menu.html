@@ -29,12 +29,33 @@
                             <li class="nav-item">
                                 <a href="{% url 'new_cargo' %}" class="nav-link"> {% trans "Add new cargo" %} </a>
                             </li>
+                            <li class="nav-item submenu dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">{% trans "Company" %}</a>
+                                <ul class="dropdown-menu">
+                                    {#                                    {% if not company %}#}
+                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{% url 'users:company_register' %}">{% trans "Create company" %}</a>
+                                    </li>
+                                    {#                                    {% endif %}#}
+                                    {% if company %}
+                                        <li class="nav-item"><a class="nav-link"
+                                                                href="{% url 'users:company_preview' pk=company.pk %}">{% trans "Preview company" %}</a>
+                                        </li>
+                                    {% endif %}
+                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{% url 'users:companies_preview' %}">{% trans "Preview companies" %}</a>
+                                    </li>
+                                </ul>
+                            </li>
+
                         {% endif %}
                     </ul>
                     {% if user.is_authenticated %}
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="list-inline-item">
-                                <a class="btn btn-warning" href="{% url 'users:notifications_view' %}"
+                                <a class="btn btn-warning" href="{% url 'users:personal_page' username=user.username %}"
                                    role="button">{{ user.username }} <span
                                         class="ti-package"></span> {% live_notify_badge badge_class="badge badge-light" %}
                                 </a>

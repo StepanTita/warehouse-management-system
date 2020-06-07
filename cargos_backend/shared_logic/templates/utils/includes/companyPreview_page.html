@@ -1,0 +1,255 @@
+{% with object=company %}
+    <section class="blog_area single-post-area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 posts-list">
+                    <div class="single-post row">
+                        <div class="offset-lg-1 col-lg-11">
+                            <div class="feature-img">
+                                <img class="img-fluid" src="{{ company.logo.url }}" alt="">
+                            </div>
+                        </div>
+                        <div class="col-lg-3  col-md-3">
+                            <div class="blog_info text-right">
+                                <div class="post_tag">
+                                    {% for category in categories %}
+                                        <a href="#" {% if category.is_primary %}
+                                           class="active" {% endif %}>{{ category.category }}</a>
+                                        {% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </div>
+                                <ul class="blog_meta list">
+                                    <li><a href="{% url 'users:personal_page' username=company.leader.username %}">
+                                        {{ company.leader.first_name }} {{ company.leader.last_name }}<i
+                                            class="lnr lnr-user"></i></a>
+                                    </li>
+                                    <li><a href="#">{{ company.data_registered|date:"j N, Y" }}<i
+                                            class="lnr lnr-calendar-full"></i></a>
+                                    </li>
+
+                                    <li><a href="#">{{ cargos_count }} Cargos<i class="lnr lnr-inbox"></i></a>
+                                    </li>
+                                    <li><a href="#">{{ employees_count }} Employees<i
+                                            class="lnr lnr-users"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 blog_details">
+                            <h2>{{ company.vendor }}</h2>
+                            <p class="excert">
+                                MCSE boot camps have its supporters and its detractors. Some people do not understand
+                                why you should have to spend money on boot camp when you can get the MCSE study
+                                materials yourself at a fraction.
+                            </p>
+                            <p>
+                                Boot camps have its supporters and its detractors. Some people do not understand why
+                                you should have to spend money on boot camp when you can get the MCSE study materials
+                                yourself at a fraction of the camp price. However, who has the willpower to actually
+                                sit through a self-imposed MCSE training. who has the willpower to actually sit through
+                                a self-imposed
+                            </p>
+                            <p>
+                                Boot camps have its supporters and its detractors. Some people do not understand why
+                                you should have to spend money on boot camp when you can get the MCSE study materials
+                                yourself at a fraction of the camp price. However, who has the willpower to actually
+                                sit through a self-imposed MCSE training. who has the willpower to actually sit through
+                                a self-imposed
+                            </p>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="quotes">
+                                MCSE boot camps have its supporters and its detractors. Some people do not understand
+                                why you should have to spend money on boot camp when you can get the MCSE study
+                                materials yourself at a fraction of the camp price. However, who has the willpower to
+                                actually sit through a self-imposed MCSE training.
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+                                </div>
+                                <div class="col-6">
+                                    <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
+                                </div>
+                                <div class="col-lg-12 mt-25">
+                                    <p>
+                                        MCSE boot camps have its supporters and its detractors. Some people do not
+                                        understand why you should have to spend money on boot camp when you can get the
+                                        MCSE study materials yourself at a fraction of the camp price. However, who has
+                                        the willpower.
+                                    </p>
+                                    <p>
+                                        MCSE boot camps have its supporters and its detractors. Some people do not
+                                        understand why you should have to spend money on boot camp when you can get the
+                                        MCSE study materials yourself at a fraction of the camp price. However, who has
+                                        the willpower.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="navigation-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                <div class="thumb">
+                                    <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+                                </div>
+                                <div class="detials">
+                                    <p>Our employees</p>
+                                    <a href="#">
+                                        <h4>Feel free to contact us</h4>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                <div class="detials">
+                                    <p>Contact button</p>
+                                    <a href="#">
+                                        <h4>Just press to preview employee page</h4>
+                                    </a>
+                                </div>
+                                <div class="arrow">
+                                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+                                </div>
+                                <div class="thumb">
+                                    <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comments-area">
+                        <h4>Empolyees</h4>
+                        {% for empl in employees %}
+                            <div class="comment-list">
+                                <div class="single-comment justify-content-between d-flex">
+                                    <div class="user justify-content-between d-flex">
+                                        <div class="thumb">
+                                            <img src="{{ empl.image.url }}" alt="" class="employee-image">
+                                        </div>
+                                        <div class="desc">
+                                            <h5>
+                                                <a href="{% url 'users:personal_page' username=empl.user.username %}">{{ empl.user.first_name }} {{ empl.user.last_name }}</a>
+                                            </h5>
+                                            <p class="date"> {{ empl.user.date_joined }} </p>
+                                            <p class="comment">
+                                                Never say goodbye till the end comes!
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="reply-btn">
+                                        <a href="{% url 'users:personal_page' username=empl.user.username %}"
+                                           class="btn-reply text-uppercase">open</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="comment-form">
+                        <h4>Apply for a job</h4>
+                        <form>
+                            <div class="form-group form-inline">
+                                <div class="form-group col-lg-6 col-md-6 name">
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter Name'">
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 email">
+                                    <input type="email" class="form-control" id="email"
+                                           placeholder="Enter email address"
+                                           onfocus="this.placeholder = ''"
+                                           onblur="this.placeholder = 'Enter email address'">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="position" placeholder="Position"
+                                       onfocus="this.placeholder = ''"
+                                       onblur="this.placeholder = 'Position'">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
+                                          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"
+                                          required=""></textarea>
+                            </div>
+                            <a href="#" class="primary-btn submit_btn">Send request</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="blog_right_sidebar">
+                        <aside class="single_sidebar_widget search_widget">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Posts"
+                                       onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i
+                                            class="lnr lnr-magnifier"></i></button>
+                                </span>
+                            </div><!-- /input-group -->
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" src="{{ employee.image.url }}" alt="">
+                            <h4>{{ employee.user.first_name }} {{ employee.user.last_name }}</h4>
+                            <p>{{ position }}</p>
+                            <div class="social_icon">
+                                <a href="{{ employee.facebook }}"><i class="fa fa-facebook"></i></a>
+                                <a href="{{ employee.twitter }}"><i class="fa fa-twitter"></i></a>
+                                <a href="{{ employee.github }}"><i class="fa fa-github"></i></a>
+                                <a href="{{ employee.linkedin }}"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                            <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you
+                                should have to spend money on boot camp when you can get. Boot camps have itssuppor
+                                ters andits detractors.</p>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget ads_widget">
+                            <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Popular Companies</h3>
+                            {% for cmp in popular_companies %}
+                                <div class="media post_item">
+                                    <img src="{{ cmp.logo.url }}" alt="post">
+                                    <div class="media-body">
+                                        <a href="{% url 'users:company_preview' pk=cmp.pk %}">
+                                            <h3> {{ cmp.vendor }} </h3>
+                                        </a>
+                                        <p>{{ cmp.data_registered }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget post_category_widget">
+                            <h4 class="widget_title">Companies Catgories</h4>
+                            <ul class="list cat-list">
+                                {% for category in category_list %}
+                                    <li>
+                                        <a href="#" class="d-flex justify-content-between">
+                                            <p>{{ category.name }}</p>
+                                            <p>{{ category.rate }}</p>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="br"></div>
+                        </aside>
+
+                        <aside class="single-sidebar-widget tag_cloud_widget">
+                            <h4 class="widget_title">Tag Clouds</h4>
+                            <ul class="list">
+                                {% for category in category_list %}
+                                    <li><a href="#">{{ category.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endwith %}

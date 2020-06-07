@@ -13,20 +13,21 @@ from django.core.paginator import Paginator
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
-from django.views.generic import FormView, DetailView
+from django.views import View
+from django.views.generic import FormView, DetailView, ListView
 from notifications.models import Notification
 from notifications.signals import notify
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from cargos_main.forms import SearchForm
-from cargos_main.models import Cargo
-from shared_logic.database_queries import get_notifications_unread_first, get_cargos_todate, get_dated_for_user, \
-    get_all_notifications, get_cargo_by_pk
+import shared_logic.database_queries as queries
+from cargos_main.models import Cargo, Company
+from shared_logic.helpers.company_helper import count_cargos_for_company, count_employees_for_company
 from shared_logic.status_logger.status_logger import view_status_logger, class_status_logger
-from shared_logic.util_vars import NOTIFICATIONS_PER_PAGE
-from users.forms import CompanyCreationForm
+from shared_logic.util_vars import NOTIFICATIONS_PER_PAGE, COMPANIES_PER_PAGE
+from users.forms import CompanyCreationForm, EmployeeForm
+from users.models import Employee
 from users.notifies_response import notifies_response
 
 
@@ -45,9 +46,9 @@ def access_denied(request):
 @login_required(login_url='sign_in')
 def nortify_create(request):
     today = datetime.now().date()
-    cargos_dated = get_cargos_todate(today)
+    cargos_dated = queries.get_cargos_todate(company=queries.get_company(request.user), date=today)
 
-    unviewed = get_dated_for_user(cargos_dated, request.user)
+    unviewed = queries.get_dated_for_user(cargos_dated, request.user)
 
     for notification in unviewed:
         notify.send(
@@ -89,8 +90,9 @@ def notify_remove(request):
 
 @login_required(login_url='sign_in')
 def notifications_view(request):
-    notifs_total = get_notifications_unread_first(request.user,
-                                                  reversed=True if request.GET.get('sort', '1') == '1' else False)
+    notifs_total = queries.get_notifications_unread_first(request.user,
+                                                          reversed=True if request.GET.get('sort',
+                                                                                           '1') == '1' else False)
     paginator = Paginator(notifs_total, int(request.GET.get('show', NOTIFICATIONS_PER_PAGE)))
 
     page = request.GET.get('page', 1)
@@ -101,7 +103,6 @@ def notifications_view(request):
                       'notifications': notifs_per_page,
                       'table_name': 'Notifications',
                       'is_notifies': True,
-                      'search_form': SearchForm()
                   })
 
 
@@ -114,12 +115,11 @@ class NotificationDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['is_notify_single'] = True
-        context['search_form'] = SearchForm()
         return context
 
     @class_status_logger
     def get_queryset(self):
-        return get_all_notifications(self.request.user)
+        return queries.get_all_notifications(self.request.user)
 
 
 class SignInFormView(FormView):
@@ -167,13 +167,120 @@ class SignUpFormView(FormView):
         return reverse('index')
 
 
-class CompanyRegisterFormView(FormView):
-    form_class = CompanyCreationForm
-    template_name = 'company_management/registerCompany.html'
+class PersonalPage(View):
+    template_name = 'user_actions/personal_page.html'
 
-    def get(self, request, *args, **kwargs):
-        print(*(f"{k} = '{v}'" for k, v in request.GET.items() if 'csrf' not in k))
-        return super().get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = dict()
+        context['employee'] = Employee.objects.get(user__username=kwargs['username'])
+        context['position'] = ", ".join(map(str, context['employee'].position.all())).capitalize()
+        context['user_obj'] = Employee.objects.get(id=self.request.user.id)
+        return context
+
+    def get(self, request, username):
+        return render(request, self.template_name, self.get_context_data(username=username))
+
+
+class PersonalEdit(LoginRequiredMixin, FormView):
+    login_url = 'users:sign_in'
+    form_class = EmployeeForm
+    template_name = 'user_actions/personal_edit.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['table_name'] = 'Edit personal data'
+        if 'action' in self.request.GET:
+            logout(self.request)
+        return context
+
+    def form_valid(self, form):
+        # form.fields['user'] = self.request.user
+        # form.user_id = self.request.user
+        # form.save()
+
+        employee = Employee.objects.get(id=self.request.user.id)
+        employee.company = form.cleaned_data.get('company')
+        # employee.image = form.data.get('image')
+        employee.facebook = form.cleaned_data.get('facebook')
+        employee.twitter = form.cleaned_data.get('twitter')
+        employee.linkedin = form.cleaned_data.get('linkedin')
+        employee.save()
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('index')
+
+
+class CompanyRegisterFormView(LoginRequiredMixin, FormView):
+    login_url = 'users:sign_in'
+    form_class = CompanyCreationForm
+    template_name = 'company_management/create_company.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['table_name'] = 'Create Company'
+        if 'action' in self.request.GET:
+            logout(self.request)
+        return context
+
+    def form_valid(self, form):
+        new_company = form.save()  # TODO check that leader is free
+        Employee.objects.create(user=form.cleaned_data.get('leader'), company=new_company).save()
+        return redirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse('index')
+
+
+class CompaniesPreviewView(LoginRequiredMixin, ListView):
+    login_url = 'users:sign_in'
+    model = Company
+    paginate_by = COMPANIES_PER_PAGE
+    template_name = 'company_management/preview_companies.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        companies = queries.get_all_companies()
+
+        context['cargos'] = dict()
+        context['employees'] = dict()
+        context['categories'] = dict()
+        for cmp in companies:
+            context['cargos'][cmp.id] = count_cargos_for_company(cmp)
+            context['employees'][cmp.id] = count_employees_for_company(cmp)
+            context['categories'][cmp.id] = queries.get_categories(cmp)
+
+        context['employee'] = Employee.objects.get(id=self.request.user.id)
+        context['position'] = ", ".join(map(str, context['employee'].position.all())).capitalize()
+        context['popular_companies'] = companies  # TODO Popular companies
+        context['category_list'] = queries.get_all_categories()
+        return context
+
+
+class CompanyPreviewView(LoginRequiredMixin, DetailView):
+    login_url = 'users:sign_in'
+    model = Company
+    template_name = 'company_management/preview_company.html'
+
+    @class_status_logger
+    def get_queryset(self):
+        return queries.get_all_companies()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        company = kwargs['object']
+
+        context['cargos_count'] = count_cargos_for_company(company)
+        context['employees_count'] = count_employees_for_company(company)
+        context['categories'] = queries.get_categories(company)
+        context['employees'] = queries.get_employees(company)
+
+        context['employee'] = Employee.objects.get(id=company.leader.id)
+        context['position'] = ", ".join(map(str, context['employee'].position.all())).capitalize()
+        context['popular_companies'] = queries.get_all_companies()  # TODO Popular companies
+        context['category_list'] = queries.get_all_categories()
+
+        return context
 
 
 # ------------------------MOBILE----------------------------
@@ -226,7 +333,7 @@ class MobileNotificationsView(APIView):
     def get_cargo_name_safe(self, pk):
         cargo_name = 'Not found'
         try:
-            cargo_name = get_cargo_by_pk(pk).title
+            cargo_name = queries.get_cargo_by_pk(pk).title
         except ObjectDoesNotExist:
             ...
         return cargo_name

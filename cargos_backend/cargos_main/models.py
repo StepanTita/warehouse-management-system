@@ -6,12 +6,44 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
+class Category(models.Model):
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
+    name = models.CharField(max_length=200)
+    rate = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
+
 class Company(models.Model):
     vendor = models.CharField(max_length=200)
     leader = models.ForeignKey(User, on_delete=models.CASCADE)
     description = models.TextField(max_length=500)
     data_registered = models.DateField(auto_now_add=True)
     website = models.CharField(max_length=200)
+    category = models.ManyToManyField(Category, through='Categorization')
+    logo = models.ImageField(upload_to='companies/logos', default='companies/logos/default.png')
+
+    class Meta:
+        verbose_name_plural = 'Companies'
+
+    def __str__(self):
+        return self.vendor
+
+
+class Categorization(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    is_primary = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = (('category', 'company'),)
+
+    def __str__(self):
+        return f"{self.company.vendor}: {self.category.name}"
 
 
 class Storage(models.Model):

@@ -2,10 +2,10 @@ from itertools import chain
 
 from django.db.models import Q
 
-from cargos_main.models import Cargo, Cell, Storage
+from cargos_main.models import Cargo, Cell, Storage, Company, Categorization, Category
 from search import normalize_query
 from shared_logic.from_choice import to_format
-from users.models import DateNotifications
+from users.models import DateNotifications, Employee
 
 
 def create_search_queryset(search, storage, fields):
@@ -45,8 +45,17 @@ def get_query(query_string, search_fields):
 
 
 # CARGO
-def get_all_cargos(date_sort=False, date_sort_reversed=False):
-    query = Cargo.objects.all()
+def get_all_cargos(company, date_sort=False, date_sort_reversed=False):
+    # if company is None:
+    #     query = Cargo.objects.all()
+    # else:
+    #     query = Cargo.objects.filter(company=company)
+
+    query = Cargo.objects.all().filter(
+        cell__in=Cell.objects.filter(
+            storage__in=Storage.objects.all().filter(company=company)
+        ))
+
     if date_sort_reversed:
         query = query.order_by("-date_added")
     elif date_sort:
@@ -61,12 +70,16 @@ def get_cargos_value_list(field, distinct=False):
     return query
 
 
-def get_cargos_todate(date):
-    return Cargo.objects.filter(date_dated__lte=date)
+def get_cargos_todate(company, date):
+    return get_all_cargos(company=company).filter(date_dated__lte=date)
 
 
 def get_cargo_by_pk(pk):
     return Cargo.objects.get(pk=pk)
+
+
+def get_all_cargos_of_cell(cell):
+    return Cargo.objects.all(cell=cell)
 
 
 # STORAGE
@@ -74,8 +87,12 @@ def get_storage_by_pk(pk=-1):
     return Storage.objects.get(pk=pk)
 
 
-def get_all_storages():
-    return Storage.objects.all()
+def get_all_storages(company):
+    return Storage.objects.all().filter(company=company)
+
+
+def get_storages_for_company(company):
+    return Storage.objects.filter(company=company)
 
 
 # CELL
@@ -101,8 +118,9 @@ def get_all_cells_of_storage(storage):
 # NOTIFICATION
 def get_notifications_unread_first(user, reversed=True):
     sign = '-' if reversed else ''
-    unread = user.notifications.unread().order_by(f'{sign}timestamp')
-    read = user.notifications.read().order_by(f'{sign}timestamp')
+    notifs = user.notifications.all().filter(cargo__in=get_all_cargos(company=get_company(user)))  # FIXME if not right
+    unread = notifs.unread().order_by(f'{sign}timestamp')
+    read = notifs.read().order_by(f'{sign}timestamp')
     total = (unread, read)
     result = list(chain(*total))
     return result
@@ -118,4 +136,25 @@ def get_dated_for_user(cargos_dated, user):
 
 
 def get_all_notifications(user):
-    return user.notifications.all()
+    return user.notifications.all().filter(cargo__in=get_all_cargos(company=get_company(user)))
+
+
+# COMPANY
+def get_company(user):
+    return Company.objects.get(pk=Employee.objects.get(user_id=user).company.pk)
+
+
+def get_all_companies():
+    return Company.objects.all()
+
+
+def get_employees(company):
+    return Employee.objects.filter(company=company)
+
+
+def get_categories(company):
+    return Categorization.objects.filter(company=company)
+
+
+def get_all_categories():
+    return Category.objects.all()

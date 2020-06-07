@@ -1,0 +1,70 @@
+<div class="blog_right_sidebar">
+    <aside class="single_sidebar_widget search_widget">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Posts"
+                   onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+            <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i
+                                            class="lnr lnr-magnifier"></i></button>
+                                </span>
+        </div><!-- /input-group -->
+        <div class="br"></div>
+    </aside>
+    <aside class="single_sidebar_widget author_widget">
+        <img class="author_img rounded-circle" src="{{ employee.image.url }}" alt="">
+        <h4>{{ employee.user.first_name }} {{ employee.user.last_name }}</h4>
+        <p>{{ position }}</p>
+        <div class="social_icon">
+            <a href="{{ employee.facebook }}"><i class="fa fa-facebook"></i></a>
+            <a href="{{ employee.twitter }}"><i class="fa fa-twitter"></i></a>
+            <a href="{{ employee.github }}"><i class="fa fa-github"></i></a>
+            <a href="{{ employee.linkedin }}"><i class="fa fa-linkedin"></i></a>
+        </div>
+        <p>Boot camps have its supporters andit sdetractors. Some people do not understand why you
+            should have to spend money on boot camp when you can get. Boot camps have itssuppor
+            ters andits detractors.</p>
+        <div class="br"></div>
+    </aside>
+    <aside class="single_sidebar_widget ads_widget">
+        <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
+        <div class="br"></div>
+    </aside>
+    <aside class="single_sidebar_widget popular_post_widget">
+        <h3 class="widget_title">Popular Companies</h3>
+        {% for cmp in popular_companies %}
+            <div class="media post_item">
+                <img src="{{ cmp.logo.url }}" alt="post">
+                <div class="media-body">
+                    <a href="{% url 'users:company_preview' pk=cmp.pk %}">
+                        <h3>{{ cmp.vendor }}</h3>
+                    </a>
+                    <p>{{ cmp.data_registered }}</p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="br"></div>
+    </aside>
+    <aside class="single_sidebar_widget post_category_widget">
+        <h4 class="widget_title">Companies Catgories</h4>
+        <ul class="list cat-list">
+            {% for category in category_list %}
+                <li>
+                    <a href="#" class="d-flex justify-content-between">
+                        <p>{{ category.name }}</p>
+                        <p>{{ category.rate }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="br"></div>
+    </aside>
+
+    <aside class="single-sidebar-widget tag_cloud_widget">
+        <h4 class="widget_title">Tag Clouds</h4>
+        <ul class="list">
+            {% for category in category_list %}
+                <li><a href="#">{{ category.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </aside>
+</div>

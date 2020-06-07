@@ -5,14 +5,17 @@ from suit.menu import ParentItem, ChildItem
 
 class SuitConfig(DjangoSuitConfig):
     menu = (
-
         ParentItem('Content', children=[
             ChildItem(model='cargos_main.cargo'),
             ChildItem(model='cargos_main.cell'),
             ChildItem(model='cargos_main.storage'),
+            ChildItem(model='cargos_main.company', label='Companies'),
+            ChildItem(model='cargos_main.category', label='Categories'),
+            ChildItem(model='cargos_main.categorization', label='Categorization')
         ], icon='fa fa-archive'),
         ParentItem('Users', children=[
             ChildItem(model='auth.user'),
+            ChildItem(model='users.employee'),
         ], icon='fa fa-users'),
         ParentItem('Notifications', children=[
             ChildItem(model='notifications.notification'),

@@ -1,0 +1,41 @@
+{% load dict_key %}
+
+{% for cmp in object_list %}
+    {% with id=cmp.id %}
+        <article class="row blog_item">
+            <div class="col-md-3">
+                <div class="blog_info text-right">
+                    <div class="post_tag">
+                        {% for category in categories|get_item:id %}
+                            <a href="#" {% if category.is_primary %}
+                               class="active" {% endif %}>{{ category.category }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </div>
+                    <ul class="blog_meta list">
+                        <li><a href="{% url 'users:personal_page' username=cmp.leader.username %}">
+                            {{ cmp.leader.first_name }} {{ cmp.leader.last_name }}<i class="lnr lnr-user"></i></a>
+                        </li>
+                        <li><a href="#">{{ cmp.data_registered|date:"j N, Y" }}<i class="lnr lnr-calendar-full"></i></a>
+                        </li>
+
+                        <li><a href="#">{{ cargos|get_item:id }} Cargos<i class="lnr lnr-inbox"></i></a></li>
+                        <li><a href="#">{{ employees|get_item:id }} Employees<i class="lnr lnr-users"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="blog_post">
+                    <img src="{{ cmp.logo.url }}" alt="">
+                    <div class="blog_details">
+                        <a href="{% url 'users:company_preview' pk=cmp.pk %}">
+                            <h2>{{ cmp.vendor }}</h2>
+                        </a>
+                        <p>{{ cmp.description }}</p>
+                        <a href="{% url 'users:company_preview' pk=cmp.pk %}" class="white_bg_btn">View More</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+    {% endwith %}
+{% endfor %}

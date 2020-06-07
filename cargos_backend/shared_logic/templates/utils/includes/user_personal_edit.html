@@ -1,0 +1,65 @@
+{% load i18n %}
+<div class="text-center h3 mt-5 mb-5">{% trans "Update personal data" %}</div>
+<div class="container">
+    <div class="row">
+        <form action="{% url 'users:personal_edit' %}" method="post"
+              class="col-md-6 offset-md-3 text-center company-creation">
+            {% csrf_token %}
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2 pr-0" for="id_image">{% trans "Image:" %} </label>
+                <div class="col-sm-10 input-group mb-2 pl-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">🚚</div>
+                    </div>
+                    {{ form.image }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2 pr-0" for="id_company">{% trans "Company:" %} </label>
+                <div class="col-sm-10 input-group mb-2 pl-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">🚚</div>
+                    </div>
+                    {{ form.company }}
+                </div>
+            </div>
+
+            <div class="form-group row leader-select">
+                <label class="col-form-label col-sm-2 pr-0" for="id_facebook">{% trans "Facebook:" %}</label>
+                <div class="col-sm-10 input-group pl-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">👨‍⚖️</div>
+                    </div>
+                    {{ form.facebook }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2 pr-0" for="id_twitter">{% trans "Twitter:" %}</label>
+                <div class="col-sm-10 input-group mb-2 pl-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">🌐</div>
+                    </div>
+                    {{ form.twitter }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2 pr-0" for="id_linkedin">{% trans "LinkedIn:" %}</label>
+                <div class="col-sm-10 input-group mb-2 pl-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">🌐</div>
+                    </div>
+                    {{ form.linkedin }}
+                </div>
+            </div>
+
+            <div class="form-group mb-5">
+                <button type="submit" class="btn btn-outline-warning">{% trans "Update user" %}</button>
+            </div>
+        </form>
+    </div>
+</div>
+

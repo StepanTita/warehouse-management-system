@@ -1,21 +1,33 @@
-{% load crispy_forms_filters %}
-<div class="text-center h3 mt-5 mb-5">Create your company account</div>
+{% load i18n %}
+<div class="text-center h3 mt-5 mb-5">{% trans "Create your company account" %}</div>
 <div class="container">
     <div class="row">
-        <form action="" method="get" class="col-md-6 offset-md-3 text-center">
+        <form action="{% url 'users:company_register' %}" method="post"
+              class="col-md-6 offset-md-3 text-center company-creation">
             {% csrf_token %}
+
             <div class="form-group row">
-                <label class="col-form-label col-sm-2 pr-0" for="id_vendor">Vendor: </label>
+                <label class="col-form-label col-sm-2 pr-0" for="id_logo">{% trans "Logo:" %} </label>
                 <div class="col-sm-10 input-group mb-2 pl-1">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">🏪</div>
+                        <div class="input-group-text">🚚</div>
+                    </div>
+                    {{ form.logo }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2 pr-0" for="id_vendor">{% trans "Vendor:" %} </label>
+                <div class="col-sm-10 input-group mb-2 pl-1">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">🚚</div>
                     </div>
                     {{ form.vendor }}
                 </div>
             </div>
 
-            <div class="form-group row">
-                <label class="col-form-label col-sm-2 pr-0" for="id_leader">Leader: </label>
+            <div class="form-group row leader-select">
+                <label class="col-form-label col-sm-2 pr-0" for="id_leader">{% trans "Leader:" %}</label>
                 <div class="col-sm-10 input-group pl-1">
                     <div class="input-group-prepend">
                         <div class="input-group-text">👨‍⚖️</div>
@@ -24,14 +36,14 @@
                 </div>
                 <div class="offset-md-2">
                     <small>
-                        <a href="{% url 'users:sign_up' %}" class="create_leader">Do not have a leader yet? Create
-                            one!</a>
+                        <a href="{% url 'users:sign_up' %}"
+                           class="create_leader">{% trans "Do not have a leader yet? Create one!" %}</a>
                     </small>
                 </div>
             </div>
 
             <div class="form-group row">
-                <label class="col-form-label col-sm-2 pr-0" for="id_website">Website: </label>
+                <label class="col-form-label col-sm-2 pr-0" for="id_website">{% trans "Website:" %}</label>
                 <div class="col-sm-10 input-group mb-2 pl-1">
                     <div class="input-group-prepend">
                         <div class="input-group-text">🌐</div>
@@ -41,15 +53,16 @@
             </div>
 
             <div class="form-group row">
-                <label class="col-form-label col-sm-2 pr-0" for="id_description">Description: </label>
+                <label class="col-form-label col-sm-2 pr-0" for="id_description">{% trans "Description:" %}</label>
                 <div class="col-sm-10 input-group mb-2 pl-1">
                     {{ form.description }}
                 </div>
             </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-outline-warning">Create Company!</button>
+            <div class="form-group mb-5">
+                <button type="submit" class="btn btn-outline-warning">{% trans "Create Company!" %}</button>
             </div>
         </form>
     </div>
 </div>
+

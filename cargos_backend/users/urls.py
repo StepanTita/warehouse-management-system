@@ -24,6 +24,8 @@ urlpatterns = [
     # path('signOut/', views.sign_out, name='sign_out'),
     path('signIn/', views.SignInFormView.as_view(), name='sign_in'),
     path('signUp/', views.SignUpFormView.as_view(), name='sign_up'),
+    path('personalPage/<str:username>/', views.PersonalPage.as_view(), name='personal_page'),
+    path('personalEdit/', views.PersonalEdit.as_view(), name='personal_edit'),
     path('accessDenied/', views.access_denied, name='access_denied'),
     path('notifyCreate/', views.nortify_create, name='notify_create'),
     path('notificationsView/', views.notifications_view, name='notifications_view'),
@@ -34,5 +36,7 @@ urlpatterns = [
     path('mobileNotifications/', views.MobileNotificationsView.as_view(), name='mobile_notifications'),
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),
     path('userIDRequester/', views.UserIDRequesterView.as_view(), name='user_id_requester'),
-    path('companyRegister/', views.CompanyRegisterFormView.as_view(), name="company_register")
+    path('companyRegister/', views.CompanyRegisterFormView.as_view(), name='company_register'),
+    path('companyPreview/<int:pk>/', views.CompanyPreviewView.as_view(), name='company_preview'),
+    path('companiesPreview/', views.CompaniesPreviewView.as_view(), name='companies_preview'),
 ]

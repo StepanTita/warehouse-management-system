@@ -1,0 +1,26 @@
+{% extends 'utils/wrappers/companies_preview_wrapper.html' %}
+
+{% load static %}
+{% block categories_posts %}
+    {% include 'utils/includes/companies_preview_parts/categories_posts.html' %}
+{% endblock %}
+
+{% block companies_preview %}
+
+    <section class="blog_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="blog_left_sidebar">
+                        {% include 'utils/includes/companies_preview_parts/companies_preview.html' %}
+                        {% include 'utils/includes/companies_preview_parts/companies_pagination.html' %}
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    {% include 'utils/includes/companies_preview_parts/search_companies.html' %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

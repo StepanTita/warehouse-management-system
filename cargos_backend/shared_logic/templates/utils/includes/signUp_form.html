@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="offset-lg-3 col-lg-6">
-                <div class="login_form_inner">
+                <div class="login_form_inner pb-4">
                     <h3>Sign up to enter</h3>
                     <form class="row login_form" method="post" id="contactForm">
                         {% csrf_token %}
@@ -23,6 +23,7 @@
                             <button type="submit" value="submit" class="primary-btn">Sign Up</button>
                         </div>
                     </form>
+                    <a href="{% url 'users:sign_in' %}"> {% trans 'Already have an account? Sign in!' %} </a>
                 </div>
             </div>
         </div>

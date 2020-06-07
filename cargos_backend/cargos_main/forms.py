@@ -10,7 +10,7 @@ class NewCargoForm(forms.Form):
     error_css_class = 'has-error'
     title = forms.CharField(label="Title", max_length=200, required=False)
 
-    storage = forms.ModelChoiceField(queryset=Storage.objects.all(), label="Storage", empty_label="(Nothing)",
+    storage = forms.ModelChoiceField(queryset=Storage.objects.all(), label="Storage", empty_label="...",
                                      required=True)
 
     height = forms.DecimalField(decimal_places=2, max_digits=9, min_value=0.01, max_value=100, localize=True,
@@ -60,7 +60,7 @@ class SearchForm(forms.Form):
         'placeholder': 'Search here...'
     }))
 
-    storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages', empty_label="(Nothing)",
+    storages = forms.ModelChoiceField(queryset=Storage.objects.all(), label='Storages', empty_label="...",
                                       widget=forms.Select(attrs={
                                           'class': 'form-control text text-secondary col-md-4',
                                       }))

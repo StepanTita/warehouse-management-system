@@ -1,0 +1,61 @@
+<nav class="blog-pagination justify-content-center d-flex">
+    {#    <ul class="pagination">#}
+    {#        <li class="page-item">#}
+    {#            <a href="#" class="page-link" aria-label="Previous">#}
+    {#                <span aria-hidden="true">#}
+    {#                    <span class="lnr lnr-chevron-left"></span>#}
+    {#                </span>#}
+    {#            </a>#}
+    {#        </li>#}
+    {#        <li class="page-item"><a href="#" class="page-link">01</a></li>#}
+    {#        <li class="page-item active"><a href="#" class="page-link">02</a></li>#}
+    {#        <li class="page-item"><a href="#" class="page-link">03</a></li>#}
+    {#        <li class="page-item"><a href="#" class="page-link">04</a></li>#}
+    {#        <li class="page-item"><a href="#" class="page-link">09</a></li>#}
+    {#        <li class="page-item">#}
+    {#            <a href="#" class="page-link" aria-label="Next">#}
+    {#                <span aria-hidden="true">#}
+    {#                    <span class="lnr lnr-chevron-right"></span>#}
+    {#                </span>#}
+    {#            </a>#}
+    {#        </li>#}
+    {#    </ul>#}
+    <div class="pagination col-md-6 d-flex justify-content-end"> {# TODO FIX PAGINATION #}
+        <a {% if page_obj.has_previous %}
+            href="?page={{ page_obj.previous_page_number }}&{{ search_params }}" {% endif %}
+            class="prev-arrow">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
+        <a href="?page=1&{{ search_params }}" {% if page_obj.number == 1 %} class="active" {% endif %}>1</a>
+        {% if page_obj.paginator.num_pages > 1 %}
+            <a href="?page=2&{{ search_params }}" {% if page_obj.number == 2 %} class="active" {% endif %}>2</a>
+        {% endif %}
+
+        {% if page_obj.number > 3 %}
+            <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+            <a href="?page={{ page_obj.previous_page_number }}&{{ search_params }}">
+                {{ page_obj.previous_page_number }}</a>
+            <a href="?page={{ page_obj.number }}&{{ search_params }}" class="active">
+                {{ page_obj.number }}</a>
+        {% elif page_obj.number > 2 %}
+            <a href="?page={{ page_obj.number }}&{{ search_params }}" class="active">
+                {{ page_obj.number }}</a>
+        {% endif %}
+
+        {% if page_obj.paginator.num_pages >= 3 %}
+            {% if page_obj.has_next and page_obj.next_page_number != 2 %}
+                <a href="?page={{ page_obj.next_page_number }}&{{ search_params }}">
+                    {{ page_obj.next_page_number }}</a>
+            {% endif %}
+
+            {% if page_obj.next_page_number != page_obj.paginator.num_pages %}
+                <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
+                <a href="?page={{ page_obj.paginator.num_pages }}&{{ search_params }}"
+                        {% if page_obj.number == page_obj.paginator.num_pages %} class="active" {% endif %} >
+                    {{ page_obj.paginator.num_pages }}</a>
+            {% endif %}
+
+        {% endif %}
+        <a {% if page_obj.has_next %} href="?page={{ page_obj.paginator.num_pages }}&{{ search_params }}" {% endif %}
+                                      class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+    </div>
+</nav>
