@@ -9,7 +9,7 @@ django-model-utils==3.2.0
 django-notifications-hq==1.5.0
 https://github.com/darklow/django-suit/tarball/v2
 django-tempus-dominus==5.1.2.9
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 get==2019.4.13
 gunicorn==19.9.0
 idna==2.8
