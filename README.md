@@ -1,28 +1,6 @@
-# backend_coordinate_A
-Project Coordinate A. on storage logistics backend --> https://cargos-backend.herokuapp.com/ <br>
-<br>
-
-<br>
-<h3>Mobile application</h3>
-<h6>Auth page</h6>
-<img  src="resources/mobile5.jpg" height="400" alt="kitten-gif"/> <br>
-<h6>Notifications page</h6>
-<img  src="resources/mobile1.jpg" height="400" alt="kitten-gif"/> <br>
-<h6>Cargo preview</h6>
-<img  src="resources/mobile2.jpg" height="400" alt="kitten-gif"/> <br>
-<h6>Cargo search page</h6>
-<img  src="resources/mobile3.jpg" height="400" alt="kitten-gif"/> <br>
-<h6>Main page</h6>
-<img  src="resources/mobile6.jpg" height="400" alt="kitten-gif"/> <br>
-<br>
-<h3>IOT device</h3>
-<img  src="resources/iot-device.gif" height="400" alt="kitten-gif"/> 
-
 # Warehouse Management System (WMS) 📦🤖
 
 Unleash the power of automation and intelligent logistics management in your warehouse with our all-encompassing Warehouse Management System. Built with Django, Vue.js, Kotlin, and Raspberry Pi, our solution caters to managers, workers, and admins, modernizing your warehouse operations.
-
-![Warehouse Image](path_to_image_of_warehouse_or_system_demo)
 
 ## Components 🛠️
 
@@ -95,7 +73,7 @@ Unleash the power of automation and intelligent logistics management in your war
 <img  src="resources/mobile6.jpg" height="400" alt="kitten-gif"/> <br>
 <br>
 
-<img  src="resources/iot-device.gif" height="400" alt="kitten-gif"/> 
+<img  src="resources/iot-device.gif" height="600" alt="kitten-gif"/> 
 
 ## License 📜
 
